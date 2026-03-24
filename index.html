@@ -59,7 +59,8 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
 .topbar{position:sticky;top:0;z-index:20;display:flex;align-items:center;justify-content:space-between;
   padding:0 1rem;height:60px;border-bottom:1px solid var(--border);
   background:linear-gradient(180deg,#ffffff 0%,#faf5ee 100%);
-  box-shadow:0 2px 12px rgba(150,80,20,0.12);gap:8px;}
+  box-shadow:0 2px 12px rgba(150,80,20,0.12);gap:8px;
+  pointer-events:all;overflow:visible;}
 .brand{display:flex;align-items:center;gap:0.9rem;}
 .brand-logo{width:34px;height:34px;border-radius:4px;background:linear-gradient(135deg,var(--gold-dim),var(--gold));
   display:flex;align-items:center;justify-content:center;font-size:1rem;box-shadow:0 0 16px rgba(201,168,76,0.25);}
@@ -67,10 +68,10 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
 .brand-sub{font-family:'DM Mono',monospace;font-size:0.52rem;letter-spacing:0.3em;color:var(--gold-light);}
 
 /* ── NAV TABS ── */
-.nav-tabs{display:flex;gap:0.2rem;align-items:center;}
+.nav-tabs{display:flex;gap:0.2rem;align-items:center;pointer-events:all;}
 .nav-tab{display:flex;align-items:center;gap:0.5rem;padding:0.5rem 1.2rem;border-radius:5px;
   cursor:pointer;transition:all 0.2s;border:1px solid transparent;
-  font-size:0.84rem;color:#333333;font-family:'Lato',sans-serif;background:none;font-weight:400;}
+  font-size:0.84rem;color:#333333;font-family:'Lato',sans-serif;background:none;font-weight:400;pointer-events:all;position:relative;z-index:25;}
 .nav-tab:hover{background:rgba(200,118,42,0.1);color:#111111;}
 .nav-tab.active{background:linear-gradient(135deg,rgba(200,118,42,0.15),rgba(200,80,20,0.08));border-color:var(--border-gold);color:var(--gold);font-weight:700;}
 .nav-tab .t-icon{font-size:0.9rem;}
@@ -2955,6 +2956,7 @@ textarea.chat-input::placeholder{color:#555555;}
 // MODULE NAVIGATION
 // ══════════════════════════
 function showModule(id, btn) {
+  console.log('[OficinaOS] showModule:', id);
   document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
   document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
   if(id==='relatorios') setTimeout(renderRelatorios,50);
@@ -3612,7 +3614,7 @@ let aiCtx='geral';
 let chatHist=[];
 let aiLoading=false;
 
-const SYS=`Você é o Consultor Técnico Master da oficina Limaprata Reparações Automotivas, Leme-SP.
+function getSYS(){ return `Você é o Consultor Técnico Master da oficina Limaprata Reparações Automotivas, Leme-SP.
 Proprietário: Oséias. MEI solo. Especialidades: Metal Finish, planagem artesanal, funilaria, pintura PU/base-verniz, polimento espelhado, solda TIG/MIG.
 
 REGRAS:
@@ -3625,6 +3627,7 @@ REGRAS:
 
 CONTEXTO ATIVO: ${CTX_MOD[aiCtx]||""}
 `;
+}
 
 const CTX_MOD={
   geral:"",
