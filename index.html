@@ -1435,57 +1435,6 @@ textarea.chat-input::placeholder{color:#555555;}
   padding:4px 8px;font-size:1rem;
 }
 
-
-/* ══ RESTAURAÇÃO MODULE ══ */
-
-    #mod-restauracao{
-      --bg:#f5f7fb; --card:#ffffff; --ink:#0f172a; --muted:#475569;
-      --brand:#1f4e78; --brand2:#0f766e; --input:#d9eaf7; --warn:#fff3cd;
-      --ok:#e8f5e9; --bad:#fdecea; --border:#dbe3ec;
-    }
-    *{box-sizing:border-box}
-#mod-restauracao body{margin:0; font-family:Arial, Helvetica, sans-serif; background:var(--bg); color:var(--ink)}
-#mod-restauracao .wrap{max-width:1200px; margin:24px auto; padding:0 16px}
-#mod-restauracao .hero{background:linear-gradient(135deg,var(--brand),var(--brand2)); color:#fff; padding:18px 20px; border-radius:14px}
-#mod-restauracao .hero h1{margin:0 0 6px; font-size:28px}
-#mod-restauracao .hero p{margin:0; opacity:.95}
-#mod-restauracao .grid{display:grid; gap:16px; margin-top:16px}
-#mod-restauracao .grid.cols-3{grid-template-columns:1.05fr 1fr 1fr}
-#mod-restauracao .card{background:var(--card); border:1px solid var(--border); border-radius:14px; padding:16px; box-shadow:0 4px 14px rgba(15,23,42,.04)}
-#mod-restauracao .card h2{margin:0 0 12px; font-size:18px}
-#mod-restauracao .section-title{font-weight:700; color:var(--brand2); margin:4px 0 10px}
-#mod-restauracao .row{display:grid; grid-template-columns:1.5fr 1fr; gap:10px; margin-bottom:10px}
-#mod-restauracao label{font-size:13px; color:var(--muted); align-self:center}
-#mod-restauracao input{width:100%; padding:10px 12px; border:1px solid var(--border); border-radius:10px; background:var(--input); font-size:14px}
-#mod-restauracao table{width:100%; border-collapse:collapse; font-size:14px}
-#mod-restauracao th,td{padding:10px 8px; border-bottom:1px solid var(--border); text-align:right}
-#mod-restauracao th:first-child, td:first-child{text-align:left}
-#mod-restauracao thead th{background:#eff6ff; color:#0f172a; position:sticky; top:0}
-#mod-restauracao .actions{display:flex; gap:10px; flex-wrap:wrap; margin-top:14px}
-#mod-restauracao button{border:0; border-radius:10px; padding:12px 16px; font-weight:700; cursor:pointer}
-#mod-restauracao .primary{background:var(--brand); color:#fff}
-#mod-restauracao .secondary{background:#e2e8f0; color:#0f172a}
-#mod-restauracao .kpis{display:grid; grid-template-columns:repeat(2,1fr); gap:12px}
-#mod-restauracao .kpi{border:1px solid var(--border); border-radius:12px; padding:12px}
-#mod-restauracao .kpi .name{font-size:12px; color:var(--muted)}
-#mod-restauracao .kpi .val{font-size:22px; font-weight:700; margin-top:4px}
-#mod-restauracao .status-ok{background:var(--ok)}
-#mod-restauracao .status-bad{background:var(--bad)}
-#mod-restauracao .status-warn{background:var(--warn)}
-#mod-restauracao .note{font-size:12px; color:var(--muted); margin-top:12px; line-height:1.45}
-#mod-restauracao .pill{display:inline-block; padding:8px 12px; border-radius:999px; font-weight:700}
-#mod-restauracao .muted{color:var(--muted)}
-    @media (max-width: 980px){
-
-#mod-restauracao .grid.cols-3{grid-template-columns:1fr}
-#mod-restauracao .kpis{grid-template-columns:1fr}
-#mod-restauracao .row{grid-template-columns:1fr}
-    }
-  
-.orc-etapa-btn{padding:4px 9px;border-radius:12px;font-size:0.68rem;font-weight:600;
-  cursor:pointer;border:1px solid rgba(0,0,0,0.1);background:#f8f6f3;color:#333;transition:all 0.15s;}
-.orc-etapa-btn.active{background:#b8621a;border-color:#b8621a;color:#fff;}
-.orc-etapa-btn:hover{border-color:#b8621a;color:#b8621a;}
 </style>
 </head>
 <body>
@@ -1513,19 +1462,19 @@ textarea.chat-input::placeholder{color:#555555;}
     <button class="nav-tab" onclick="showModule('orcamento',this)">
       <span class="t-icon">🧮</span><span class="t-txt"> Orçamento</span>
     </button>
-    <button class="nav-tab" id="tab-os" onclick="showModule('os',this)">
-      <span class="t-icon">🔧</span><span class="t-txt"> OS</span>
-      <span id="osBadge" style="display:none;background:#b8621a;color:#fff;border-radius:10px;font-size:0.6rem;font-family:'DM Mono',monospace;padding:0.1rem 0.45rem;margin-left:0.3rem;line-height:1.6;"></span>
-    </button>
-    <button class="nav-tab" onclick="showModule('agenda',this)">
-      <span class="t-icon">📅</span><span class="t-txt"> Agenda</span>
-    </button>
     <button class="nav-tab" id="tab-contas" onclick="showModule('contas',this)">
       <span class="t-icon">🚨</span><span class="t-txt"> Contas</span>
       <span id="alertBadge" style="display:none;background:var(--red);color:#fff;border-radius:10px;font-size:0.6rem;font-family:'DM Mono',monospace;padding:0.1rem 0.45rem;margin-left:0.3rem;line-height:1.6;"></span>
     </button>
     <button class="nav-tab" onclick="showModule('metas',this)">
       <span class="t-icon">🎯</span><span class="t-txt"> Metas</span>
+    </button>
+    <button class="nav-tab" onclick="showModule('agenda',this)">
+      <span class="t-icon">📅</span><span class="t-txt"> Agenda</span>
+    </button>
+    <button class="nav-tab" id="tab-os" onclick="showModule('os',this)">
+      <span class="t-icon">🔧</span><span class="t-txt"> OS</span>
+      <span id="osBadge" style="display:none;background:#b8621a;color:#fff;border-radius:10px;font-size:0.6rem;font-family:'DM Mono',monospace;padding:0.1rem 0.45rem;margin-left:0.3rem;line-height:1.6;"></span>
     </button>
     <button class="nav-tab" onclick="showModule('materiais',this)">
       <span class="t-icon">🏷️</span><span class="t-txt"> Materiais</span>
@@ -1753,7 +1702,7 @@ textarea.chat-input::placeholder{color:#555555;}
                 <span class="ctag active" data-mult="1.0" onclick="setComplexity(this)">Básico</span>
                 <span class="ctag" data-mult="1.3" onclick="setComplexity(this)">Médio</span>
                 <span class="ctag" data-mult="1.6" onclick="setComplexity(this)">Alto</span>
-                <span class="ctag" data-mult="2.2" onclick="setComplexity(this)">Restauração</span>
+                <span class="ctag" data-mult="2.0" onclick="setComplexity(this)">Concourse</span>
               </div>
             </div>
           </div>
@@ -1805,9 +1754,8 @@ textarea.chat-input::placeholder{color:#555555;}
               <label class="proc-check"><input type="checkbox" id="proc_preparacao" onchange="updateCalc()"> Preparação</label>
               <label class="proc-check"><input type="checkbox" id="proc_pintura_parcial" onchange="updateCalc()"> Pintura parcial</label>
               <label class="proc-check"><input type="checkbox" id="proc_pintura_total" onchange="updateCalc()"> Pintura total</label>
-              <label class="proc-check"><input type="checkbox" id="proc_funilaria" onchange="updateCalc()"> Funilaria</label>
-              <label class="proc-check"><input type="checkbox" id="proc_recuperacao" onchange="updateCalc()"> Recuperação</label>
               <label class="proc-check"><input type="checkbox" id="proc_polimento" onchange="updateCalc()"> Polimento técnico</label>
+              <label class="proc-check"><input type="checkbox" id="proc_metalfinish" onchange="updateCalc()"> Metal Finish</label>
             </div>
           </div>
         </div>
@@ -1829,37 +1777,24 @@ textarea.chat-input::placeholder{color:#555555;}
         <div class="sec-title"><div class="sec-icon ic-blue">⚒️</div><span class="sec-lbl">Mão de Obra</span></div>
         <div class="card">
           <div class="form-grid">
-            <div class="form-grid three">
-            <div class="field">
-              <label>Horas Estimadas</label>
-              <input type="number" id="hours" value="8" min="0" step="0.5"
-                oninput="calcLaborFromHours()" placeholder="h">
-            </div>
-            <div class="field">
-              <label>R$/hora</label>
-              <input type="number" id="hourRate" value="120" min="0" step="5"
-                oninput="calcLaborFromHours()">
-              <span class="hint">SINDIREPA: R$100–200/h</span>
-            </div>
             <div class="field">
               <label>Total Mão de Obra (R$)</label>
-              <input type="number" id="laborTotal" value="960" min="0" step="10"
-                oninput="updateCalc()"
-                style="font-size:1rem;font-weight:700;color:#b8621a;">
+              <input type="number" id="laborTotal" value="0" min="0" step="10"
+                oninput="updateCalc()" placeholder="Ex: 960"
+                style="font-size:1rem;font-weight:600;">
+              <span class="hint">Valor total cobrado pela execução</span>
             </div>
-          </div>
-          <div style="margin-top:6px;">
-            <div class="slider-field">
-              <div class="slider-row">
-                <span style="font-size:0.78rem;color:#555;">Referência SINDIREPA (R$/h)</span>
-                <span class="sval" id="rateDisp">R$ 120/h</span>
+            <div class="field">
+              <label>Referência SINDIREPA (R$/h)</label>
+              <div class="slider-field" style="margin-top:4px;">
+                <div class="slider-row">
+                  <span style="font-size:0.78rem;color:#555;">R$/h</span>
+                  <span class="sval" id="rateDisp">R$ 120/h</span>
+                </div>
+                <input type="range" id="rateSlider" min="60" max="350" value="120" step="5"
+                  oninput="document.getElementById('rateDisp').textContent='R$ '+this.value+'/h'">
               </div>
-              <input type="range" id="rateSlider" min="60" max="350" value="120" step="5"
-                oninput="document.getElementById('hourRate').value=this.value;
-                         document.getElementById('rateDisp').textContent='R$ '+this.value+'/h';
-                         calcLaborFromHours();">
             </div>
-          </div>
           </div>
         </div>
             </div>
@@ -1903,76 +1838,9 @@ textarea.chat-input::placeholder{color:#555555;}
       </div>
     </div>
 
-
-      <!-- ETAPAS E MÃO DE OBRA POR PROCESSO -->
-      <div>
-        <div class="sec-title"><div class="sec-icon ic-blue">⚙️</div><span class="sec-lbl">Etapas e Mão de Obra por Processo</span></div>
-        <div class="card">
-          <div style="font-size:0.68rem;color:#555;font-family:'DM Mono',monospace;text-transform:uppercase;letter-spacing:0.12em;margin-bottom:8px;">Etapa atual</div>
-          <div style="display:flex;flex-wrap:wrap;gap:5px;margin-bottom:14px;">
-            <button type="button" class="orc-etapa-btn active" data-etapa="orcamento"       onclick="setOrcEtapa(this)">📋 Orçamento</button>
-            <button type="button" class="orc-etapa-btn" data-etapa="desmontagem"            onclick="setOrcEtapa(this)">🔩 Desmontagem</button>
-            <button type="button" class="orc-etapa-btn" data-etapa="funilaria"              onclick="setOrcEtapa(this)">⚒️ Funilaria</button>
-            <button type="button" class="orc-etapa-btn" data-etapa="solda"                 onclick="setOrcEtapa(this)">⚡ Solda / Ajuste</button>
-            <button type="button" class="orc-etapa-btn" data-etapa="preparacao"            onclick="setOrcEtapa(this)">🧪 Preparação</button>
-            <button type="button" class="orc-etapa-btn" data-etapa="pintura"               onclick="setOrcEtapa(this)">🎨 Pintura</button>
-            <button type="button" class="orc-etapa-btn" data-etapa="cura"                  onclick="setOrcEtapa(this)">⏱️ Cura / Secagem</button>
-            <button type="button" class="orc-etapa-btn" data-etapa="polimento"             onclick="setOrcEtapa(this)">✨ Polimento</button>
-            <button type="button" class="orc-etapa-btn" data-etapa="montagem"              onclick="setOrcEtapa(this)">🔧 Montagem</button>
-            <button type="button" class="orc-etapa-btn" data-etapa="controle"              onclick="setOrcEtapa(this)">🔍 Controle Final</button>
-            <button type="button" class="orc-etapa-btn" data-etapa="entregue"              onclick="setOrcEtapa(this)">🏁 Entregue</button>
-          </div>
-
-          <div style="font-size:0.68rem;color:#555;font-family:'DM Mono',monospace;text-transform:uppercase;letter-spacing:0.12em;margin-bottom:8px;">Horas por processo</div>
-          <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:10px;">
-            <div><label class="hint" style="display:block;margin-bottom:3px;">Desmontagem</label>
-              <input type="number" id="orc-h-desmontagem" min="0" step="0.5" value="0" class="fin-input"
-                style="text-align:center;padding:6px;" oninput="calcOrcMOTotal()"></div>
-            <div><label class="hint" style="display:block;margin-bottom:3px;">Funilaria</label>
-              <input type="number" id="orc-h-funilaria" min="0" step="0.5" value="0" class="fin-input"
-                style="text-align:center;padding:6px;" oninput="calcOrcMOTotal()"></div>
-            <div><label class="hint" style="display:block;margin-bottom:3px;">Solda</label>
-              <input type="number" id="orc-h-solda" min="0" step="0.5" value="0" class="fin-input"
-                style="text-align:center;padding:6px;" oninput="calcOrcMOTotal()"></div>
-            <div><label class="hint" style="display:block;margin-bottom:3px;">Preparação</label>
-              <input type="number" id="orc-h-preparacao" min="0" step="0.5" value="0" class="fin-input"
-                style="text-align:center;padding:6px;" oninput="calcOrcMOTotal()"></div>
-            <div><label class="hint" style="display:block;margin-bottom:3px;">Pintura</label>
-              <input type="number" id="orc-h-pintura" min="0" step="0.5" value="0" class="fin-input"
-                style="text-align:center;padding:6px;" oninput="calcOrcMOTotal()"></div>
-            <div><label class="hint" style="display:block;margin-bottom:3px;">Montagem</label>
-              <input type="number" id="orc-h-montagem" min="0" step="0.5" value="0" class="fin-input"
-                style="text-align:center;padding:6px;" oninput="calcOrcMOTotal()"></div>
-            <div><label class="hint" style="display:block;margin-bottom:3px;">Polimento</label>
-              <input type="number" id="orc-h-polimento" min="0" step="0.5" value="0" class="fin-input"
-                style="text-align:center;padding:6px;" oninput="calcOrcMOTotal()"></div>
-            <div><label class="hint" style="display:block;margin-bottom:3px;color:#b8621a;font-weight:700;">Total h</label>
-              <input type="text" id="orc-h-total" class="fin-input" readonly
-                style="text-align:center;padding:6px;background:#fff8f0;color:#b8621a;font-weight:700;"></div>
-          </div>
-          <div style="display:flex;align-items:center;gap:10px;">
-            <label class="hint" style="white-space:nowrap;">R$/hora:</label>
-            <input type="number" id="orc-h-rate" min="60" step="5" value="120" class="fin-input"
-              style="width:80px;text-align:center;padding:6px;" oninput="calcOrcMOTotal()">
-            <span style="font-size:0.82rem;color:#555;">Total MO:
-              <strong id="orc-mo-total" style="color:#b8621a;font-size:1rem;">R$ 0,00</strong>
-            </span>
-            <button type="button" onclick="aplicarMODoOrcamento()"
-              style="padding:5px 12px;background:#b8621a;border:none;border-radius:5px;color:#fff;font-size:0.72rem;font-weight:700;cursor:pointer;">
-              ↑ Usar como MO
-            </button>
-          </div>
-        </div>
-      </div>
     <!-- RIGHT PANEL -->
     <div class="orc-right">
-      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;">
-        <div class="orsum-hdr" style="margin-bottom:0;">▸ Resumo do Orçamento</div>
-        <button onclick="toggleRestauracao()" id="btnRestauracao"
-          style="padding:5px 12px;background:#1f4e78;border:none;border-radius:6px;color:#fff;font-size:0.72rem;font-weight:700;cursor:pointer;">
-          🚗 Restauração
-        </button>
-      </div>
+      <div class="orsum-hdr">▸ Resumo do Orçamento</div>
       <div class="price-hero">
         <div class="price-lbl">Valor Final ao Cliente</div>
         <div class="price-big" id="finalPrice">R$ 0,00</div>
@@ -1999,53 +1867,12 @@ textarea.chat-input::placeholder{color:#555555;}
         <div class="brow"><span class="nm" style="color:#e05050;">− Desconto</span><span class="am" id="bDsc" style="color:var(--red);">−R$ 0,00</span></div>
         <div class="brow tot"><span class="nm">TOTAL FINAL</span><span class="am" id="bTot">R$ 0,00</span></div>
       </div>
-
-      <!-- Cenários -->
-      <div style="margin-top:14px;">
-        <div class="bd-title">▸ Cenários</div>
-        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-top:8px;">
-          <div style="background:#f0f9ff;border-radius:8px;padding:10px;text-align:center;border:0.5px solid rgba(29,111,164,0.2);">
-            <div style="font-size:0.6rem;color:#888;font-family:'DM Mono',monospace;text-transform:uppercase;">Mínimo</div>
-            <div style="font-size:0.95rem;font-weight:700;color:#1d6fa4;margin-top:4px;" id="scMin">R$ 0,00</div>
-            <div style="font-size:0.6rem;color:#888;margin-top:2px;">Margem 20%</div>
-          </div>
-          <div style="background:#fff8f0;border-radius:8px;padding:10px;text-align:center;border:0.5px solid rgba(184,98,26,0.2);">
-            <div style="font-size:0.6rem;color:#888;font-family:'DM Mono',monospace;text-transform:uppercase;">Ideal</div>
-            <div style="font-size:0.95rem;font-weight:700;color:#b8621a;margin-top:4px;" id="scMid">R$ 0,00</div>
-            <div style="font-size:0.6rem;color:#888;margin-top:2px;">Margem 30%</div>
-          </div>
-          <div style="background:#f0fdf4;border-radius:8px;padding:10px;text-align:center;border:0.5px solid rgba(22,163,74,0.2);">
-            <div style="font-size:0.6rem;color:#888;font-family:'DM Mono',monospace;text-transform:uppercase;">Premium</div>
-            <div style="font-size:0.95rem;font-weight:700;color:#16a34a;margin-top:4px;" id="scMax">R$ 0,00</div>
-            <div style="font-size:0.6rem;color:#888;margin-top:2px;">Margem 50%</div>
-          </div>
-        </div>
-      </div>
       
-      <!-- Restauração Panel (collapsible) -->
-      <div id="restauracaoPanel" style="display:none;margin-top:16px;border-top:2px solid #1f4e78;padding-top:14px;">
-        <div style="font-size:0.65rem;color:#888;font-family:'DM Mono',monospace;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:10px;">🚗 Módulo Restauração</div>
-        <div id="restauracaoPanelContent" style="background:#f5f7fb;border-radius:10px;overflow:hidden;">
-          <!-- Content loaded dynamically -->
-          <div style="padding:16px;text-align:center;color:#888;font-size:0.82rem;">
-            Clique em <strong>Restauração</strong> para abrir o módulo completo
-          </div>
-        </div>
-        <button onclick="abrirRestauracaoCompleto()" 
-          style="width:100%;margin-top:8px;padding:10px;background:linear-gradient(135deg,#1f4e78,#0f766e);border:none;border-radius:7px;color:#fff;font-weight:700;cursor:pointer;font-size:0.82rem;">
-          🔍 Abrir Restauração Completo
-        </button>
-      </div>
-
       <div class="orc-actions">
         <button class="btn-primary" onclick="genQuote()" style="flex:1;">🖨️ Orçamento para Cliente</button>
-        <button onclick="converterOrcReceita()" class="btn-secondary"
+        <button onclick="converterOrcReceita()" class="btn-secondary" 
           style="background:linear-gradient(135deg,#16a34a,#15803d);color:#fff;border:none;">
           ✅ Lançar Receita
-        </button>
-        <button onclick="orcamentoParaOS()" class="btn-secondary"
-          style="background:linear-gradient(135deg,#1d6fa4,#1558a0);color:#fff;border:none;">
-          🔧 Criar OS
         </button>
         <button onclick="enviarWhatsApp()" class="btn-secondary"
           style="background:linear-gradient(135deg,#25d366,#128c7e);color:#fff;border:none;">
@@ -3053,22 +2880,22 @@ textarea.chat-input::placeholder{color:#555555;}
 
 <div id="mod-consultor" class="panel">
   <nav class="cons-sidebar">
-    <div class="cs-section">MEI Profissional</div>
-    <div class="cs-item active" onclick="setCtx('geral',this)"><span class="cs-icon">🔧</span><span class="cs-lbl">Consulta Livre</span></div>
+    <div class="cs-section">Consulta Livre</div>
+    <div class="cs-item active" onclick="setCtx('geral',this)"><span class="cs-icon">🔧</span><span class="cs-lbl">Pergunta livre</span></div>
 
     <div class="cs-section" style="margin-top:10px;">Checklists</div>
     <div class="cs-item" onclick="setCtx('checklist_entrada',this)"><span class="cs-icon">📋</span><span class="cs-lbl">Entrada veículo</span></div>
     <div class="cs-item" onclick="setCtx('checklist_desmontagem',this)"><span class="cs-icon">🔩</span><span class="cs-lbl">Desmontagem</span></div>
     <div class="cs-item" onclick="setCtx('checklist_funilaria',this)"><span class="cs-icon">⚒️</span><span class="cs-lbl">Funilaria</span></div>
-    <div class="cs-item" onclick="setCtx('solda',this)"><span class="cs-icon">⚡</span><span class="cs-lbl">Solda TIG/MIG</span></div>
-    <div class="cs-item" onclick="setCtx('materiais',this)"><span class="cs-icon">🪣</span><span class="cs-lbl">Materiais & Marcas</span></div>
-
-    <div class="cs-section" style="margin-top:10px;">Técnicas de Aplicação</div>
-    <div class="cs-item" onclick="setCtx('preparacao',this)"><span class="cs-icon">🧪</span><span class="cs-lbl">Preparação</span></div>
-    <div class="cs-item" onclick="setCtx('pintura',this)"><span class="cs-icon">🎨</span><span class="cs-lbl">Pintura & Acabamento</span></div>
-    <div class="cs-item" onclick="setCtx('metalfinish',this)"><span class="cs-icon">⚒️</span><span class="cs-lbl">Metal Finish</span></div>
-    <div class="cs-item" onclick="setCtx('polimento',this)"><span class="cs-icon">✨</span><span class="cs-lbl">Polimento técnico</span></div>
+    <div class="cs-item" onclick="setCtx('checklist_pintura',this)"><span class="cs-icon">🎨</span><span class="cs-lbl">Prep. e Pintura</span></div>
     <div class="cs-item" onclick="setCtx('checklist_entrega',this)"><span class="cs-icon">✅</span><span class="cs-lbl">Controle final</span></div>
+
+    <div class="cs-section" style="margin-top:10px;">Técnica</div>
+    <div class="cs-item" onclick="setCtx('metalfinish',this)"><span class="cs-icon">⚒️</span><span class="cs-lbl">Metal Finish</span></div>
+    <div class="cs-item" onclick="setCtx('pintura',this)"><span class="cs-icon">🎨</span><span class="cs-lbl">Pintura & Acabamento</span></div>
+    <div class="cs-item" onclick="setCtx('solda',this)"><span class="cs-icon">⚡</span><span class="cs-lbl">Solda TIG/MIG</span></div>
+    <div class="cs-item" onclick="setCtx('preparacao',this)"><span class="cs-icon">🧪</span><span class="cs-lbl">Preparação</span></div>
+    <div class="cs-item" onclick="setCtx('materiais',this)"><span class="cs-icon">🪣</span><span class="cs-lbl">Materiais & Marcas</span></div>
 
     <div class="cs-section" style="margin-top:10px;">Gestão</div>
     <div class="cs-item" onclick="setCtx('precificacao',this)"><span class="cs-icon">💰</span><span class="cs-lbl">Precificação</span></div>
@@ -3165,7 +2992,6 @@ function showModule(id, btn) {
   document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
   if(id==='relatorios') setTimeout(renderRelatorios,50);
   if(id==='os') setTimeout(renderOS,50);
-  if(id==='restauracao') setTimeout(initRestauracao,50);
   if(id==='das') setTimeout(renderDAS,50);
   if(id==='clientes') setTimeout(renderClientes,50);
   document.getElementById('mod-'+id).classList.add('active');
@@ -3506,138 +3332,6 @@ function renderMats() {
     </div>`).join('');
 }
 
-
-
-
-function orcamentoParaOS() {
-  // Transfer orçamento data to new OS
-  const client  = document.getElementById('clientName')?.value || '';
-  const vehicle = document.getElementById('vehicle')?.value || '';
-  const service = document.getElementById('serviceType')?.value || '';
-  const labor   = parseFloat(document.getElementById('laborTotal')?.value) || 0;
-  const total   = parseFloat((document.getElementById('finalPrice')?.textContent||'0').replace(/[^0-9,]/g,'').replace(',','.')) || 0;
-
-  // Switch to OS module
-  // Switch to OS module
-  document.querySelectorAll('.nav-tab').forEach(t => {
-    if (t.getAttribute('onclick') && t.getAttribute('onclick').includes("'os'")) {
-      showModule('os', t);
-    }
-  });
-
-  // Pre-fill OS form with orçamento data
-  setTimeout(() => {
-    novaOS({ cliente: client, veiculo: vehicle });
-    // Fill extra fields
-    const setV = (id, v) => { const el=document.getElementById(id); if(el) el.value=v; };
-    setV('os-categoria', service);
-    setV('os-data-entrada', new Date().toISOString().slice(0,10));
-    // Add one service line with the total
-    const lista = document.getElementById('os-servicos-lista');
-    if (lista) {
-      lista.innerHTML = '';
-      addOsServico(service || 'Serviço conforme orçamento', 1, total);
-    }
-    showToast('✓ Dados do orçamento transferidos para a OS!');
-  }, 300);
-}
-
-function imprimirOrcamento() {
-  const el = id => document.getElementById(id);
-  // Collect data
-  const num    = el('psNum')?.textContent || '';
-  const date   = el('psDate')?.textContent || '';
-  const client = el('psClientName')?.textContent || '';
-  const vehicle= el('psVehicle')?.textContent || '';
-  const service= el('psService')?.textContent || '';
-  const obs    = el('psObs')?.textContent || '';
-  const moTotal= el('psTotalMO')?.textContent || 'R$ 0,00';
-  const extTotal=el('psTotalExt')?.textContent || 'R$ 0,00';
-  const final  = el('psTotalFinal')?.textContent || 'R$ 0,00';
-  const validade= el('psValidade')?.textContent || '30 dias';
-  const garantia= el('psGarantia')?.textContent || '60 dias';
-  // Collect table rows
-  const rows = Array.from(document.querySelectorAll('#psItems tr')).map(tr => {
-    const inputs = tr.querySelectorAll('input');
-    return inputs.length >= 4
-      ? `<tr><td>${inputs[0].value}</td><td style="text-align:center">${inputs[1].value}</td><td style="text-align:center">${inputs[2].value}</td><td style="text-align:right;font-weight:700;color:#b8621a">${inputs[3].value}</td></tr>`
-      : '';
-  }).join('');
-
-  const win = window.open('', '_blank', 'width=800,height=900');
-  win.document.write(`<!DOCTYPE html><html><head><meta charset="UTF-8">
-  <title>Orçamento ${num} – Limaprata</title>
-  <style>
-    *{box-sizing:border-box;margin:0;padding:0}
-    body{font-family:Arial,sans-serif;max-width:740px;margin:20px auto;padding:20px;color:#111;font-size:14px}
-    .header{display:flex;justify-content:space-between;align-items:flex-start;border-bottom:3px solid #b8621a;padding-bottom:14px;margin-bottom:18px}
-    h1{font-size:20px;color:#b8621a;margin-bottom:2px}
-    .sub{color:#555;font-size:12px}
-    .num{font-size:28px;font-weight:900;color:#b8621a;font-family:'Arial Black',Arial,sans-serif}
-    .info-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px}
-    .info-field{background:#f8f6f3;padding:8px 12px;border-radius:6px}
-    .info-lbl{font-size:10px;color:#888;text-transform:uppercase;letter-spacing:0.1em}
-    .info-val{font-size:14px;font-weight:600;margin-top:2px}
-    table{width:100%;border-collapse:collapse;margin:12px 0}
-    th{background:#1a0e04;color:#fff;padding:8px 10px;font-size:12px;text-align:left}
-    th:last-child{text-align:right}
-    td{padding:8px 10px;border-bottom:1px solid #eee;font-size:13px}
-    td:last-child{text-align:right}
-    .total-row{display:flex;justify-content:space-between;padding:6px 0;font-size:13px}
-    .total-final{font-size:18px;font-weight:900;color:#b8621a;border-top:2px solid #b8621a;margin-top:8px;padding-top:8px}
-    .obs{background:#fff8f0;border-left:3px solid #b8621a;padding:8px 12px;margin:14px 0;font-size:12px}
-    .footer{display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-top:40px}
-    .ass{border-top:1px solid #333;padding-top:4px;font-size:11px;color:#666;text-align:center}
-    .badge{display:inline-block;background:#f0fdf4;color:#15803d;padding:2px 10px;border-radius:10px;font-size:11px;font-weight:700;margin-top:4px}
-    @media print{@page{margin:15mm} button{display:none}}
-  </style></head><body>
-  <div class="header">
-    <div>
-      <h1>LIMAPRATA Reparações Automotivas</h1>
-      <div class="sub">CNPJ 55.254.863/0001-87 · Leme – SP · Metal Finish · Funilaria · Pintura</div>
-    </div>
-    <div style="text-align:right">
-      <div class="num">Nº ${num}</div>
-      <div class="sub">${date}</div>
-      <div class="badge">ORÇAMENTO</div>
-    </div>
-  </div>
-  <div class="info-grid">
-    <div class="info-field"><div class="info-lbl">Cliente</div><div class="info-val">${client}</div></div>
-    <div class="info-field"><div class="info-lbl">Veículo</div><div class="info-val">${vehicle}</div></div>
-    <div class="info-field"><div class="info-lbl">Serviço</div><div class="info-val">${service}</div></div>
-    <div class="info-field"><div class="info-lbl">Validade</div><div class="info-val">${validade} · Garantia: ${garantia}</div></div>
-  </div>
-  <table>
-    <thead><tr><th>Descrição</th><th>Qtd</th><th>Un.</th><th>Total</th></tr></thead>
-    <tbody>${rows}</tbody>
-  </table>
-  ${obs ? `<div class="obs"><strong>Observações:</strong> ${obs}</div>` : ''}
-  <div style="max-width:280px;margin-left:auto;margin-top:10px">
-    <div class="total-row"><span>Mão de Obra</span><span>${moTotal}</span></div>
-    <div class="total-row"><span>Terceiros / Frete</span><span>${extTotal}</span></div>
-    <div class="total-row total-final"><span>TOTAL</span><span>${final}</span></div>
-  </div>
-  <div class="footer">
-    <div><div style="height:50px"></div><div class="ass">Responsável – Limaprata Reparações</div></div>
-    <div><div style="height:50px"></div><div class="ass">Cliente – ${client}</div></div>
-  </div>
-  <div style="text-align:center;margin-top:20px">
-    <button onclick="window.print()" style="padding:10px 24px;background:#b8621a;border:none;border-radius:6px;color:#fff;font-weight:700;cursor:pointer;font-size:14px">🖨️ Imprimir / Salvar PDF</button>
-  </div>
-  </body></html>`);
-  win.document.close();
-  setTimeout(() => win.focus(), 300);
-}
-
-function calcLaborFromHours() {
-  const h = parseFloat(document.getElementById('hours')?.value) || 0;
-  const r = parseFloat(document.getElementById('hourRate')?.value) || 0;
-  const el = document.getElementById('laborTotal');
-  if (el) el.value = (h * r).toFixed(2);
-  updateCalc();
-}
-
 function updateCalc() {
   const el = id => document.getElementById(id);
   const fmt = v => 'R$\u00a0' + v.toFixed(2).replace('.',',').replace(/\B(?=(\d{3})+(?!\d))/g,'.');
@@ -3702,19 +3396,6 @@ function updateCalc() {
   }
 
   if(typeof updateMktRef === 'function') updateMktRef(final);
-
-  // Cenários
-  const moMat2 = (parseFloat(document.getElementById('laborTotal')?.value)||0) +
-                 ((typeof mats!=='undefined') ? mats.reduce((s,m)=>s+(m.qty*m.unit),0) : 0);
-  const extras2 = (parseFloat(document.getElementById('thirdParty')?.value)||0) +
-                  (parseFloat(document.getElementById('transport')?.value)||0);
-  const cpx2 = cpxMult || 1;
-  const fmt2 = v => 'R$\u00a0' + v.toFixed(2).replace('.',',').replace(/\B(?=(\d{3})+(?!\d))/g,'.');
-  const sc = m => fmt2(moMat2 * cpx2 / (1-m) + extras2);
-  const elSc = id => document.getElementById(id);
-  if(elSc('scMin')) elSc('scMin').textContent = sc(0.20);
-  if(elSc('scMid')) elSc('scMid').textContent = sc(0.30);
-  if(elSc('scMax')) elSc('scMax').textContent = sc(0.50);
 }
 
 function updateMktRef(fp) {
@@ -3788,8 +3469,8 @@ function genQuote() {
     desc: svcLabel + (document.querySelector('.ctag.active')?' — Nível '+document.querySelector('.ctag.active').textContent:''),
     qty:1, unid:'Serv.', unit:laborVal, total:laborVal
   });
-  // Materiais (agrupados)
-  if (matsSum > 0) rows.push({desc:'Materiais utilizados', qty:1, unid:'Conj.', unit:matsSum, total:matsSum});
+  // Apenas peças/itens marcados como "Peça" no orçamento (não materiais internos)
+  // Terceiros e peças de cliente são visíveis
   if (tp>0) rows.push({desc:'Serviço terceirizado',qty:1,unid:'Serv.',unit:tp,total:tp});
   if (tr>0) rows.push({desc:'Frete / Deslocamento',qty:1,unid:'—',unit:tr,total:tr});
   // Peças do cliente (Santo Antonio, etc) — itens com cat 'Peças Clientes' nos lançamentos do mês
@@ -3807,7 +3488,7 @@ function genQuote() {
       </td>
     </tr>`).join('');
 
-  el('psTotalMO').textContent = fmtR(laborVal + matsSum); // MO + Materiais
+  el('psTotalMO').textContent = fmtR(laborVal);
   el('psTotalExt').textContent = fmtR(tp+tr);
   el('psTotalFinal').textContent = fmtR(final);
   // Store rows count for add/remove functions
@@ -3816,11 +3497,7 @@ function genQuote() {
   if (notes) { el('psObsBox').style.display='block'; el('psObs').textContent=notes; }
   else el('psObsBox').style.display='none';
 
-  const ov2=document.getElementById('printOverlay');
-  ov2.style.display='flex'; ov2.classList.add('open');
-  // Reset NFS-e helper
-  const helper=document.getElementById('nfseHelper');
-  if(helper) helper.style.display='none';
+  const ov2=document.getElementById('printOverlay'); ov2.style.display='flex'; ov2.classList.add('open');
   // Auto-save to history
   salvarOrcamento({
     num: document.getElementById('psNum')?.textContent||'',
@@ -3857,33 +3534,26 @@ function removePsRow(i) {
 function recalcPsTotal() {
   const tbody = document.getElementById('psItems');
   if (!tbody) return;
-  const fmt = v => 'R$ ' + v.toFixed(2).replace('.',',').replace(/\B(?=(\d{3})+(?!\d))/g,'.');
-  const el = id => document.getElementById(id);
-
-  let moMat = 0;   // MO + Materiais (rows NOT marked as terceiros/frete)
-  let extras = 0;  // Terceiros / Frete
-
-  Array.from(tbody.rows).forEach(tr => {
+  let total = 0;
+  let svcTotal = 0;
+  let extTotal = 0;
+  Array.from(tbody.rows).forEach((tr,i) => {
     const inputs = tr.querySelectorAll('input');
     if (inputs.length < 4) return;
-    const desc = (inputs[0].value || '').toLowerCase();
+    const desc = inputs[0].value.toLowerCase();
     const valStr = inputs[3].value.replace(/[^\d,]/g,'').replace(',','.');
-    const val = parseFloat(valStr) || 0;
-    const isExtra = desc.includes('terceiriz') || desc.includes('frete') || desc.includes('deslocamento');
-    if (isExtra) extras += val;
-    else moMat += val;
+    const val = parseFloat(valStr)||0;
+    total += val;
+    // First row is always labor/service
+    if (i === 0) svcTotal += val;
+    else extTotal += val;
   });
-
-  const total = moMat + extras;
-  if(el('psTotalMO'))   el('psTotalMO').textContent    = fmt(moMat);
-  if(el('psTotalExt'))  el('psTotalExt').textContent   = fmt(extras);
-  if(el('psTotalFinal'))el('psTotalFinal').textContent = fmt(total);
-
-  // Update cenários in overlay
-  const base = moMat; // MO+Mat is the base (no extras in margin calc)
-  if(el('scMinPrint')) el('scMinPrint').textContent = fmt(base/0.80 + extras);
-  if(el('scMidPrint')) el('scMidPrint').textContent = fmt(base/0.70 + extras);
-  if(el('scMaxPrint')) el('scMaxPrint').textContent = fmt(base/0.50 + extras);
+  const el = id => document.getElementById(id);
+  if(el('psTotalMO')) el('psTotalMO').textContent = 'R$ '+svcTotal.toFixed(2).replace('.',',');
+  if(el('psTotalExt')) el('psTotalExt').textContent = 'R$ '+extTotal.toFixed(2).replace('.',',');
+  if(el('psTotalFinal')) {
+    el('psTotalFinal').textContent = 'R$ '+total.toFixed(2).replace('.',',');
+  }
 }
 
 function emitirNFSe() {
@@ -4003,8 +3673,7 @@ const CTX_MOD={
   checklist_entrega:"\n\nCHECKLIST ENTREGA: 1)Acabamento uniforme 2)Limpeza completa 3)Brilho sem poeira/escorrimento 4)Ausência de defeitos visuais 5)Montagem completa 6)Folgas corretas 7)Conferência com cliente 8)Fotos finais 9)Assinatura OS.",
   precificacao:"\n\nPRECIFICAÇÃO MEI: Hora técnica R$100-200/h (Leme/SP). Materiais: custo × 1.5 a 2.0. Complexidade: leve (½-2h), média (3-6h), pesada (8-20h+). Desmontagem adicional. Referência SINDIREPA Sudeste.",
   materiais:"\n\nMATERIAIS: Sherwin-Williams, Sikkens, Spies Hecker, Lazzuril. Primer PU epóxi (2K), wash primer, massa poliéster, massa rápida, base poliéster, tinta PU, verniz HS, catalisador, thinner, lixa (80 a 2000), boina, composto, desengraxante.",
-  polimento:"\n\nFOCO: Polimento técnico e espelhado. Boinas (corte/refino/lustro), compostos por etapa, velocidade (900-1200rpm), flash-time, remoção de marcas de lixa, acabamento espelhado. Diferença corretivo×lustrador×finalizador.",
-    financeiro:"\n\nDADOS 2026: Jan R$2.800 (−58%) | Fev R$3.665 (−54%) | Mar R$18.090 (+68%, melhor mês) | Abr parcial R$570. Total 2026: R$25.125 | Meta mensal: R$8.000. Destaque: Inadimplentes R$14.900 (recebimentos antigos).",
+  financeiro:"\n\nDADOS 2026: Jan R$2.800 (−58%) | Fev R$3.665 (−54%) | Mar R$18.090 (+68%, melhor mês) | Abr parcial R$570. Total 2026: R$25.125 | Meta mensal: R$8.000. Destaque: Inadimplentes R$14.900 (recebimentos antigos).",
 };
 
 function setCtx(ctx,el){
@@ -4313,7 +3982,7 @@ function renderMetas(){
     const c=p>=100?'var(--green)':p>=70?'var(--orange)':'var(--red)';
     return `<div class="meta-card">
       <div class="meta-header"><div><div class="meta-name">${m.cat}</div></div>
-        <button class="edit-meta-btn" onclick="editarMetaCat('${m.cat}',${m.meta})">✏️</button></div>
+        <button class="edit-meta-btn" onclick="">✏️</button></div>
       <div class="meta-vals">
         <div class="meta-val-block"><div class="mvb-label">Realizado</div><div class="mvb-val" style="color:${c}">${fmtR(m.real)}</div></div>
         <div class="meta-val-block"><div class="mvb-label">Meta</div><div class="mvb-val" style="color:#333333">${fmtR(m.meta)}</div></div>
@@ -4369,58 +4038,6 @@ function salvarMeta(){
   metaPrincipal=v;
   renderMetas();
   showToast('✓ Meta atualizada!');
-}
-
-
-
-function toggleRestauracao() {
-  const panel = document.getElementById('restauracaoPanel');
-  const btn   = document.getElementById('btnRestauracao');
-  if (!panel) return;
-  const isOpen = panel.style.display !== 'none';
-  panel.style.display = isOpen ? 'none' : 'block';
-  if (btn) btn.style.background = isOpen ? '#1f4e78' : '#0f766e';
-  if (!isOpen && typeof initRestauracao === 'function') {
-    // Load content into the panel
-    const target = document.getElementById('mod-restauracao');
-    const inner  = document.getElementById('restauracaoPanelContent');
-    if (target && inner && !inner._loaded) {
-      // Copy the inner content (without cloning event listeners — use initRestauracao)
-      inner._loaded = true;
-      setTimeout(initRestauracao, 100);
-    }
-  }
-}
-
-function abrirRestauracaoCompleto() {
-  // Show mod-restauracao as a modal overlay
-  const mod = document.getElementById('mod-restauracao');
-  if (!mod) return;
-  mod.style.cssText = 'display:flex!important;position:fixed;inset:0;z-index:500;background:#f5f7fb;overflow-y:auto;flex-direction:column;';
-  // Add close button
-  if (!mod._closeBtn) {
-    const closeBtn = document.createElement('button');
-    closeBtn.innerHTML = '✕ Fechar';
-    closeBtn.style.cssText = 'position:sticky;top:10px;right:10px;float:right;margin:10px;padding:8px 16px;background:#b8621a;border:none;border-radius:6px;color:#fff;font-weight:700;cursor:pointer;z-index:501;';
-    closeBtn.onclick = () => {
-      mod.style.cssText = '';
-      mod.classList.remove('active');
-    };
-    mod.insertBefore(closeBtn, mod.firstChild);
-    mod._closeBtn = true;
-  }
-  initRestauracao();
-}
-
-function editarMetaCat(cat, metaAtual) {
-  const catSel = document.getElementById('metaCatSel');
-  const catVal = document.getElementById('metaCatVal');
-  if (catSel) catSel.value = cat;
-  if (catVal) { catVal.value = metaAtual; catVal.focus(); }
-  // Scroll to form
-  const form = document.querySelector('.add-conta-form');
-  if (form) form.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-  showToast('✏️ Editando meta: ' + cat);
 }
 
 function salvarMetaCat(){
@@ -6870,7 +6487,7 @@ function imprimirOS(id) {
     <div><div style="height:50px;"></div><div class="ass-linha">Cliente — ${os.cliente}</div></div>
   </div>
   <div style="text-align:center;margin-top:20px;">
-    <button onclick="imprimirOrcamento()" style="padding:8px 20px;background:#b8621a;border:none;border-radius:5px;color:#fff;cursor:pointer;font-size:0.85rem;">🖨️ Imprimir / Salvar PDF</button>
+    <button onclick="window.print()" style="padding:8px 20px;background:#b8621a;border:none;border-radius:5px;color:#fff;cursor:pointer;font-size:0.85rem;">🖨️ Imprimir / Salvar PDF</button>
   </div>
   </body></html>`);
   win.document.close();
@@ -7082,138 +6699,6 @@ function toggleKeyVisibility() {
   if (input) input.type = input.type === 'password' ? 'text' : 'password';
 }
 
-
-// ══ RESTAURAÇÃO MODULE ══
-
-    const defaults = [
-      {name:"Desmontagem e Decapagem", value:2750, hours:40},
-      {name:"Funilaria", value:7500, hours:115},
-      {name:"Pintura Geral", value:11000, hours:140},
-      {name:"Montagem e Alinhamento", value:2250, hours:37.5},
-      {name:"Lixamento e Polimento", value:2250, hours:30}
-    ];
-
-    const tbody = document.querySelector("#stagesTable tbody");
-
-    function restBrl(v){
-      return new Intl.NumberFormat("pt-BR",{style:"currency", currency:"BRL"}).format(Number(v||0));
-    }
-    function restNum(v){
-      return new Intl.NumberFormat("pt-BR",{minimumFractionDigits:1, maximumFractionDigits:1}).format(Number(v||0));
-    }
-    function restPct(v){
-      return new Intl.NumberFormat("pt-BR",{style:"percent", minimumFractionDigits:1, maximumFractionDigits:1}).format(Number(v||0));
-    }
-
-    function restRenderRows(){
-      tbody.innerHTML = "";
-      defaults.forEach((s, i) => {
-        const tr = document.createElement("tr");
-        tr.innerHTML = `
-          <td>${s.name}</td>
-          <td><input id="stageValue_${i}" type="number" step="0.01" value="${s.value}"></td>
-          <td><input id="stageHours_${i}" type="number" step="0.1" value="${s.hours}"></td>
-          <td id="sellHour_${i}">-</td>
-          <td id="cost_${i}">-</td>
-          <td id="profit_${i}">-</td>
-          <td id="status_${i}">-</td>
-        `;
-        tbody.appendChild(tr);
-      });
-    }
-
-    function restCalculate(){
-      const fixedCost = Number(document.getElementById("fixedCost").value || 0);
-      const monthlyHours = Number(document.getElementById("monthlyHours").value || 0);
-      const variableHourCost = Number(document.getElementById("variableHourCost").value || 0);
-
-      const fixedHourCost = monthlyHours > 0 ? fixedCost / monthlyHours : 0;
-      const realHourCost = fixedHourCost + variableHourCost;
-
-      let totalRevenue = 0, totalHours = 0, totalCost = 0, totalProfit = 0;
-
-      defaults.forEach((s, i) => {
-        const value = Number(document.getElementById(`stageValue_${i}`).value || 0);
-        const hours = Number(document.getElementById(`stageHours_${i}`).value || 0);
-        const sellHour = hours > 0 ? value / hours : 0;
-        const cost = hours * realHourCost;
-        const profit = value - cost;
-        const status = profit < 0 ? "PREJUÍZO" : (profit < value * 0.1 ? "NO LIMITE" : "LUCRO");
-
-        totalRevenue += value;
-        totalHours += hours;
-        totalCost += cost;
-        totalProfit += profit;
-
-        document.getElementById(`sellHour_${i}`).textContent = restBrl(sellHour);
-        document.getElementById(`cost_${i}`).textContent = restBrl(cost);
-        document.getElementById(`profit_${i}`).textContent = restBrl(profit);
-        document.getElementById(`status_${i}`).textContent = status;
-      });
-
-      const avgSellHour = totalHours > 0 ? totalRevenue / totalHours : 0;
-      const margin = totalRevenue > 0 ? totalProfit / totalRevenue : 0;
-      const breakevenRevenue = totalHours * realHourCost;
-      const breakevenHoursMonth = avgSellHour > variableHourCost ? fixedCost / (avgSellHour - variableHourCost) : null;
-
-      document.getElementById("totalRevenue").textContent = restBrl(totalRevenue);
-      document.getElementById("totalHours").textContent = `${restNum(totalHours)} h`;
-      document.getElementById("avgSellHour").textContent = restBrl(avgSellHour);
-      document.getElementById("realHourCost").textContent = restBrl(realHourCost);
-      document.getElementById("totalCost").textContent = restBrl(totalCost);
-      document.getElementById("totalProfit").textContent = restBrl(totalProfit);
-      document.getElementById("margin").textContent = restPct(margin);
-      document.getElementById("breakevenRevenue").textContent = restBrl(breakevenRevenue);
-      document.getElementById("breakevenHour").textContent = restBrl(realHourCost);
-      document.getElementById("breakevenHoursMonth").textContent = breakevenHoursMonth === null ? "Sem equilíbrio" : `${restNum(breakevenHoursMonth)} h`;
-
-      const statusBox = document.getElementById("statusBox");
-      const statusText = document.getElementById("statusText");
-      const statusNote = document.getElementById("statusNote");
-      statusBox.classList.remove("status-ok","status-bad","status-warn");
-
-      if(totalProfit < 0 || avgSellHour < realHourCost){
-        statusBox.classList.add("status-bad");
-        statusText.textContent = "PREJUÍZO";
-        statusNote.textContent = "A venda média por hora ficou abaixo do custo real por hora.";
-      } else if(margin < 0.1){
-        statusBox.classList.add("status-warn");
-        statusText.textContent = "NO LIMITE";
-        statusNote.textContent = "Está positivo, mas com margem apertada. Revise preço e horas.";
-      } else {
-        statusBox.classList.add("status-ok");
-        statusText.textContent = "LUCRO";
-        statusNote.textContent = "O orçamento cobre o custo real e mantém margem acima de 10%.";
-      }
-    }
-
-    function restResetAll(){
-      document.getElementById("fixedCost").value = 3000;
-      document.getElementById("monthlyHours").value = 160;
-      document.getElementById("variableHourCost").value = 31.25;
-      restRenderRows();
-      restCalculate();
-    }
-
-    document.getElementById("btnCalculate").addEventListener("click", calculate);
-    document.getElementById("btnReset").addEventListener("click", resetAll);
-
-    restRenderRows();
-    restCalculate();
-  
-
-function initRestauracao() {
-  restRenderRows();
-  restCalculate();
-  const btnCalc = document.getElementById('btnCalculate');
-  const btnReset = document.getElementById('btnReset');
-  if(btnCalc && !btnCalc._restInited) {
-    btnCalc.addEventListener('click', restCalculate);
-    btnReset.addEventListener('click', restResetAll);
-    btnCalc._restInited = true;
-  }
-}
-
 // ══ INIT ══
 // Test localStorage availability
 (function(){
@@ -7278,27 +6763,9 @@ initIaKey();
       </table>
       <button onclick="addPsItem()" style="width:100%;padding:7px;background:#f8f6f3;border:1px dashed rgba(184,98,26,0.3);border-radius:5px;color:#b8621a;font-size:0.8rem;cursor:pointer;margin-bottom:16px;">＋ Adicionar Peça / Serviço</button>
       <div class="ps-totals">
-        <div class="ps-total-row"><span class="ps-total-label">MO + Materiais</span><span class="ps-total-val" id="psTotalMO">R$ 0,00</span></div>
+        <div class="ps-total-row"><span class="ps-total-label">Subtotal serviços</span><span class="ps-total-val" id="psTotalMO">R$ 0,00</span></div>
         <div class="ps-total-row"><span class="ps-total-label">Peças / Terceiros</span><span class="ps-total-val" id="psTotalExt">R$ 0,00</span></div>
         <div class="ps-total-row main"><span class="ps-total-label">TOTAL GERAL</span><span class="ps-total-val" id="psTotalFinal">R$ 0,00</span></div>
-      </div>
-      <!-- Cenários -->
-      <div style="margin:14px 0 10px;">
-        <div style="font-size:0.62rem;color:#555;font-family:'DM Mono',monospace;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:8px;">▸ Cenários de Margem</div>
-        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;">
-          <div style="background:#f0f9ff;border-radius:7px;padding:8px 10px;text-align:center;">
-            <div style="font-size:0.6rem;color:#888;text-transform:uppercase;">Mínimo 20%</div>
-            <div id="scMinPrint" style="font-size:0.88rem;font-weight:700;color:#1d6fa4;margin-top:2px;">—</div>
-          </div>
-          <div style="background:#fff8f0;border-radius:7px;padding:8px 10px;text-align:center;">
-            <div style="font-size:0.6rem;color:#888;text-transform:uppercase;">Ideal 30%</div>
-            <div id="scMidPrint" style="font-size:0.88rem;font-weight:700;color:#b8621a;margin-top:2px;">—</div>
-          </div>
-          <div style="background:#f0fdf4;border-radius:7px;padding:8px 10px;text-align:center;">
-            <div style="font-size:0.6rem;color:#888;text-transform:uppercase;">Premium 50%</div>
-            <div id="scMaxPrint" style="font-size:0.88rem;font-weight:700;color:#16a34a;margin-top:2px;">—</div>
-          </div>
-        </div>
       </div>
       <div class="ps-conditions">
         <div class="ps-cond-box"><div class="ps-cond-label">Validade</div><div class="ps-cond-val"><input class="ps-editable" id="psValidade" value="15 dias corridos"></div></div>
@@ -7322,11 +6789,7 @@ initIaKey();
       </div>
     </div>
     <div class="ps-actions">
-      <button class="ps-btn ps-btn-print" onclick="imprimirOrcamento()">🖨️ Imprimir / Salvar PDF</button>
-      <button class="ps-btn" onclick="converterOrcReceita()"
-        style="background:linear-gradient(135deg,#16a34a,#15803d);border:none;color:#fff;font-weight:600;">
-        ✅ Lançar Receita
-      </button>
+      <button class="ps-btn ps-btn-print" onclick="window.print()">🖨️ Imprimir / Salvar PDF</button>
       <button class="ps-btn" onclick="pixDoOrcamento()" style="background:linear-gradient(135deg,#7c3aed,#5b21b6);border:none;color:#fff;font-weight:600;">⚡ Gerar Pix</button>
       <button class="ps-btn" onclick="enviarWhatsApp()" style="background:linear-gradient(135deg,#16a34a,#15803d);border:none;color:#fff;font-weight:600;">📱 WhatsApp</button>
       <button class="ps-btn" onclick="emitirNFSe()" style="background:linear-gradient(135deg,#15803d,#166534);border:none;color:#fff;font-weight:600;">📋 NFS-e</button>
@@ -7724,201 +7187,6 @@ window.addEventListener('load', () => {
   </div>
 </div>
 
-
-
-<!-- ══ MÓDULO: RESTAURAÇÃO ══ -->
-<div id="mod-restauracao" class="panel">
-  <div style="overflow-y:auto;height:100%;padding:20px;">
-    <div class="wrap">
-    <div class="hero">
-      <h1>Categoria: Restauração</h1>
-      <p>Módulo de orçamento automático com cálculo de lucro, custo real e ponto de equilíbrio.</p>
-    </div>
-
-    <div class="grid cols-3">
-      <section class="card">
-        <h2>Premissas</h2>
-        <div class="row"><label for="fixedCost">Custo fixo mensal (R$)</label><input id="fixedCost" type="number" step="0.01" value="3000"></div>
-        <div class="row"><label for="monthlyHours">Horas produtivas/mês</label><input id="monthlyHours" type="number" step="0.1" value="160"></div>
-        <div class="row"><label for="variableHourCost">Custo variável por hora (R$)</label><input id="variableHourCost" type="number" step="0.01" value="31.25"></div>
-        <div class="note">
-          Fórmula do sistema: custo fixo/h = custo fixo mensal ÷ horas produtivas/mês. <br>
-          Custo real/h = custo fixo/h + custo variável/h.
-        </div>
-        <div class="actions">
-          <button id="btnCalculate" class="primary">Calcular orçamento</button>
-          <button id="btnReset" class="secondary" type="button">Restaurar padrão</button>
-        </div>
-      </section>
-
-      <section class="card" style="grid-column: span 2;">
-        <h2>Etapas do orçamento</h2>
-        <table id="stagesTable">
-          <thead>
-            <tr>
-              <th>Etapa</th>
-              <th>Valor orçado (R$)</th>
-              <th>Horas orçadas</th>
-              <th>Venda/hora</th>
-              <th>Custo etapa</th>
-              <th>Lucro etapa</th>
-              <th>Status</th>
-            </tr>
-          </thead>
-          <tbody></tbody>
-        </table>
-        <div class="note">As etapas vêm preenchidas com valores médios de referência. Ajuste livremente.</div>
-      </section>
-    </div>
-
-    <div class="grid" style="grid-template-columns:1.4fr 1fr; margin-top:16px;">
-      <section class="card">
-        <h2>Painel do projeto</h2>
-        <div class="kpis">
-          <div class="kpi"><div class="name">Receita total</div><div class="val" id="totalRevenue">R$ 0,00</div></div>
-          <div class="kpi"><div class="name">Horas totais</div><div class="val" id="totalHours">0,0 h</div></div>
-          <div class="kpi"><div class="name">Preço médio vendido por hora</div><div class="val" id="avgSellHour">R$ 0,00</div></div>
-          <div class="kpi"><div class="name">Custo real total por hora</div><div class="val" id="realHourCost">R$ 0,00</div></div>
-          <div class="kpi"><div class="name">Custo total do projeto</div><div class="val" id="totalCost">R$ 0,00</div></div>
-          <div class="kpi"><div class="name">Lucro total</div><div class="val" id="totalProfit">R$ 0,00</div></div>
-          <div class="kpi"><div class="name">Margem</div><div class="val" id="margin">0,0%</div></div>
-          <div class="kpi"><div class="name">Receita mínima de equilíbrio</div><div class="val" id="breakevenRevenue">R$ 0,00</div></div>
-        </div>
-      </section>
-
-      <section class="card">
-        <h2>Status</h2>
-        <div id="statusBox" class="kpi status-warn">
-          <div class="name">Situação do orçamento</div>
-          <div class="val"><span id="statusText" class="pill">NO LIMITE</span></div>
-          <div class="note" id="statusNote">Preencha ou ajuste as etapas e clique em calcular.</div>
-        </div>
-        <div class="section-title">Ponto de equilíbrio</div>
-        <div class="row"><label>Preço mínimo de equilíbrio por hora</label><div id="breakevenHour" class="muted"></div></div>
-        <div class="row"><label>Horas de equilíbrio/mês na venda atual</label><div id="breakevenHoursMonth" class="muted"></div></div>
-      </section>
-    </div>
-  </div>
-
-  <script>
-    const defaults = [
-      {name:"Desmontagem e Decapagem", value:2750, hours:40},
-      {name:"Funilaria", value:7500, hours:115},
-      {name:"Pintura Geral", value:11000, hours:140},
-      {name:"Montagem e Alinhamento", value:2250, hours:37.5},
-      {name:"Lixamento e Polimento", value:2250, hours:30}
-    ];
-
-    const tbody = document.querySelector("#stagesTable tbody");
-
-    function brl(v){
-      return new Intl.NumberFormat("pt-BR",{style:"currency", currency:"BRL"}).format(Number(v||0));
-    }
-    function num(v){
-      return new Intl.NumberFormat("pt-BR",{minimumFractionDigits:1, maximumFractionDigits:1}).format(Number(v||0));
-    }
-    function pct(v){
-      return new Intl.NumberFormat("pt-BR",{style:"percent", minimumFractionDigits:1, maximumFractionDigits:1}).format(Number(v||0));
-    }
-
-    function renderRows(){
-      tbody.innerHTML = "";
-      defaults.forEach((s, i) => {
-        const tr = document.createElement("tr");
-        tr.innerHTML = `
-          <td>${s.name}</td>
-          <td><input id="stageValue_${i}" type="number" step="0.01" value="${s.value}"></td>
-          <td><input id="stageHours_${i}" type="number" step="0.1" value="${s.hours}"></td>
-          <td id="sellHour_${i}">-</td>
-          <td id="cost_${i}">-</td>
-          <td id="profit_${i}">-</td>
-          <td id="status_${i}">-</td>
-        `;
-        tbody.appendChild(tr);
-      });
-    }
-
-    function calculate(){
-      const fixedCost = Number(document.getElementById("fixedCost").value || 0);
-      const monthlyHours = Number(document.getElementById("monthlyHours").value || 0);
-      const variableHourCost = Number(document.getElementById("variableHourCost").value || 0);
-
-      const fixedHourCost = monthlyHours > 0 ? fixedCost / monthlyHours : 0;
-      const realHourCost = fixedHourCost + variableHourCost;
-
-      let totalRevenue = 0, totalHours = 0, totalCost = 0, totalProfit = 0;
-
-      defaults.forEach((s, i) => {
-        const value = Number(document.getElementById(`stageValue_${i}`).value || 0);
-        const hours = Number(document.getElementById(`stageHours_${i}`).value || 0);
-        const sellHour = hours > 0 ? value / hours : 0;
-        const cost = hours * realHourCost;
-        const profit = value - cost;
-        const status = profit < 0 ? "PREJUÍZO" : (profit < value * 0.1 ? "NO LIMITE" : "LUCRO");
-
-        totalRevenue += value;
-        totalHours += hours;
-        totalCost += cost;
-        totalProfit += profit;
-
-        document.getElementById(`sellHour_${i}`).textContent = brl(sellHour);
-        document.getElementById(`cost_${i}`).textContent = brl(cost);
-        document.getElementById(`profit_${i}`).textContent = brl(profit);
-        document.getElementById(`status_${i}`).textContent = status;
-      });
-
-      const avgSellHour = totalHours > 0 ? totalRevenue / totalHours : 0;
-      const margin = totalRevenue > 0 ? totalProfit / totalRevenue : 0;
-      const breakevenRevenue = totalHours * realHourCost;
-      const breakevenHoursMonth = avgSellHour > variableHourCost ? fixedCost / (avgSellHour - variableHourCost) : null;
-
-      document.getElementById("totalRevenue").textContent = brl(totalRevenue);
-      document.getElementById("totalHours").textContent = `${num(totalHours)} h`;
-      document.getElementById("avgSellHour").textContent = brl(avgSellHour);
-      document.getElementById("realHourCost").textContent = brl(realHourCost);
-      document.getElementById("totalCost").textContent = brl(totalCost);
-      document.getElementById("totalProfit").textContent = brl(totalProfit);
-      document.getElementById("margin").textContent = pct(margin);
-      document.getElementById("breakevenRevenue").textContent = brl(breakevenRevenue);
-      document.getElementById("breakevenHour").textContent = brl(realHourCost);
-      document.getElementById("breakevenHoursMonth").textContent = breakevenHoursMonth === null ? "Sem equilíbrio" : `${num(breakevenHoursMonth)} h`;
-
-      const statusBox = document.getElementById("statusBox");
-      const statusText = document.getElementById("statusText");
-      const statusNote = document.getElementById("statusNote");
-      statusBox.classList.remove("status-ok","status-bad","status-warn");
-
-      if(totalProfit < 0 || avgSellHour < realHourCost){
-        statusBox.classList.add("status-bad");
-        statusText.textContent = "PREJUÍZO";
-        statusNote.textContent = "A venda média por hora ficou abaixo do custo real por hora.";
-      } else if(margin < 0.1){
-        statusBox.classList.add("status-warn");
-        statusText.textContent = "NO LIMITE";
-        statusNote.textContent = "Está positivo, mas com margem apertada. Revise preço e horas.";
-      } else {
-        statusBox.classList.add("status-ok");
-        statusText.textContent = "LUCRO";
-        statusNote.textContent = "O orçamento cobre o custo real e mantém margem acima de 10%.";
-      }
-    }
-
-    function resetAll(){
-      document.getElementById("fixedCost").value = 3000;
-      document.getElementById("monthlyHours").value = 160;
-      document.getElementById("variableHourCost").value = 31.25;
-      renderRows();
-      calculate();
-    }
-
-    document.getElementById("btnCalculate").addEventListener("click", calculate);
-    document.getElementById("btnReset").addEventListener("click", resetAll);
-
-    renderRows();
-    calculate();
-  </script>
-  </div>
-</div>
 
 <!-- ══ FIREBASE COMPAT SDK ══ -->
 <script>
