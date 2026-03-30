@@ -1,0 +1,20 @@
+{
+  "name": "OficinaOS — Limaprata Reparações Automotivas",
+  "short_name": "OficinaOS",
+  "description": "Sistema de gestão para Limaprata Reparações Automotivas — Leme/SP",
+  "start_url": "/oficinaOS/",
+  "scope": "/oficinaOS/",
+  "display": "standalone",
+  "background_color": "#f8f6f3",
+  "theme_color": "#b8621a",
+  "orientation": "portrait-primary",
+  "lang": "pt-BR",
+  "icons": [
+    {
+      "src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'%3E%3Crect width='192' height='192' rx='24' fill='%23b8621a'/%3E%3Ctext y='140' x='20' font-size='130' font-family='Arial'%3E%F0%9F%94%A7%3C/text%3E%3C/svg%3E",
+      "sizes": "192x192",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
