@@ -441,15 +441,12 @@ textarea.chat-input::placeholder{color:#555555;}
 
   /* ── CONTAS A PAGAR ── */
   .contas-body{display:grid;grid-template-columns:1fr 1fr 300px;width:100%;height:100%;overflow:hidden;}
-  .cons-sidebar{display:none !important;}
   .contas-col{overflow:visible !important;border-right:none;border-bottom:1px solid rgba(0,0,0,0.07);}
   #mod-contas{overflow-y:auto !important;}
 
   /* ── AGENDA ── */
   .cal-body{grid-template-columns:1fr !important;height:auto;}
-  /* METAS */
-  .metas-body{display:grid;grid-template-columns:1fr 1fr 300px;width:100%;height:100%;overflow:hidden;}
-  .metas-side{display:none !important;}
+.metas-side{display:none !important;}
   /* AGENDA */
   .cal-grid{width:100% !important;}
   .cal-grid td, .cal-grid th{padding:4px 2px !important;font-size:0.75rem !important;}
@@ -485,11 +482,7 @@ textarea.chat-input::placeholder{color:#555555;}
 
   /* ── TIPOGRAFIA MOBILE ── */
   .result-val{font-size:2.6rem !important;}
-  
-
-  /* METAS - force single column */
-  
-  .meta-col{width:100%!important;overflow:visible!important;}
+.meta-col{width:100%!important;overflow:visible!important;}
   /* AGENDA - force full width */  
   
   .cal-grid-wrap{width:100%!important;overflow-x:auto!important;}
@@ -885,6 +878,11 @@ textarea.chat-input::placeholder{color:#555555;}
 /* ══ DAS MEI MODULE ══ */
 #mod-das{flex-direction:column;overflow:hidden;}
 .das-body{display:grid;grid-template-columns:1fr 340px;width:100%;height:100%;overflow-y:auto;}
+  /* ── GRID LAYOUTS BASE ── */
+  
+  
+  
+
 .das-main{overflow-y:auto;padding:1.5rem;}
 .das-side{background:#f8f6f3;border-left:1px solid rgba(0,0,0,0.07);overflow-y:auto;padding:1.5rem;}
 .das-hero{background:linear-gradient(135deg,#1d3a6e,#1d6fa4);border-radius:10px;padding:20px;color:#fff;margin-bottom:1rem;}
@@ -1181,7 +1179,6 @@ textarea.chat-input::placeholder{color:#555555;}
   .das-months{grid-template-columns:repeat(3,1fr)!important;}
   
   /* CONSULTOR IA */
-  .cons-sidebar{display:none!important;}
   .cons-main{width:100%!important;}
   
   /* AGENDA */
@@ -1430,6 +1427,9 @@ textarea.chat-input::placeholder{color:#555555;}
 #mod-das.active { overflow-y: auto !important; }
 #mod-agenda.active { overflow: hidden !important; }
 .das-body { overflow-y: auto !important; }
+
+  /* METAS */
+  .metas-body{display:grid;grid-template-columns:1fr 1fr 300px;width:100%;height:100%;overflow:hidden;}
 </style>
 </head>
 <body>
@@ -3300,16 +3300,34 @@ function showModule(id, btn) {
   document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
   document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
   const mod = document.getElementById('mod-' + id);
-  if (!mod) { console.warn('Module not found: mod-' + id); return; }
+  if (!mod) { console.error('[OS] Module not found: mod-' + id); return; }
   mod.classList.add('active');
   if (btn) btn.classList.add('active');
+  // Debug: log computed style
+  requestAnimationFrame(() => {
+    const cs = window.getComputedStyle(mod);
+    console.log('[OS] mod-'+id+' display:'+cs.display+' h:'+cs.height+' class:'+mod.className);
+    // Also log first child
+    const first = mod.firstElementChild;
+    if(first){
+      const cs2 = window.getComputedStyle(first);
+      console.log('[OS] first child .'+first.className+' display:'+cs2.display+' h:'+cs2.height);
+    }
+  });
   const renders = {
     relatorios: renderRelatorios, os: renderOS, das: renderDAS,
     clientes: renderClientes, metas: renderMetas, financeiro: renderFinanceiro,
     agenda: renderCalendario, contas: renderContas, materiais: renderEstoque
   };
   if (renders[id]) setTimeout(() => {
-    try { renders[id](); } catch(e) { console.warn('Render error:', id, e.message); }
+    try {
+      renders[id]();
+      console.log('[OS] render OK: ' + id);
+    } catch(e) {
+      console.error('[OS] RENDER CRASH ' + id + ': ' + e.message + '\n' + (e.stack||'').slice(0,200));
+      const mod2 = document.getElementById('mod-' + id);
+      if(mod2) mod2.innerHTML = '<div style="padding:2rem;color:red;font-family:monospace;">ERRO: ' + e.message + '</div>';
+    }
   }, 50);
 }
 // ══════════════════════════
@@ -3736,9 +3754,9 @@ function updateCalc() {
   const svc = g('serviceType')?.value || '';
   const veh = g('vehicle')?.value || 'veículo';
   const scMin = final * 0.85, scMid = final, scMax = final * 1.2;
-  if(g('scMin')) { g('scMin').querySelector?.('.scen-val')?.textContent !== undefined && (g('scMin').querySelector('.scen-val').textContent = fmt(scMin)); }
-  if(g('scMid')) { try { g('scMid').querySelector('.scen-val').textContent = fmt(scMid); } catch(e){} }
-  if(g('scMax')) { try { g('scMax').querySelector('.scen-val').textContent = fmt(scMax); } catch(e){} }
+  if(g('scMin')) g('scMin').textContent = fmt(scMin);
+  if(g('scMid')) g('scMid').textContent = fmt(scMid);
+  if(g('scMax')) g('scMax').textContent = fmt(scMax);
 
   // Margem líquida
   const margem = final > 0 ? ((final - base) / final * 100) : 0;
@@ -6954,7 +6972,72 @@ function imprimirOS(id) {
   <div style="text-align:center;margin-top:20px;">
     <button onclick="window.print()" style="padding:8px 20px;background:#b8621a;border:none;border-radius:5px;color:#fff;cursor:pointer;font-size:0.85rem;">🖨️ Imprimir / Salvar PDF</button>
   </div>
-  </body></html>`);
+  
+<!-- FORCE GRID LAYOUTS -->
+<style>
+  /* PAINÉIS — overflow:hidden para conter o grid */
+  .panel.active{overflow:hidden!important;}
+  #mod-orcamento.active{overflow:hidden!important;}
+
+  /* PANEL FILHOS — preencher altura disponível */
+  .panel.active > *:not(script):not(style){flex-shrink:0;}
+  .metas-body,.cli-body,.contas-body,.das-body,.agenda-body,.rel-body{flex:1!important;}
+
+  /* GRID CONTAINERS */
+  .metas-body{display:grid!important;grid-template-columns:1fr 1fr 300px!important;
+    width:100%!important;height:100%!important;overflow:hidden!important;}
+  .cli-body{display:grid!important;grid-template-columns:280px 1fr 300px!important;
+    width:100%!important;height:100%!important;overflow:hidden!important;}
+  .contas-body{display:grid!important;grid-template-columns:1fr 1fr 300px!important;
+    width:100%!important;height:100%!important;overflow:hidden!important;}
+  .das-body{display:grid!important;grid-template-columns:1fr 340px!important;
+    width:100%!important;height:100%!important;overflow:hidden!important;}
+  .agenda-body{display:grid!important;grid-template-columns:1fr 320px!important;
+    width:100%!important;height:100%!important;overflow:hidden!important;}
+
+  /* GRID FILHOS — flex column com scroll próprio */
+  .meta-col{display:flex!important;flex-direction:column!important;
+    min-height:0!important;height:100%!important;overflow-y:auto!important;}
+  .agenda-main{display:flex!important;flex-direction:column!important;
+    min-height:0!important;height:100%!important;overflow-y:auto!important;}
+  .cal-side{display:flex!important;flex-direction:column!important;
+    min-height:0!important;height:100%!important;overflow-y:auto!important;}
+  .cli-list{display:flex!important;flex-direction:column!important;
+    min-height:0!important;height:100%!important;overflow-y:auto!important;}
+  .cli-detail{display:flex!important;flex-direction:column!important;
+    min-height:0!important;height:100%!important;overflow-y:auto!important;}
+  .cli-side{display:flex!important;flex-direction:column!important;
+    min-height:0!important;height:100%!important;overflow-y:auto!important;}
+  .contas-col{display:flex!important;flex-direction:column!important;
+    min-height:0!important;height:100%!important;overflow-y:auto!important;}
+  .das-main{display:flex!important;flex-direction:column!important;
+    min-height:0!important;height:100%!important;overflow-y:auto!important;}
+  .das-side{display:flex!important;flex-direction:column!important;
+    min-height:0!important;height:100%!important;overflow-y:auto!important;}
+  .rel-body{display:flex!important;flex-direction:column!important;
+    min-height:0!important;height:100%!important;overflow-y:auto!important;}
+
+  /* CONSULTOR */
+  .cons-sidebar{display:flex!important;flex-direction:column!important;
+    width:220px!important;min-width:220px!important;
+    min-height:0!important;height:100%!important;overflow-y:auto!important;}
+  .cons-main{display:flex!important;flex-direction:column!important;
+    flex:1!important;min-width:0!important;
+    min-height:0!important;height:100%!important;overflow-y:auto!important;}
+
+  /* MOBILE */
+  @media(max-width:900px){
+    .metas-body,.cli-body,.contas-body,.das-body,.agenda-body{
+      display:flex!important;flex-direction:column!important;
+      height:auto!important;overflow-y:auto!important;}
+    .meta-col,.agenda-main,.cal-side,.cli-list,.cli-detail,.cli-side,
+    .contas-col,.das-main,.das-side{
+      height:auto!important;min-height:unset!important;overflow-y:visible!important;}
+    .metas-side,.cli-side-panel,.cal-side,.fin-summary{display:none!important;}
+    .cons-sidebar{width:100%!important;height:auto!important;}
+  }
+</style>
+</body></html>`);
   win.document.close();
 }
 
@@ -7197,7 +7280,7 @@ function aplicarMODoOrcamento() {
   const procs = ['desmontagem','funilaria','solda','preparacao','pintura','montagem','polimento'];
   let totalH = 0;
   procs.forEach(p => { totalH += parseFloat(document.getElementById('orc-h-'+p)?.value)||0; });
-  const rate = parseFloat(document.getElementById('hourRate')?.value)||120;
+  const rate = parseFloat(document.getElementById('hourRate')?.value)||0;
   const mo   = totalH * rate;
   const el   = id => document.getElementById(id);
   if(el('laborTotal')) el('laborTotal').value = mo.toFixed(2);
@@ -8309,7 +8392,7 @@ window.addEventListener('load', () => {
 @media(max-width:900px){
   .panel.active{height:calc(100vh - 52px)!important;overflow-y:auto!important;}
   #mod-orcamento.active{overflow:hidden!important;}
-  
+  .metas-body{grid-template-columns:1fr!important;height:auto!important;overflow-y:auto!important;}
   .cli-body{grid-template-columns:1fr!important;height:auto!important;overflow-y:auto!important;}
   .das-body{grid-template-columns:1fr!important;height:auto!important;overflow-y:auto!important;}
   .agenda-body{grid-template-columns:1fr!important;height:auto!important;overflow-y:auto!important;}
@@ -8321,6 +8404,71 @@ window.addEventListener('load', () => {
 #mod-consultor.active,#mod-os.active,#mod-materiais.active{
   overflow-y:auto!important;
 }
+</style>
+
+<!-- FORCE GRID LAYOUTS -->
+<style>
+  /* PAINÉIS — overflow:hidden para conter o grid */
+  .panel.active{overflow:hidden!important;}
+  #mod-orcamento.active{overflow:hidden!important;}
+
+  /* PANEL FILHOS — preencher altura disponível */
+  .panel.active > *:not(script):not(style){flex-shrink:0;}
+  .metas-body,.cli-body,.contas-body,.das-body,.agenda-body,.rel-body{flex:1!important;}
+
+  /* GRID CONTAINERS */
+  .metas-body{display:grid!important;grid-template-columns:1fr 1fr 300px!important;
+    width:100%!important;height:100%!important;overflow:hidden!important;}
+  .cli-body{display:grid!important;grid-template-columns:280px 1fr 300px!important;
+    width:100%!important;height:100%!important;overflow:hidden!important;}
+  .contas-body{display:grid!important;grid-template-columns:1fr 1fr 300px!important;
+    width:100%!important;height:100%!important;overflow:hidden!important;}
+  .das-body{display:grid!important;grid-template-columns:1fr 340px!important;
+    width:100%!important;height:100%!important;overflow:hidden!important;}
+  .agenda-body{display:grid!important;grid-template-columns:1fr 320px!important;
+    width:100%!important;height:100%!important;overflow:hidden!important;}
+
+  /* GRID FILHOS — flex column com scroll próprio */
+  .meta-col{display:flex!important;flex-direction:column!important;
+    min-height:0!important;height:100%!important;overflow-y:auto!important;}
+  .agenda-main{display:flex!important;flex-direction:column!important;
+    min-height:0!important;height:100%!important;overflow-y:auto!important;}
+  .cal-side{display:flex!important;flex-direction:column!important;
+    min-height:0!important;height:100%!important;overflow-y:auto!important;}
+  .cli-list{display:flex!important;flex-direction:column!important;
+    min-height:0!important;height:100%!important;overflow-y:auto!important;}
+  .cli-detail{display:flex!important;flex-direction:column!important;
+    min-height:0!important;height:100%!important;overflow-y:auto!important;}
+  .cli-side{display:flex!important;flex-direction:column!important;
+    min-height:0!important;height:100%!important;overflow-y:auto!important;}
+  .contas-col{display:flex!important;flex-direction:column!important;
+    min-height:0!important;height:100%!important;overflow-y:auto!important;}
+  .das-main{display:flex!important;flex-direction:column!important;
+    min-height:0!important;height:100%!important;overflow-y:auto!important;}
+  .das-side{display:flex!important;flex-direction:column!important;
+    min-height:0!important;height:100%!important;overflow-y:auto!important;}
+  .rel-body{display:flex!important;flex-direction:column!important;
+    min-height:0!important;height:100%!important;overflow-y:auto!important;}
+
+  /* CONSULTOR */
+  .cons-sidebar{display:flex!important;flex-direction:column!important;
+    width:220px!important;min-width:220px!important;
+    min-height:0!important;height:100%!important;overflow-y:auto!important;}
+  .cons-main{display:flex!important;flex-direction:column!important;
+    flex:1!important;min-width:0!important;
+    min-height:0!important;height:100%!important;overflow-y:auto!important;}
+
+  /* MOBILE */
+  @media(max-width:900px){
+    .metas-body,.cli-body,.contas-body,.das-body,.agenda-body{
+      display:flex!important;flex-direction:column!important;
+      height:auto!important;overflow-y:auto!important;}
+    .meta-col,.agenda-main,.cal-side,.cli-list,.cli-detail,.cli-side,
+    .contas-col,.das-main,.das-side{
+      height:auto!important;min-height:unset!important;overflow-y:visible!important;}
+    .metas-side,.cli-side-panel,.cal-side,.fin-summary{display:none!important;}
+    .cons-sidebar{width:100%!important;height:auto!important;}
+  }
 </style>
 </body>
 </html>
