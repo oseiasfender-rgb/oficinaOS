@@ -3300,6 +3300,19 @@ function showModule(id, btn) {
   document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
   document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
   const mod = document.getElementById('mod-' + id);
+  if (!mod) { console.error('[OS] não achou mod-'+id); return; }
+  mod.classList.add('active');
+  if (btn) btn.classList.add('active');
+  requestAnimationFrame(() => {
+    const cs = window.getComputedStyle(mod);
+    console.log('[OS] '+id+' h:'+cs.height+' d:'+cs.display);
+  });
+  const renders = {relatorios:renderRelatorios,os:renderOS,das:renderDAS,clientes:renderClientes,metas:renderMetas,financeiro:renderFinanceiro,agenda:renderCalendario,contas:renderContas,materiais:renderEstoque};
+  if (renders[id]) setTimeout(()=>{try{renders[id]();}catch(e){console.error('[OS] '+id+':'+e.message);}},50);
+}
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+  const mod = document.getElementById('mod-' + id);
   if (!mod) { console.warn('Module not found: mod-' + id); return; }
   mod.classList.add('active');
   if (btn) btn.classList.add('active');
