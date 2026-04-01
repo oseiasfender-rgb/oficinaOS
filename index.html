@@ -3322,7 +3322,14 @@ function showModule(id, btn) {
     agenda: renderCalendario, contas: renderContas, materiais: renderEstoque
   };
   if (renders[id]) setTimeout(() => {
-    try { renders[id](); } catch(e) { console.error('[OS] Render error '+id+': '+e.message); }
+    try {
+      renders[id]();
+      console.log('[OS] render OK: ' + id);
+    } catch(e) {
+      console.error('[OS] RENDER CRASH ' + id + ': ' + e.message + '\n' + (e.stack||'').slice(0,200));
+      const mod2 = document.getElementById('mod-' + id);
+      if(mod2) mod2.innerHTML = '<div style="padding:2rem;color:red;font-family:monospace;">ERRO: ' + e.message + '</div>';
+    }
   }, 50);
 }
 // ══════════════════════════
