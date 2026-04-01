@@ -7421,6 +7421,57 @@ function updateEstoqueSummary() {
 
 <!-- LAYOUT OVERRIDE -->
 
+</script>
+<!-- Firebase (opcional — fallback para localStorage) -->
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+  import { getFirestore, doc, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+  try {
+    const app = initializeApp({
+      apiKey: "AIzaSyAUL3CTVZNst2at5HvDVZ9mfU2Gc0L2LV0",
+      authDomain: "oficinaos-limaprata.firebaseapp.com",
+      projectId: "oficinaos-limaprata"
+    });
+    const db = getFirestore(app);
+    const docRef = doc(db, "oficina", "limaprata_principal");
+    
+    window.saveToStorage = async function() {
+      try {
+        const data = {
+          ALL_TX: window._allTX || [],
+          jobs: window._jobs || [],
+          contas: window._contas || [],
+          metaPrincipal: window._metaPrincipal || 8500,
+          metasCat: window._metasCat || [],
+          estoque: window._estoque || [],
+          clientes: window._clientes || [],
+          orcHistorico: window._orcHistorico || [],
+          updatedAt: new Date().toISOString()
+        };
+        await setDoc(docRef, data, {merge: true});
+        const el = document.getElementById('cloudStatus');
+        if(el) { el.textContent = '☁️ Nuvem'; el.style.background = '#16a34a22'; }
+      } catch(e) {
+        console.warn('Firebase save failed:', e.message);
+      }
+    };
+    
+    // Load from Firebase on start
+    getDoc(docRef).then(snap => {
+      if(snap.exists()) {
+        const d = snap.data();
+        console.log('Firebase carregado');
+        const el = document.getElementById('cloudStatus');
+        if(el) { el.textContent = '☁️ Nuvem'; el.style.background = '#16a34a22'; }
+      }
+    }).catch(e => {
+      console.log('Firebase indisponível - usando localStorage');
+    });
+  } catch(e) {
+    console.log('Firebase SDK erro:', e.message);
+  }
+</script>
+
 <style id="layout-override">
 /* === PAINÉIS === */
 .panel{display:none!important;width:100%;height:calc(100vh - 60px);overflow:hidden;flex-direction:column;}
