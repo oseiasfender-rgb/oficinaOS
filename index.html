@@ -79,8 +79,6 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
 @keyframes blink{0%,100%{opacity:1}50%{opacity:0.3}}
 
 /* ── PANELS ── */
-.panel{position:relative;z-index:5;display:none;width:100%;height:calc(100vh - 60px);overflow:hidden;flex-direction:column;}
-.panel.active{display:flex;flex-direction:column;height:calc(100vh - 60px);overflow:hidden;}
 
 /* ════════════════════════════════
    MÓDULO 1 — FINANCEIRO
@@ -316,7 +314,6 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:13px;heigh
    MÓDULO 3 — CONSULTOR IA
 ════════════════════════════════ */
 #mod-consultor{flex-direction:row;}
-.cons-sidebar{width:220px;border-right:1px solid rgba(150,80,20,0.15);padding:1rem 0;overflow-y:auto;flex-shrink:0;background:#faf5ee;}
 .cons-sidebar::-webkit-scrollbar{width:3px;}
 .cons-sidebar::-webkit-scrollbar-thumb{background:var(--steel-light);}
 .cs-section{padding:0.35rem 1rem 0.2rem;font-family:'DM Mono',monospace;font-size:0.53rem;
@@ -328,7 +325,6 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:13px;heigh
 .cs-icon{font-size:1rem;width:20px;text-align:center;}
 .cs-lbl{font-size:0.85rem;color:#333333;transition:color 0.2s;}
 .cs-item.active .cs-lbl,.cs-item:hover .cs-lbl{color:var(--chrome-bright);}
-.cons-main{flex:1;display:flex;flex-direction:column;overflow:hidden;}
 .chat-area{flex:1;overflow-y:auto;padding:1.5rem 2rem;display:flex;flex-direction:column;gap:1.2rem;scroll-behavior:smooth;}
 .chat-area::-webkit-scrollbar{width:3px;}
 .chat-area::-webkit-scrollbar-thumb{background:var(--steel-light);}
@@ -440,25 +436,18 @@ textarea.chat-input::placeholder{color:#555555;}
   .orc-form-col{border-right:none;border-bottom:1px solid rgba(0,0,0,0.07);}
 
   /* ── CONTAS A PAGAR ── */
-  .contas-body{display:grid;grid-template-columns:1fr 1fr 300px;width:100%;height:100%;overflow:hidden;}
-  .cons-sidebar{display:none !important;}
   .contas-col{overflow:visible !important;border-right:none;border-bottom:1px solid rgba(0,0,0,0.07);}
   #mod-contas{overflow-y:auto !important;}
 
   /* ── AGENDA ── */
   .cal-body{grid-template-columns:1fr !important;height:auto;}
-  /* METAS */
-  .metas-body{display:grid;grid-template-columns:1fr 1fr 300px;width:100%;height:100%;overflow:hidden;}
-  .metas-side{display:none !important;}
+.metas-side{display:none !important;}
   /* AGENDA */
   .cal-grid{width:100% !important;}
   .cal-grid td, .cal-grid th{padding:4px 2px !important;font-size:0.75rem !important;}
-  .cal-side{border-left:none;border-top:1px solid rgba(0,0,0,0.07);}
   .kanban-board{grid-template-columns:1fr !important;}
 
   /* ── CLIENTES ── */
-  .cli-body{display:grid;grid-template-columns:280px 1fr 300px;width:100%;height:100%;overflow:hidden;}
-  .cli-detail{border:none;}
   .cli-side{border-left:none;border-top:1px solid rgba(0,0,0,0.07);}
   .cli-stats{grid-template-columns:repeat(2,1fr);}
 
@@ -485,11 +474,6 @@ textarea.chat-input::placeholder{color:#555555;}
 
   /* ── TIPOGRAFIA MOBILE ── */
   .result-val{font-size:2.6rem !important;}
-  
-
-  /* METAS - force single column */
-  
-  .meta-col{width:100%!important;overflow:visible!important;}
   /* AGENDA - force full width */  
   
   .cal-grid-wrap{width:100%!important;overflow-x:auto!important;}
@@ -580,8 +564,6 @@ textarea.chat-input::placeholder{color:#555555;}
 
 /* ════ MÓDULO 6 — AGENDA ════ */
 #mod-agenda{flex-direction:column;overflow:hidden;}
-.agenda-body{display:grid;grid-template-columns:1fr 320px;width:100%;height:100%;overflow:hidden;}
-.agenda-main{overflow-y:auto;padding:1.5rem;}
 .agenda-main::-webkit-scrollbar{width:3px;}
 .agenda-main::-webkit-scrollbar-thumb{background:var(--steel-light);}
 .agenda-side{background:#faf5ee;border-left:1px solid rgba(150,80,20,0.15);overflow-y:auto;padding:1.5rem;}
@@ -764,7 +746,6 @@ textarea.chat-input::placeholder{color:#555555;}
 /* ══ CLIENTES MODULE — COMPLETO ══ */
 #mod-clientes{flex-direction:column;overflow:hidden;}
 
-.cli-list{border-right:1px solid rgba(0,0,0,0.07);overflow-y:auto;padding:0.8rem;}
 .cli-list::-webkit-scrollbar{width:3px;}
 .cli-list::-webkit-scrollbar-thumb{background:#e0d8d0;}
 .cli-search{width:100%;padding:0.55rem 0.8rem;border:1px solid rgba(0,0,0,0.1);border-radius:6px;
@@ -852,7 +833,6 @@ textarea.chat-input::placeholder{color:#555555;}
 
 /* ══ RELATÓRIOS MODULE ══ */
 #mod-relatorios{flex-direction:column;overflow:hidden;}
-.rel-body{display:flex;flex-direction:column;width:100%;height:100%;overflow-y:auto;padding:1.5rem;gap:1rem;}
 .rel-body::-webkit-scrollbar{width:4px;}
 .rel-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
 .rel-card{background:#fff;border:0.5px solid rgba(0,0,0,0.08);border-radius:8px;padding:1.2rem;
@@ -884,7 +864,11 @@ textarea.chat-input::placeholder{color:#555555;}
 
 /* ══ DAS MEI MODULE ══ */
 #mod-das{flex-direction:column;overflow:hidden;}
-.das-body{display:grid;grid-template-columns:1fr 340px;width:100%;height:100%;overflow-y:auto;}
+  /* ── GRID LAYOUTS BASE ── */
+  
+  
+  
+
 .das-main{overflow-y:auto;padding:1.5rem;}
 .das-side{background:#f8f6f3;border-left:1px solid rgba(0,0,0,0.07);overflow-y:auto;padding:1.5rem;}
 .das-hero{background:linear-gradient(135deg,#1d3a6e,#1d6fa4);border-radius:10px;padding:20px;color:#fff;margin-bottom:1rem;}
@@ -1181,12 +1165,10 @@ textarea.chat-input::placeholder{color:#555555;}
   .das-months{grid-template-columns:repeat(3,1fr)!important;}
   
   /* CONSULTOR IA */
-  .cons-sidebar{display:none!important;}
-  .cons-main{width:100%!important;}
   
   /* AGENDA */
   
-  .cal-side{display:none!important;}
+  
 }
 
 @media(max-width:480px){
@@ -1222,7 +1204,7 @@ textarea.chat-input::placeholder{color:#555555;}
     width:100%!important;
     overflow-x:auto!important;
   }
-  #mod-agenda .cal-side{display:none!important;}
+  #mod-agenda 
   #mod-relatorios 
   #mod-das 
   #mod-clientes 
@@ -1233,12 +1215,12 @@ textarea.chat-input::placeholder{color:#555555;}
 
 /* ══ AGENDA E METAS — MOBILE FORÇADO ══ */
 @media screen and (max-width:900px){
-  #mod-agenda{flex-direction:column!important;height:auto!important;overflow-y:auto!important;}
+  
   #agendaListaView{display:flex!important;flex-direction:column!important;width:100%!important;}
   #agendaKanbanView{width:100%!important;}
   .agenda-body, 
   .cal-grid-wrap{overflow-x:auto!important;-webkit-overflow-scrolling:touch!important;}
-  #mod-metas{flex-direction:column!important;height:auto!important;overflow-y:auto!important;}
+  
   
   
   
@@ -1429,7 +1411,9 @@ textarea.chat-input::placeholder{color:#555555;}
 
 #mod-das.active { overflow-y: auto !important; }
 #mod-agenda.active { overflow: hidden !important; }
-.das-body { overflow-y: auto !important; }
+
+
+  /* METAS */
 </style>
 </head>
 <body>
@@ -3300,16 +3284,34 @@ function showModule(id, btn) {
   document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
   document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
   const mod = document.getElementById('mod-' + id);
-  if (!mod) { console.warn('Module not found: mod-' + id); return; }
+  if (!mod) { console.error('[OS] Module not found: mod-' + id); return; }
   mod.classList.add('active');
   if (btn) btn.classList.add('active');
+  // Debug: log computed style
+  requestAnimationFrame(() => {
+    const cs = window.getComputedStyle(mod);
+    console.log('[OS] mod-'+id+' display:'+cs.display+' h:'+cs.height+' class:'+mod.className);
+    // Also log first child
+    const first = mod.firstElementChild;
+    if(first){
+      const cs2 = window.getComputedStyle(first);
+      console.log('[OS] first child .'+first.className+' display:'+cs2.display+' h:'+cs2.height);
+    }
+  });
   const renders = {
     relatorios: renderRelatorios, os: renderOS, das: renderDAS,
     clientes: renderClientes, metas: renderMetas, financeiro: renderFinanceiro,
     agenda: renderCalendario, contas: renderContas, materiais: renderEstoque
   };
   if (renders[id]) setTimeout(() => {
-    try { renders[id](); } catch(e) { console.warn('Render error:', id, e.message); }
+    try {
+      renders[id]();
+      console.log('[OS] render OK: ' + id);
+    } catch(e) {
+      console.error('[OS] RENDER CRASH ' + id + ': ' + e.message + '\n' + (e.stack||'').slice(0,200));
+      const mod2 = document.getElementById('mod-' + id);
+      if(mod2) mod2.innerHTML = '<div style="padding:2rem;color:red;font-family:monospace;">ERRO: ' + e.message + '</div>';
+    }
   }, 50);
 }
 // ══════════════════════════
@@ -3736,9 +3738,9 @@ function updateCalc() {
   const svc = g('serviceType')?.value || '';
   const veh = g('vehicle')?.value || 'veículo';
   const scMin = final * 0.85, scMid = final, scMax = final * 1.2;
-  if(g('scMin')) { g('scMin').querySelector?.('.scen-val')?.textContent !== undefined && (g('scMin').querySelector('.scen-val').textContent = fmt(scMin)); }
-  if(g('scMid')) { try { g('scMid').querySelector('.scen-val').textContent = fmt(scMid); } catch(e){} }
-  if(g('scMax')) { try { g('scMax').querySelector('.scen-val').textContent = fmt(scMax); } catch(e){} }
+  if(g('scMin')) g('scMin').textContent = fmt(scMin);
+  if(g('scMid')) g('scMid').textContent = fmt(scMid);
+  if(g('scMax')) g('scMax').textContent = fmt(scMax);
 
   // Margem líquida
   const margem = final > 0 ? ((final - base) / final * 100) : 0;
@@ -6954,7 +6956,12 @@ function imprimirOS(id) {
   <div style="text-align:center;margin-top:20px;">
     <button onclick="window.print()" style="padding:8px 20px;background:#b8621a;border:none;border-radius:5px;color:#fff;cursor:pointer;font-size:0.85rem;">🖨️ Imprimir / Salvar PDF</button>
   </div>
-  </body></html>`);
+  
+
+<!-- LAYOUT OVERRIDE -->
+
+
+</body></html>`);
   win.document.close();
 }
 
@@ -7197,7 +7204,7 @@ function aplicarMODoOrcamento() {
   const procs = ['desmontagem','funilaria','solda','preparacao','pintura','montagem','polimento'];
   let totalH = 0;
   procs.forEach(p => { totalH += parseFloat(document.getElementById('orc-h-'+p)?.value)||0; });
-  const rate = parseFloat(document.getElementById('hourRate')?.value)||120;
+  const rate = parseFloat(document.getElementById('hourRate')?.value)||0;
   const mo   = totalH * rate;
   const el   = id => document.getElementById(id);
   if(el('laborTotal')) el('laborTotal').value = mo.toFixed(2);
@@ -7408,918 +7415,47 @@ function updateEstoqueSummary() {
     el('estoqueZeradoNomes').textContent = '🚨 '+zerado.slice(0,3).map(m=>m.nome).join(', ');
 }
 
-// CSS for etapa buttons — in <style> block
+// CSS for etapa buttons — in 
 
+<!-- FORCE GRID LAYOUTS -->
 
-// ══ ORC UNIFICADO — FASE E ABAS ══
-let orcFase = 'orcamento'; // 'orcamento' | 'em_servico' | 'entregue'
-let orcNumAtual = 1;
-let orcChecklistAtiva = 'entrada';
-let orcFotos = {entrada:[],desmontagem:[],funilaria:[],pintado:[],final:[]};
-let orcChecklists = {};
+<!-- LAYOUT OVERRIDE -->
 
-function setOrcTab(tab, btn) { syncFinTotal(); }
+<style id="layout-override">
+/* === PAINÉIS === */
+.panel{display:none!important;width:100%;height:calc(100vh - 60px);overflow:hidden;flex-direction:column;}
+.panel.active{display:flex!important;flex-direction:column;width:100%;height:calc(100vh - 60px)!important;overflow:hidden!important;}
+#mod-consultor.active{flex-direction:row!important;}
 
-function syncFinTotal() {
-  const fp = document.getElementById('finalPrice');
-  const ft = document.getElementById('fin-total-display');
-  const fs = document.getElementById('fin-status-display');
-  if (ft && fp) ft.textContent = fp.textContent;
-  if (fs) {
-    const fase = { orcamento:'📋 Orçamento', em_servico:'⚙️ Em Serviço', entregue:'🏁 Entregue' };
-    fs.textContent = fase[orcFase] || '📋 Orçamento';
-  }
-}
+/* === GRID BODIES === */
+.metas-body{display:grid!important;grid-template-columns:1fr 1fr 300px;flex:1;min-height:0;overflow:hidden;}
+.agenda-body{display:grid!important;grid-template-columns:1fr 320px;flex:1;min-height:0;overflow:hidden;}
+.cli-body{display:grid!important;grid-template-columns:280px 1fr 300px;flex:1;min-height:0;overflow:hidden;}
+.contas-body{display:grid!important;grid-template-columns:1fr 1fr 300px;flex:1;min-height:0;overflow:hidden;}
+.das-body{display:grid!important;grid-template-columns:1fr 340px;flex:1;min-height:0;overflow:hidden;}
+.rel-body{display:flex!important;flex-direction:column;flex:1;min-height:0;overflow-y:auto;}
 
-function aprovarOrcamento() {
-  const cliente = document.getElementById('clientName')?.value || '';
-  const veiculo = document.getElementById('vehicle')?.value || '';
-  const total   = document.getElementById('finalPrice')?.textContent || 'R$ 0,00';
-  if (!cliente) { showToast('⚠️ Preencha o nome do cliente antes de aprovar'); return; }
-  if (!confirm('Aprovar orçamento de ' + total + ' para ' + cliente + '?\nO documento passará para execução.')) return;
-  
-  // Mudar fase
-  orcFase = 'em_servico';
-  
-  // Atualizar badge
-  const badge = document.getElementById('orc-fase-badge');
-  if (badge) { badge.textContent = '⚙️ Em Serviço'; badge.style.background = '#dbeafe'; badge.style.color = '#1d6fa4'; }
-  
-  // Mostrar aba execução
-  const secExec = document.getElementById('orc-sec-exec');
-  if (secExec) { secExec.style.display = ''; secExec.scrollIntoView({behavior:'smooth'}); }
-  
-  // Trocar botões
-  document.getElementById('btn-aprovar-orc')?.setAttribute('style', 'display:none');
-  const btnEntregar = document.getElementById('btn-entregar-orc');
-  if (btnEntregar) { btnEntregar.style.display = ''; }
-  
-  // Ir para aba execução
-  setOrcTab('exec', document.getElementById('orc-tab-exec'));
-  
-  // Inicializar checklist
-  setChecklist('entrada', document.querySelector('#checklist-tabs .orc-etapa-btn'));
-  
-  // Salvar no histórico
-  salvarOrcamento({
-    num: orcNumAtual,
-    cliente: cliente,
-    veiculo: veiculo,
-    servico: document.getElementById('serviceType')?.value || '',
-    total: parseFloat((document.getElementById('finalPrice')?.textContent||'0').replace(/[^0-9,]/g,'').replace(',','.')) || 0,
-    status: 'em_servico'
-  });
-  
-  showToast('✅ Aprovado! Orçamento em serviço.');
-}
+/* === FILHOS DOS GRIDS === */
+.meta-col{display:flex!important;flex-direction:column;min-height:0;overflow-y:auto;}
+.agenda-main{display:flex!important;flex-direction:column;min-height:0;overflow-y:auto;}
+.cal-side{display:flex!important;flex-direction:column;min-height:0;overflow-y:auto;}
+.cli-list{display:flex!important;flex-direction:column;min-height:0;overflow-y:auto;}
+.cli-detail{display:flex!important;flex-direction:column;min-height:0;overflow-y:auto;}
+.contas-col{display:flex!important;flex-direction:column;min-height:0;overflow-y:auto;}
+.das-main{display:flex!important;flex-direction:column;min-height:0;overflow-y:auto;}
 
-function entregarOrcamento() {
-  if (!confirm('Marcar como entregue e lançar receita no financeiro?')) return;
-  orcFase = 'entregue';
-  const badge = document.getElementById('orc-fase-badge');
-  if (badge) { badge.textContent = '🏁 Entregue'; badge.style.background = '#dcfce7'; badge.style.color = '#16a34a'; }
-  document.getElementById('btn-entregar-orc')?.setAttribute('style', 'display:none');
-  lancarReceitaOrc();
-  setOrcTab('fin', document.getElementById('orc-tab-fin'));
-  showToast('🏁 Entregue! Receita lançada no financeiro.');
-}
+/* === CONSULTOR === */
+.cons-sidebar{display:flex!important;flex-direction:column;width:220px;min-width:220px;min-height:0;overflow-y:auto;}
+.cons-main{display:flex!important;flex-direction:column;flex:1;min-width:0;min-height:0;overflow-y:auto;}
 
-function lancarReceitaOrc() {
-  const el  = id => document.getElementById(id);
-  const val = parseFloat((el('finalPrice')?.textContent||'0').replace(/[^0-9,]/g,'').replace(',','.')) || 0;
-  if (val <= 0) { showToast('⚠️ Valor do orçamento é zero'); return; }
-  const cliente = el('clientName')?.value || 'Cliente';
-  const veiculo = el('vehicle')?.value   || '';
-  const svc     = el('serviceType')?.value || 'Serviço';
-  const pagto   = el('orc-pagamento')?.value || '';
-  const desc    = (cliente + ' — ' + veiculo + ' — ' + svc).slice(0, 60);
-  const today   = new Date().toISOString().slice(0,10);
-  // Adicionar à lista de transações
-  ALL_TX.push({
-    id: nextTxId++,
-    date: today,
-    desc: desc,
-    cat: 'Funilaria e Pintura',
-    val: val,
-    type: 'rec',
-    pagto: pagto
-  });
-  saveToStorage();
-  if (typeof renderFinanceiro === 'function') renderFinanceiro();
-  showToast('💰 R$ ' + val.toFixed(2).replace('.',',') + ' lançado no Financeiro!');
-}
-
-// ══ CHECKLISTS ══
-const CHECKLISTS = {
-  entrada: ['Fotos gerais (8 ângulos)','Fotos do dano','Amassados/riscos mapeados','Faróis e lanternas','Vidros','Rodas e pneus','Acabamentos e frisos','KM registrado','Nível de combustível','Objetos no interior removidos','Avarias pré-existentes documentadas'],
-  desmontagem: ['Para-choque removido','Faróis removidos','Lanternas removidas','Frisos removidos','Forros internos removidos','Maçanetas verificadas','Retrovisores removidos','Grampos/presilhas contados','Peças etiquetadas','Foto do conjunto desmontado'],
-  funilaria: ['Repuxo concluído','Alinhamento de folgas conferido','Solda aplicada onde necessário','Massa mínima','Planagem concluída','Pré-lixamento feito','Folgas laterais uniformes','Foto após funilaria'],
-  preparacao: ['Lixamento progressivo feito','Primer aplicado','Flash-time respeitado','Isolamento feito','Acerto de superfície','Cor conferida com código','Base aplicada','Verniz aplicado','Secagem completa','Foto pintado'],
-  entrega: ['Acabamento uniforme','Limpeza completa','Brilho sem poeira/escorrimento','Ausência de defeitos visuais','Montagem completa','Folgas corretas','Conferência com cliente','Fotos finais registradas','OS assinada pelo cliente']
-};
-
-const CHECKLIST_LABELS = {
-  entrada:'📋 Entrada', desmontagem:'🔩 Desmontagem',
-  funilaria:'⚒️ Funilaria', preparacao:'🎨 Prep./Pintura', entrega:'✅ Entrega'
-};
-
-function setChecklist(tipo, btn) {
-  orcChecklistAtiva = tipo;
-  if (btn) {
-    document.querySelectorAll('#checklist-tabs .orc-etapa-btn').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-  }
-  const container = document.getElementById('checklist-container');
-  if (!container) return;
-  const itens = CHECKLISTS[tipo] || [];
-  const saved = orcChecklists[tipo] || {};
-  container.innerHTML = '<div style="font-size:0.8rem;font-weight:700;color:#333;margin-bottom:8px;">' + (CHECKLIST_LABELS[tipo]||tipo) + '</div>' +
-    itens.map((item,i) => {
-      const checked = saved[i] ? 'checked' : '';
-      return '<label style="display:flex;align-items:center;gap:8px;padding:6px 0;border-bottom:1px solid rgba(0,0,0,0.04);cursor:pointer;">' +
-        '<input type="checkbox" ' + checked + ' onchange="orcChecklists[\''+tipo+'\']['+i+']=this.checked" style="width:16px;height:16px;accent-color:#b8621a;">' +
-        '<span style="font-size:0.82rem;color:#333;">' + item + '</span></label>';
-    }).join('');
-  if (!orcChecklists[tipo]) orcChecklists[tipo] = {};
-}
-
-
-
-// ══ FOTOS POR ETAPA ══
-function addFotoExec(etapa) {
-  const input = document.createElement('input');
-  input.type = 'file'; input.accept = 'image/*'; input.multiple = true;
-  input.onchange = function() {
-    Array.from(this.files).forEach(file => {
-      const reader = new FileReader();
-      reader.onload = function(e) {
-        const container = document.getElementById('fotos-exec-' + etapa);
-        if (!container) return;
-        const img = document.createElement('img');
-        img.src = e.target.result;
-        img.style.cssText = 'width:60px;height:60px;object-fit:cover;border-radius:5px;cursor:pointer;border:1px solid rgba(0,0,0,0.1);';
-        img.onclick = () => window.open(e.target.result, '_blank');
-        container.appendChild(img);
-        if (!orcFotos[etapa]) orcFotos[etapa] = [];
-        orcFotos[etapa].push(e.target.result);
-      };
-      reader.readAsDataURL(file);
-    });
-  };
-  input.click();
-}
-
-function setExecEtapa(btn, etapa) {
-  document.querySelectorAll('#exec-etapas .orc-etapa-btn').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-  showToast('Etapa: ' + btn.textContent.trim());
-}
-
-// ══ INICIALIZAR ORC ══
-function initOrcDoc() {
-  // Gerar número do documento
-  const num = parseInt(localStorage.getItem('fp_orc_next_num')||'1');
-  orcNumAtual = num;
-  const numEl = document.getElementById('orc-num-display');
-  if (numEl) numEl.textContent = 'ORC-' + String(num).padStart(3,'0');
-  // Mostrar botão aprovar apenas se formulário preenchido
-  const btnAprovar = document.getElementById('btn-aprovar-orc');
-  if (btnAprovar) btnAprovar.style.display = '';
-  // Inicializar pane ativo
-  setOrcTab('orc', document.querySelector('.orc-tab-btn'));
-}
-
-
-function editarMetaCat(cat, metaAtual) {
-  const novaMetaStr = prompt('Meta mensal para "' + cat + '":\nAtual: R$ ' + metaAtual.toLocaleString('pt-BR'), metaAtual);
-  if (novaMetaStr === null) return;
-  const novaMeta = parseFloat(novaMetaStr.replace(',','.'));
-  if (isNaN(novaMeta) || novaMeta < 0) { showToast('⚠️ Valor inválido'); return; }
-  const m = metasCat.find(x => x.cat === cat);
-  if (m) { m.meta = novaMeta; }
-  else { metasCat.push({cat, meta: novaMeta, real: 0}); }
-  if(window.saveToStorage) window.saveToStorage();
-  renderMetas();
-  showToast('✅ Meta de ' + cat + ' atualizada: R$ ' + novaMeta.toLocaleString('pt-BR'));
-}
-
-function editarMetaPrincipal() {
-  const novaStr = prompt('Meta principal mensal:\nAtual: R$ ' + metaPrincipal.toLocaleString('pt-BR'), metaPrincipal);
-  if (novaStr === null) return;
-  const nova = parseFloat(novaStr.replace(',','.'));
-  if (isNaN(nova) || nova <= 0) { showToast('⚠️ Valor inválido'); return; }
-  metaPrincipal = nova;
-  if(window.saveToStorage) window.saveToStorage();
-  renderMetas();
-  showToast('✅ Meta principal atualizada: R$ ' + nova.toLocaleString('pt-BR'));
-}
-
-
-function enviarWhatsAppDireto() {
-  const el = id => document.getElementById(id);
-  const cliente = el('clientName')?.value || '';
-  const veiculo = el('vehicle')?.value || '';
-  const svc     = el('serviceType')?.value || '';
-  const total   = el('finalPrice')?.textContent || 'R$ 0,00';
-  const fone    = (el('clientPhone')?.value || '').replace(/[^0-9]/g,'');
-  const garantia= el('orc-garantia')?.value || '';
-  const pagto   = el('orc-pagamento')?.value || '';
-  const gar     = garantia ? garantia + ' dias de garantia' : 'sem garantia';
-  const lines   = [
-    'Olá ' + (cliente.split(' ')[0]||'') + '!',
-    '',
-    'Orçamento — Limaprata Reparações Automotivas',
-    'Veículo: ' + veiculo,
-    'Serviço: ' + svc,
-    'Total: ' + total,
-    'Garantia: ' + gar,
-    pagto ? 'Pagamento: ' + pagto : '',
-    '',
-    'Qualquer dúvida estamos à disposição!'
-  ];
-  const msg = encodeURIComponent(lines.filter(Boolean).join('\n'));
-  const url = 'https://wa.me/' + (fone ? '55' + fone : '') + '?text=' + msg;
-  window.open(url, '_blank');
-}
-
-function installPWA() {
-  if (window.deferredPrompt) {
-    window.deferredPrompt.prompt();
-    window.deferredPrompt.userChoice.then(() => { window.deferredPrompt = null; });
-  }
-}
-function dismissPWA() {
-  const b = document.getElementById('pwaInstallBar');
-  if (b) b.style.display = 'none';
-}
-
-// ══ INIT ══
-loadOrcHistorico();
-renderOrcHistorico();
-// Test localStorage availability
-(function(){
-  try{
-    localStorage.setItem('_test','1');
-    localStorage.removeItem('_test');
-  }catch(e){
-    window._noStorage=true;
-    console.warn('localStorage não disponível — dados salvos apenas na sessão');
-  }
-})();
-loadFromStorage();
-loadOS();
-loadClientes();
-loadLimites();
-loadDAS();
-loadContas();
-populateCatFilter();
-renderFinanceiro();
-initOrc();
-renderContas();
-renderMetas();
-renderCalendario();
-renderEstoque();
-</script>
-
-<!-- ══ ORÇAMENTO CLIENTE — IMPRESSÃO ══ -->
-<div class="print-overlay" id="printOverlay" style="display:none;" onclick="if(event.target===this)closePrint()">
-  <div class="print-sheet" id="printSheet">
-    <div class="ps-header">
-      <div class="ps-logo-row">
-        <div class="ps-logo-box">LP</div>
-        <div class="ps-company">
-          <div class="ps-company-name">Limaprata</div>
-          <div class="ps-company-sub">Reparações Automotivas · Leme / SP · MEI</div>
-        </div>
-        <div class="ps-orcamento-num">
-          <div class="lbl">Orçamento Nº</div>
-          <div class="num" id="psNum">0001</div>
-          <div class="lbl" id="psDate" style="margin-top:2px;"></div>
-        </div>
-      </div>
-      <div class="ps-client-row">
-        <div class="ps-client-block">
-          <div class="ps-client-label">Cliente</div>
-          <div class="ps-client-val" id="psClientName">—</div>
-          <div class="ps-client-sub" id="psClientPhone"></div>
-        </div>
-        <div class="ps-client-block">
-          <div class="ps-client-label">Veículo</div>
-          <div class="ps-client-val" id="psVehicle">—</div>
-          <div class="ps-client-sub" id="psService"></div>
-        </div>
-      </div>
-    </div>
-    <div class="ps-body">
-      <div class="ps-section-title">Serviços e Materiais</div>
-      <table class="ps-table">
-        <thead><tr><th style="width:55%">Serviço / Peça</th><th class="td-unit">Qtd</th><th>Unid.</th><th class="td-num">Valor R$</th></tr></thead>
-        <tbody id="psItems"></tbody>
-      </table>
-      <button onclick="addPsItem()" style="width:100%;padding:7px;background:#f8f6f3;border:1px dashed rgba(184,98,26,0.3);border-radius:5px;color:#b8621a;font-size:0.8rem;cursor:pointer;margin-bottom:16px;">＋ Adicionar Peça / Serviço</button>
-      <div class="ps-totals">
-        <div class="ps-total-row"><span class="ps-total-label">Subtotal serviços</span><span class="ps-total-val" id="psTotalMO">R$ 0,00</span></div>
-        <div class="ps-total-row"><span class="ps-total-label">Peças / Terceiros</span><span class="ps-total-val" id="psTotalExt">R$ 0,00</span></div>
-        <div class="ps-total-row main"><span class="ps-total-label">TOTAL GERAL</span><span class="ps-total-val" id="psTotalFinal">R$ 0,00</span></div>
-      </div>
-      <div class="ps-conditions">
-        <div class="ps-cond-box"><div class="ps-cond-label">Validade</div><div class="ps-cond-val"><input class="ps-editable" id="psValidade" value="15 dias corridos"></div></div>
-        <div class="ps-cond-box"><div class="ps-cond-label">Pagamento</div><div class="ps-cond-val"><input class="ps-editable" id="psPagamento" value="50% entrada + 50% na entrega"></div></div>
-        <div class="ps-cond-box"><div class="ps-cond-label">Prazo de Entrega</div><div class="ps-cond-val"><input class="ps-editable" id="psPrazo" value="A combinar"></div></div>
-        <div class="ps-cond-box"><div class="ps-cond-label">Garantia</div><div class="ps-cond-val"><input class="ps-editable" id="psGarantia" value="90 dias no serviço"></div></div>
-      </div>
-      <div class="ps-obs" id="psObsBox" style="display:none;">
-        <div class="ps-section-title" style="margin-bottom:6px;">Observações</div>
-        <p id="psObs"></p>
-      </div>
-    </div>
-    <div class="ps-footer">
-      <div class="ps-footer-left">
-        Limaprata Reparações Automotivas<br>
-        <input class="ps-editable" id="psContato" value="(19) 9xxxx-xxxx · limaprata@email.com" style="font-size:0.75rem;color:#555555;width:260px;">
-      </div>
-      <div class="ps-footer-sig">
-        <div class="sig-line"></div>
-        <div class="sig-name">Oséias — Limaprata Reparações Automotivas</div>
-      </div>
-    </div>
-    <div class="ps-actions">
-      <button class="ps-btn ps-btn-print" onclick="window.print()">🖨️ Imprimir / Salvar PDF</button>
-      <button class="ps-btn" onclick="pixDoOrcamento()" style="background:linear-gradient(135deg,#7c3aed,#5b21b6);border:none;color:#fff;font-weight:600;">⚡ Gerar Pix</button>
-      <button class="ps-btn" onclick="enviarWhatsApp()" style="background:linear-gradient(135deg,#16a34a,#15803d);border:none;color:#fff;font-weight:600;">📱 WhatsApp</button>
-      <button class="ps-btn" onclick="emitirNFSe()" style="background:linear-gradient(135deg,#15803d,#166534);border:none;color:#fff;font-weight:600;">📋 NFS-e</button>
-      <button class="ps-btn ps-btn-close" onclick="closePrint()">Fechar</button>
-    </div>
-    <!-- NFS-e helper -->
-    <div id="nfseHelper" style="display:none;background:#f0fdf4;border-top:1px solid rgba(22,163,74,0.2);padding:16px 36px 20px;">
-      <div style="font-size:0.65rem;letter-spacing:0.15em;color:#15803d;text-transform:uppercase;font-family:'DM Mono',monospace;margin-bottom:10px;">▸ Dados para NFS-e — copie e cole no portal gov.br/nfse</div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px;">
-        <div style="background:#fff;border:0.5px solid rgba(22,163,74,0.2);border-radius:6px;padding:10px 14px;">
-          <div style="font-size:0.6rem;color:#86efac;text-transform:uppercase;letter-spacing:0.12em;margin-bottom:4px;color:#15803d;">CNPJ / CPF do Tomador</div>
-          <input id="nfse_cnpj" style="border:none;background:transparent;font-size:0.95rem;font-weight:600;color:#166534;width:100%;font-family:'DM Mono',monospace;" placeholder="Digite o CNPJ/CPF do cliente" onclick="this.select()">
-        </div>
-        <div style="background:#fff;border:0.5px solid rgba(22,163,74,0.2);border-radius:6px;padding:10px 14px;">
-          <div style="font-size:0.6rem;color:#15803d;text-transform:uppercase;letter-spacing:0.12em;margin-bottom:4px;">Valor Total</div>
-          <div id="nfse_valor" style="font-size:0.95rem;font-weight:700;color:#15803d;font-family:'DM Mono',monospace;"></div>
-        </div>
-      </div>
-      <div style="background:#fff;border:0.5px solid rgba(22,163,74,0.2);border-radius:6px;padding:10px 14px;margin-bottom:12px;">
-        <div style="font-size:0.6rem;color:#15803d;text-transform:uppercase;letter-spacing:0.12em;margin-bottom:4px;">Descrição do Serviço (copie)</div>
-        <textarea id="nfse_desc" onclick="this.select()" style="border:none;background:transparent;font-size:0.85rem;color:#166534;width:100%;resize:none;min-height:52px;font-family:'Lato',sans-serif;line-height:1.5;"></textarea>
-      </div>
-      <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
-        <a id="nfse_link" href="https://www.nfse.gov.br/EmissorNacional/Login" target="_blank"
-          style="display:inline-flex;align-items:center;gap:6px;padding:0.6rem 1.3rem;
-          background:linear-gradient(135deg,#15803d,#166534);color:#fff;border-radius:5px;
-          font-size:0.82rem;font-weight:600;text-decoration:none;transition:all 0.2s;">
-          🌐 Abrir Portal NFS-e gov.br
-        </a>
-        <button onclick="copiarDadosNFSe()" style="padding:0.6rem 1.1rem;border-radius:5px;font-size:0.82rem;
-          background:#f0fdf4;border:1px solid rgba(22,163,74,0.3);color:#15803d;cursor:pointer;font-weight:600;">
-          📋 Copiar Descrição
-        </button>
-        <span style="font-size:0.75rem;color:#555555;margin-left:4px;">
-          Cole os dados no portal · Acesso via conta gov.br (nível Prata ou Ouro)
-        </span>
-      </div>
-      <div style="margin-top:10px;font-size:0.75rem;color:#555555;background:#fff;border-radius:5px;padding:8px 12px;border:0.5px solid rgba(0,0,0,0.06);">
-        💡 <strong>Passo a passo:</strong> Acesse gov.br/nfse → Login com conta gov.br → Emitir NFS-e → Cole o CNPJ do tomador → Cole a descrição → Informe o valor → Emitir. Guarde o número da nota aqui no sistema.
-      </div>
-    </div>
-  </div>
-</div>
-
-
-<!-- ── EDIT TRANSACTION MODAL ── -->
-<div class="edit-overlay" id="editOverlay" onclick="if(event.target===this)closeEditModal()">
-  <div class="edit-modal">
-    <h3>Editar Lançamento <button onclick="closeEditModal()">✕</button></h3>
-    <input type="hidden" id="editTxId">
-    <div class="edit-field">
-      <label>Tipo</label>
-      <select id="editType">
-        <option value="rec">+ Receita</option>
-        <option value="dep">− Despesa</option>
-      </select>
-    </div>
-    <div class="edit-field">
-      <label>Descrição</label>
-      <input type="text" id="editDesc" placeholder="Nome do lançamento">
-    </div>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
-      <div class="edit-field">
-        <label>Valor (R$)</label>
-        <input type="number" id="editVal" min="0" step="0.01">
-      </div>
-      <div class="edit-field">
-        <label>Data</label>
-        <input type="date" id="editDate">
-      </div>
-    </div>
-    <div class="edit-field">
-      <label>Categoria</label>
-      <select id="editCat">
-              <optgroup label="💰 Receitas">
-                <option>Funilaria</option>
-                <option>Chaparia / Amassados</option>
-                <option>Pintura Completa</option>
-                <option>Pintura de Peças</option>
-                <option>Retoques de Pintura</option>
-                <option>Polimento</option>
-                <option>Soldas</option>
-                <option>Serviços Rápidos</option>
-                <option>Troca de Peças</option>
-                <option>Venda de Peças</option>
-                <option>Metal Finish</option>
-                <option>Música</option>
-                <option>Outros</option>
-              </optgroup>
-              <optgroup label="🔧 Despesas — Oficina">
-                <option>Materiais de Pintura</option>
-                <option>Tintas</option>
-                <option>Verniz</option>
-                <option>Tinners</option>
-                <option>Massas</option>
-                <option>Lixas</option>
-                <option>Primmer</option>
-                <option>Complementos</option>
-                <option>Ferramentas</option>
-                <option>Equipamentos</option>
-                <option>Equipamentos e Manutençao</option>
-                <option>Mão de Obra</option>
-                <option>Salarios</option>
-                <option>Peças Clientes</option>
-                <option>Aluguel / Barracão</option>
-                <option>Trabalho</option>
-                <option>Energia Elétrica</option>
-                <option>Elektro</option>
-                <option>Internet</option>
-                <option>Telefone</option>
-                <option>Impostos e Taxas</option>
-                <option>Assinaturas</option>
-                <option>Assinaturas e serviços</option>
-                <option>Transporte Oficina</option>
-                <option>Verona</option>
-                <option>Limpeza</option>
-                <option>Fita</option>
-                <option>Reparo de equipamento</option>
-                <option>Investimentos</option>
-                <option>Dívidas e empréstimos</option>
-              </optgroup>
-              <optgroup label="🏠 Despesas — Pessoal">
-                <option>Alimentação</option>
-                <option>Mercado</option>
-                <option>Restaurante</option>
-                <option>Saúde / Farmácia</option>
-                <option>Gasolina Pessoal</option>
-                <option>Verona</option>
-                <option>Fusca</option>
-                <option>SP2 Net aki</option>
-                <option>Casa</option>
-                <option>Compras</option>
-                <option>Pets</option>
-                <option>Lazer</option>
-                <option>Roupas</option>
-                <option>Outros Pessoal</option>
-              </optgroup>
-            </select>
-    </div>
-    <div class="edit-field">
-      <label>Situação</label>
-      <select id="editPaid">
-        <option value="Pago">✓ Pago</option>
-        <option value="Não pago">⏳ Não pago</option>
-      </select>
-    </div>
-    <div class="edit-actions">
-      <button class="edit-save" onclick="saveEditTx()">💾 Salvar</button>
-      <button class="edit-del" onclick="deleteEditTx()">🗑 Excluir</button>
-      <button class="edit-cancel" onclick="closeEditModal()">Cancelar</button>
-    </div>
-  </div>
-</div>
-
-
-<!-- ══ RECIBO DE SERVIÇO (overlay) ══ -->
-<div class="recibo-overlay" id="reciboOverlay" onclick="if(event.target===this)closeRecibo()">
-  <div class="recibo-sheet">
-    <div class="recibo-header">
-      <div>
-        <div style="font-family:'Cinzel',serif;font-size:1.1rem;font-weight:900;letter-spacing:0.1em;">LIMAPRATA</div>
-        <div style="font-size:0.65rem;letter-spacing:0.2em;color:rgba(255,255,255,0.6);margin-top:2px;">Reparações Automotivas</div>
-      </div>
-      <div style="text-align:right;">
-        <div style="font-size:0.62rem;color:rgba(255,255,255,0.5);letter-spacing:0.15em;">RECIBO Nº</div>
-        <div style="font-family:'Bebas Neue',sans-serif;font-size:1.5rem;" id="reciboNum">0001</div>
-        <div style="font-size:0.7rem;color:rgba(255,255,255,0.6);" id="reciboData"></div>
-      </div>
-    </div>
-    <div class="recibo-body">
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px;">
-        <div style="background:#f8f6f3;border-radius:6px;padding:10px 12px;">
-          <div style="font-size:0.6rem;color:#333333;text-transform:uppercase;letter-spacing:0.12em;">Cliente</div>
-          <input class="ps-editable" id="reciboCliente" style="font-size:0.95rem;font-weight:600;color:#1a0e04;width:100%;" placeholder="Nome do cliente">
-        </div>
-        <div style="background:#f8f6f3;border-radius:6px;padding:10px 12px;">
-          <div style="font-size:0.6rem;color:#333333;text-transform:uppercase;letter-spacing:0.12em;">Veículo / Placa</div>
-          <input class="ps-editable" id="reciboVeiculo" style="font-size:0.95rem;font-weight:600;color:#1a0e04;width:100%;" placeholder="Ex: Gol Prata / ABC-1234">
-        </div>
-      </div>
-      <div style="background:#f8f6f3;border-radius:6px;padding:12px;margin-bottom:12px;">
-        <div style="font-size:0.6rem;color:#333333;text-transform:uppercase;letter-spacing:0.12em;margin-bottom:6px;">Serviços Realizados</div>
-        <textarea class="ps-editable" id="reciboServicos" style="width:100%;min-height:80px;resize:none;font-size:0.88rem;line-height:1.6;" placeholder="Descreva os serviços realizados..."></textarea>
-      </div>
-      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:12px;">
-        <div style="background:#f0fdf4;border:1px solid rgba(22,163,74,0.2);border-radius:6px;padding:10px 12px;">
-          <div style="font-size:0.6rem;color:#16a34a;text-transform:uppercase;letter-spacing:0.12em;">Valor Total</div>
-          <input class="ps-editable" id="reciboValor" style="font-size:1.1rem;font-weight:700;color:#16a34a;width:100%;" placeholder="R$ 0,00">
-        </div>
-        <div style="background:#f8f6f3;border-radius:6px;padding:10px 12px;">
-          <div style="font-size:0.6rem;color:#333333;text-transform:uppercase;letter-spacing:0.12em;">Forma de Pagamento</div>
-          <select class="ps-editable" id="reciboPagto" style="font-size:0.85rem;font-weight:600;color:#1a0e04;width:100%;border:none;background:transparent;">
-            <option>PIX</option><option>Dinheiro</option><option>Cartão Débito</option>
-            <option>Cartão Crédito</option><option>Transferência</option><option>A prazo</option>
-          </select>
-        </div>
-        <div style="background:#f8f6f3;border-radius:6px;padding:10px 12px;">
-          <div style="font-size:0.6rem;color:#333333;text-transform:uppercase;letter-spacing:0.12em;">Garantia</div>
-          <input class="ps-editable" id="reciboGarantia" value="90 dias" style="font-size:0.85rem;font-weight:600;color:#1a0e04;width:100%;">
-        </div>
-      </div>
-      <div style="background:#fffaf5;border:1px solid rgba(184,98,26,0.15);border-radius:6px;padding:10px 12px;font-size:0.78rem;color:#222222;line-height:1.6;">
-        Declaro que recebi o veículo acima descrito com os serviços devidamente realizados, em perfeitas condições, conforme combinado. Qualquer problema relacionado aos serviços acima deverá ser comunicado dentro do prazo de garantia.
-      </div>
-    </div>
-    <div class="recibo-footer">
-      <div class="sig-block">
-        <div class="sig-line"></div>
-        <div class="sig-lbl" id="reciboClienteAssinatura">Assinatura do Cliente</div>
-      </div>
-      <div class="sig-block">
-        <div class="sig-line"></div>
-        <div class="sig-lbl">Oséias — Limaprata Reparações Automotivas</div>
-      </div>
-    </div>
-    <div class="recibo-actions">
-      <button onclick="window.print()" style="padding:0.6rem 1.4rem;background:linear-gradient(135deg,#1a1a1a,#333);border:none;border-radius:5px;color:#fff;font-weight:700;font-size:0.82rem;cursor:pointer;">🖨️ Imprimir / PDF</button>
-      <button onclick="pixDoRecibo()" style="padding:0.6rem 1.2rem;background:linear-gradient(135deg,#7c3aed,#5b21b6);border:none;border-radius:5px;color:#fff;font-weight:700;font-size:0.82rem;cursor:pointer;">⚡ Gerar Pix</button>
-      <button onclick="closeRecibo()" style="padding:0.6rem 1rem;background:#f8f6f3;border:1px solid rgba(0,0,0,0.1);border-radius:5px;color:#333333;font-size:0.82rem;cursor:pointer;">Fechar</button>
-    </div>
-  </div>
-</div>
-
-<!-- ══ LIMITES MODAL ══ -->
-<div class="edit-overlay" id="limitesOverlay" onclick="if(event.target===this)document.getElementById('limitesOverlay').classList.remove('open')">
-  <div class="edit-modal" style="width:440px;">
-    <h3>Limite de Gastos por Categoria <button onclick="document.getElementById('limitesOverlay').classList.remove('open')">✕</button></h3>
-    <p style="font-size:0.78rem;color:#333333;margin-bottom:14px;line-height:1.5;">Defina o teto mensal para cada categoria. O sistema alertará quando ultrapassar.</p>
-    <div id="limitesForm" style="display:flex;flex-direction:column;gap:8px;max-height:360px;overflow-y:auto;"></div>
-    <div class="edit-actions" style="margin-top:14px;">
-      <button class="edit-save" onclick="salvarLimites()">💾 Salvar Limites</button>
-      <button class="edit-cancel" onclick="document.getElementById('limitesOverlay').classList.remove('open')">Cancelar</button>
-    </div>
-  </div>
-</div>
-
-
-<!-- ══ PWA INSTALL BAR ══ -->
-<div id="pwaInstallBar" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:9999;
-  background:linear-gradient(135deg,#b8621a,#9a4e12);color:#fff;
-  padding:12px 20px;align-items:center;gap:12px;
-  box-shadow:0 -4px 20px rgba(0,0,0,0.2);">
-  <div style="width:36px;height:36px;border-radius:8px;background:rgba(255,255,255,0.2);
-    display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:1.1rem;">🔩</div>
-  <div style="flex:1;">
-    <div style="font-size:0.88rem;font-weight:700;">Instalar OficinaOS no celular</div>
-    <div style="font-size:0.72rem;color:rgba(255,255,255,0.75);">OficinaOS · Funciona offline · Sem Play Store</div>
-  </div>
-  <button id="pwaInstallBtn" onclick="installPWA()" style="padding:8px 18px;background:#fff;
-    border:none;border-radius:6px;color:#b8621a;font-weight:700;font-size:0.82rem;cursor:pointer;
-    flex-shrink:0;">📲 Instalar</button>
-  <button onclick="dismissPWA()" style="background:none;border:none;color:rgba(255,255,255,0.7);
-    font-size:1.2rem;cursor:pointer;padding:4px;flex-shrink:0;">✕</button>
-</div>
-
-<!-- ══ PWA SERVICE WORKER + INSTALL PROMPT ══ -->
-<script>
-// Register service worker
-// SW desabilitado
-
-// Install prompt (Android / Chrome)
-let deferredPrompt = null;
-window.addEventListener('beforeinstallprompt', (e) => {
-  e.preventDefault();
-  deferredPrompt = e;
-  // Show our custom install bar
-  const bar = document.getElementById('pwaInstallBar');
-  if (bar) bar.style.display = 'flex';
-});
-
-function installPWA() {
-  if (!deferredPrompt) return;
-  deferredPrompt.prompt();
-  deferredPrompt.userChoice.then(choice => {
-    if (choice.outcome === 'accepted') {
-      showToast('✓ App instalado! Procure o ícone Limaprata na tela inicial.');
-    }
-    deferredPrompt = null;
-    const bar = document.getElementById('pwaInstallBar');
-    if (bar) bar.style.display = 'none';
-  });
-}
-
-function dismissPWA() {
-  const bar = document.getElementById('pwaInstallBar');
-  if (bar) bar.style.display = 'none';
-  localStorage.setItem('pwa_dismissed', '1');
-}
-
-// Show iOS instructions if needed
-function isIOS() {
-  return /iphone|ipad|ipod/i.test(navigator.userAgent) && !window.navigator.standalone;
-}
-window.addEventListener('load', () => {
-  if (location.hostname.includes('claudeusercontent')) return; // skip on preview
-  if (isIOS() && !localStorage.getItem('pwa_dismissed')) {
-    const bar = document.getElementById('pwaInstallBar');
-    if (bar) {
-      bar.style.display = 'flex';
-      document.getElementById('pwaInstallBtn').textContent = '📲 Ver instruções iOS';
-      document.getElementById('pwaInstallBtn').onclick = () => {
-        alert('Para instalar no iPhone:\n\n1. Toque no ícone de compartilhar (□↑)\n2. Role para baixo\n3. Toque em "Adicionar à Tela de Início"\n4. Toque em "Adicionar"');
-      };
-    }
-  }
-});
-</script>
-
-
-<!-- ══ PIX COBRANÇA MODAL ══ -->
-<div class="pix-overlay" id="pixOverlay" onclick="if(event.target===this)closePixModal()">
-  <div class="pix-modal">
-    <div class="pix-header">
-      <div style="display:flex;align-items:center;gap:10px;">
-        <div style="width:32px;height:32px;background:rgba(255,255,255,0.2);border-radius:8px;
-          display:flex;align-items:center;justify-content:center;font-size:1.1rem;">⚡</div>
-        <div>
-          <div class="pix-logo">Cobrança PIX</div>
-          <div style="font-size:0.7rem;color:rgba(255,255,255,0.7);">Limaprata Reparações Automotivas</div>
-        </div>
-        <button onclick="closePixModal()" style="margin-left:auto;background:none;border:none;
-          color:rgba(255,255,255,0.7);font-size:1.3rem;cursor:pointer;">✕</button>
-      </div>
-    </div>
-    <div class="pix-body">
-      <div class="pix-valor-destaque" id="pixValorShow">R$ 0,00</div>
-      <div class="pix-beneficiario">Limaprata Reparações Automotivas · CNPJ 55.254.863/0001-87</div>
-
-      <div class="pix-qr-wrap">
-        <div id="pixQrContainer" style="width:160px;height:160px;margin:0 auto 8px;
-          display:flex;align-items:center;justify-content:center;background:#fff;border-radius:6px;">
-          <div style="font-size:0.75rem;color:#333333;text-align:center;padding:10px;">
-            QR Code<br>gerado abaixo
-          </div>
-        </div>
-        <div style="font-size:0.7rem;color:#333333;">Escaneie com qualquer banco</div>
-      </div>
-
-      <div class="pix-steps">
-        <div class="pix-step"><div class="pix-step-num">1</div>Copie o código abaixo</div>
-        <div class="pix-step"><div class="pix-step-num">2</div>Abra seu banco → Pix → Pix Copia e Cola</div>
-        <div class="pix-step"><div class="pix-step-num">3</div>Cole o código e confirme o pagamento</div>
-      </div>
-
-      <div class="pix-code-box" id="pixCode" onclick="copiarPix()">
-        <span class="pix-copy-hint">clique para copiar</span>
-        <span id="pixCodeText">Gerando...</span>
-      </div>
-
-      <div class="pix-actions">
-        <button class="pix-btn-copy" onclick="copiarPix()">📋 Copiar código Pix</button>
-        <a class="pix-btn-nubank" href="nubank://cobrar" id="pixNubankLink" target="_blank">
-          💜 Abrir Nubank
-        </a>
-        <button class="pix-btn-close" onclick="closePixModal()">Fechar</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-
-<!-- ══ BACKUP MODAL ══ -->
-<div class="backup-overlay" id="backupOverlay" onclick="if(event.target===this)fecharBackupModal()">
-  <div class="backup-modal">
-    <div class="backup-header">
-      <span style="font-size:1.2rem;">☁️</span>
-      <h3>Backup & Sincronização</h3>
-      <button onclick="fecharBackupModal()">✕</button>
-    </div>
-    <div class="backup-body">
-      <div class="backup-stats" id="backupStats">Calculando dados...</div>
-      <button class="backup-btn" onclick="saveToCloud&&saveToCloud()">
-        <span class="bb-icon">☁️</span>
-        <div><span>Salvar na Nuvem agora</span><span class="bb-sub">Firebase · automático a cada 4s</span></div>
-      </button>
-      <button class="backup-btn" onclick="loadFromCloud&&loadFromCloud()">
-        <span class="bb-icon">⬇️</span>
-        <div><span>Restaurar da Nuvem</span><span class="bb-sub">Carrega última versão salva</span></div>
-      </button>
-      <button class="backup-btn" onclick="exportarBackupJSON()">
-        <span class="bb-icon">📄</span>
-        <div><span>Exportar JSON</span><span class="bb-sub">Salva arquivo no computador</span></div>
-      </button>
-      <button class="backup-btn" onclick="document.getElementById('importJsonInput').click()">
-        <span class="bb-icon">📂</span>
-        <div><span>Importar JSON</span><span class="bb-sub">Restaura de arquivo salvo</span></div>
-      </button>
-      <button class="backup-btn" onclick="exportCSV()">
-        <span class="bb-icon">📊</span>
-        <div><span>Exportar CSV (lançamentos)</span><span class="bb-sub">Abre no Excel</span></div>
-      </button>
-      <input type="file" id="importJsonInput" accept=".json" style="display:none" onchange="importarBackupJSON(event)">
-    </div>
-  </div>
-</div>
-
-
-<!-- ══ FIREBASE COMPAT SDK ══ -->
-<script>
-// Load Firebase only when NOT on claudeusercontent (which blocks external scripts)
-(function(){
-  if(location.hostname.includes('claudeusercontent')) {
-    console.log('Firebase desabilitado em preview Claude');
-    window.saveToCloud = function(){ console.log('Cloud: preview mode'); };
-    window.loadFromCloud = function(){ console.log('Cloud: preview mode'); };
-    document.addEventListener('DOMContentLoaded', function(){
-  initOrcDoc();
-      const cs = document.getElementById('cloudStatus');
-      if(cs) cs.innerHTML = '<span style="color:#444444;">📱 Abrir no GitHub</span>';
-    });
-    return;
-  }
-  // Load Firebase scripts dynamically
-  function loadScript(src, cb, fallback){
-    const s = document.createElement('script');
-    s.src = src;
-    s.onload = cb;
-    s.onerror = function(){ 
-      console.warn('Firebase CDN 1 falhou, tentando fallback:', src);
-      if(fallback) {
-        const s2 = document.createElement('script');
-        s2.src = fallback;
-        s2.onload = cb;
-        s2.onerror = function(){ console.warn('Firebase script falhou em ambos CDNs'); };
-        document.head.appendChild(s2);
-      }
-    };
-    document.head.appendChild(s);
-  }
-  const FB_VER = '9.23.0';
-  const FB_CDN1 = 'https://www.gstatic.com/firebasejs/'+FB_VER+'/';
-  const FB_CDN2 = 'https://cdn.jsdelivr.net/npm/firebase@'+FB_VER+'/';
-  loadScript(FB_CDN1+'firebase-app-compat.js', function(){
-    loadScript(FB_CDN1+'firebase-firestore-compat.js', function(){
-      console.log('Firebase SDK carregado');
-    });
-  });
-})();
-</script>
-<script>
-(function() {
-  var firebaseConfig = {
-    apiKey: ["AIzaSyAU","L3CTVZNs","t2at5HvDVZ9m","fU2Gc0L2LV0"].join(""),
-    authDomain: "oficinaos-limaprata.firebaseapp.com",
-    projectId: "oficinaos-limaprata",
-    storageBucket: "oficinaos-limaprata.firebasestorage.app",
-    messagingSenderId: "806717015710",
-    appId: "1:806717015710:web:0a5b53fca9a881472d5d8f"
-  };
-
-  try {
-    firebase.initializeApp(firebaseConfig);
-    var db = firebase.firestore();
-    var DOC_REF = db.collection('oficina').doc('limaprata_principal');
-
-    function setCloudStatus(icon, msg, color) {
-      var el = document.getElementById('cloudStatus');
-      if (el) el.innerHTML = '<span style="color:' + color + '">' + icon + ' ' + msg + '</span>';
-    }
-
-    window.saveToCloud = function() {
-      setCloudStatus('⟳', 'Salvando...', '#d97706');
-      var userTx = (window.ALL_TX || []).filter(function(t){ return t.id >= 10000; });
-      var payload = {
-        updatedAt: new Date().toISOString(),
-        userTx: userTx,
-        clientes: window.clientes || [],
-        dasStatus: window.dasStatus || {},
-        limitesCat: window.limitesCat || {},
-        finAno: window.finAno || 2026,
-        finMes: window.finMes !== undefined ? window.finMes : 2
-      };
-      DOC_REF.set(payload).then(function() {
-        var now = new Date().toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'});
-        setCloudStatus('☁️', 'Nuvem OK · ' + now, '#16a34a');
-      }).catch(function(err) {
-        setCloudStatus('⚠️', 'Erro ao salvar', '#dc2626');
-        console.error('Firebase save:', err);
-      });
-    };
-
-    window.loadFromCloud = function(silent) {
-      if (!silent) setCloudStatus('⟳', 'Carregando...', '#d97706');
-      DOC_REF.get().then(function(snap) {
-        if (!snap.exists) {
-          setCloudStatus('☁️', 'Nuvem vazia', '#a08060');
-          return;
-        }
-        var data = snap.data();
-        if (data.userTx && Array.isArray(data.userTx)) {
-          data.userTx.forEach(function(t) {
-            if (!window.ALL_TX.find(function(x){ return x.id === t.id; })) {
-              window.ALL_TX.push(t);
-            }
-          });
-        }
-        if (data.clientes) window.clientes = data.clientes;
-        if (data.dasStatus) window.dasStatus = data.dasStatus;
-        if (data.limitesCat) window.limitesCat = data.limitesCat;
-        if (data.finAno) window.finAno = data.finAno;
-        if (data.finMes !== undefined) window.finMes = data.finMes;
-        if (window.renderFinanceiro) window.renderFinanceiro();
-        if (window.renderClientes) window.renderClientes();
-        if (window.renderDAS) window.renderDAS();
-        if (window.renderContas) window.renderContas();
-        var upd = data.updatedAt ? new Date(data.updatedAt).toLocaleString('pt-BR').slice(0,16) : '—';
-        setCloudStatus('☁️', 'Sincronizado · ' + upd, '#16a34a');
-      }).catch(function(err) {
-        setCloudStatus('📵', 'Offline', '#a08060');
-        console.warn('Firebase load:', err);
-      });
-    };
-
-    // Auto-sync após saveToStorage (debounce 4s)
-    var _origSave = window.saveToStorage;
-    var _syncing = false;
-    window.saveToStorage = function() {
-      if (_syncing) return;
-      _syncing = true;
-      try { if (_origSave) _origSave(); } finally { _syncing = false; }
-      if (window.saveToCloud) {
-        clearTimeout(window._syncTimer);
-        window._syncTimer = setTimeout(window.saveToCloud, 4000);
-      }
-    };
-
-    // Carregar da nuvem ao abrir (após 2s para o app inicializar)
-    setTimeout(function(){ if(window.loadFromCloud) window.loadFromCloud(true); }, 3000);
-
-    setCloudStatus('⟳', 'Conectando...', '#d97706');
-    // Retry if offline after 10s
-    setTimeout(function(){
-      var cs = document.getElementById('cloudStatus');
-      if(cs && cs.textContent.includes('Conectando')) {
-        setCloudStatus('⚠️', 'Local (sem nuvem)', '#d97706');
-      }
-    }, 10000);
-    console.log('OficinaOS Firebase OK');
-  } catch(e) {
-    console.warn('Firebase indisponível - usando localStorage');
-    var el = document.getElementById('cloudStatus');
-    if (el) el.innerHTML = '<span style="color:#444444" title="Abra via GitHub Pages para sincronizar">💾 Local</span>';
-  }
-})();
-</script>
-
-<!-- ══ QUICK PIX FLOATING BUTTON ══ -->
-<button class="quick-pix-btn" onclick="abrirPixRapido()" title="Gerar PIX">⚡</button>
-
-
-<!-- Import Banner -->
-<div id="import-banner">
-  <span>⚠️</span>
-  <span><strong>Sistema limpo.</strong> Importe seu backup JSON ou adicione lançamentos manualmente.</span>
-  <button onclick="document.getElementById('backupModal').style.display='flex'">📂 Importar Backup</button>
-  <button onclick="document.getElementById('import-banner').style.display='none'" class="ib-close">✕</button>
-</div>
-
-
-<style id="mobile-fixes">
+/* === MOBILE === */
 @media(max-width:900px){
-  .panel.active{height:calc(100vh - 52px)!important;overflow-y:auto!important;}
-  #mod-orcamento.active{overflow:hidden!important;}
-  
-  .cli-body{grid-template-columns:1fr!important;height:auto!important;overflow-y:auto!important;}
-  .das-body{grid-template-columns:1fr!important;height:auto!important;overflow-y:auto!important;}
-  .agenda-body{grid-template-columns:1fr!important;height:auto!important;overflow-y:auto!important;}
-  .contas-body{grid-template-columns:1fr!important;height:auto!important;overflow-y:auto!important;}
-  .rel-body{height:auto!important;overflow-y:auto!important;}
-  .metas-side,.cli-side,.cal-side,.fin-summary{display:none!important;}
-}
-#mod-das.active,#mod-relatorios.active,#mod-clientes.active,
-#mod-consultor.active,#mod-os.active,#mod-materiais.active{
-  overflow-y:auto!important;
+  .panel.active{height:calc(100vh - 52px)!important;}
+  .metas-body,.agenda-body,.cli-body,.contas-body,.das-body{
+    display:flex!important;flex-direction:column!important;height:auto!important;overflow-y:auto!important;}
+  .cal-side{display:none!important;}
+  .metas-side,.fin-summary{display:none!important;}
+  .cons-sidebar{width:100%!important;height:auto!important;}
 }
 </style>
 </body>
