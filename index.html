@@ -7484,7 +7484,7 @@ function lancarReceitaOrc() {
     type: 'rec',
     pagto: pagto
   });
-  saveToStorage();
+  if(typeof saveToStorage==='function')saveToStorage();
   if (typeof renderFinanceiro === 'function') renderFinanceiro();
   showToast('💰 R$ ' + val.toFixed(2).replace('.',',') + ' lançado no Financeiro!');
 }
