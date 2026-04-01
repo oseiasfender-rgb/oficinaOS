@@ -1,42 +1,4 @@
-function syncFinTotal() {
-  const fp=document.getElementById('finalPrice');
-  const ft=document.getElementById('fin-total-display');
-  const fs=document.getElementById('fin-status-display');
-  if(fp&&ft)ft.textContent=fp.textContent;
-  if(fs){const f2=typeof orcFase!=='undefined'?orcFase:'orcamento';
-    fs.textContent={orcamento:'📋 Orçamento',em_servico:'⚙️ Em Serviço',entregue:'🏁 Entregue'}[f2]||'📋 Orçamento';}
-}function showModule(id,btn){
-  document.querySelectorAll('.panel').forEach(p=>{p.classList.remove('active');p.style.display='none';});
-  document.querySelectorAll('.nav-tab').forEach(t=>t.classList.remove('active'));
-  const mod=document.getElementById('mod-'+id);
-  if(!mod){console.error('[OS] not found: mod-'+id);return;}
-  mod.classList.add('active');if(btn)btn.classList.add('active');
-  const topH=document.querySelector('.topbar')?.offsetHeight||52;
-  const navH=document.querySelector('.nav-tabs')?.offsetHeight||52;
-  const H=window.innerHeight-topH-navH;const hpx=H+'px';
-  mod.style.cssText='display:flex;flex-direction:'+(id==='consultor'?'row':'column')+';width:100%;height:'+hpx+';overflow:hidden;box-sizing:border-box;';
-  const bm={metas:{c:'metas-body',t:'1fr 1fr 300px',g:1},agenda:{c:'agenda-body',t:'1fr 320px',g:1},clientes:{c:'cli-body',t:'280px 1fr 300px',g:1},contas:{c:'contas-body',t:'1fr 1fr 300px',g:1},das:{c:'das-body',t:'1fr 340px',g:1},relatorios:{c:'rel-body',t:null,g:0},consultor:{c:'cons-sidebar',t:null,g:0},financeiro:{c:'fin-body',t:null,g:0}};
-  const cfg=bm[id];
-  if(cfg){const el=mod.querySelector('.'+cfg.c)||mod.firstElementChild;
-    if(el){el.style.width='100%';el.style.height=hpx;el.style.boxSizing='border-box';
-      if(cfg.g){el.style.display='grid';el.style.gridTemplateColumns=cfg.t;el.style.overflow='hidden';
-        Array.from(el.children).forEach(c=>{c.style.minHeight='0';c.style.height=hpx;c.style.overflowY='auto';});}
-      else{el.style.display='flex';el.style.flexDirection='column';el.style.overflowY='auto';}
-    }
-    if(id==='consultor'){const cm=mod.querySelector('.cons-main');if(cm){cm.style.flex='1';cm.style.minWidth='0';cm.style.height=hpx;cm.style.overflowY='auto';}}
-  }
-  requestAnimationFrame(()=>{const cs=window.getComputedStyle(mod);console.log('[OS] '+id+' h:'+Math.round(parseFloat(cs.height))+'px d:'+cs.display);const f=mod.firstElementChild;if(f){const cs2=window.getComputedStyle(f);console.log('[OS] child .'+f.className.split(' ')[0]+' d:'+cs2.display+' h:'+Math.round(parseFloat(cs2.height))+'px');}});
-  const renders={relatorios:renderRelatorios,os:renderOS,das:renderDAS,clientes:renderClientes,metas:renderMetas,financeiro:renderFinanceiro,agenda:renderCalendario,contas:renderContas,materiais:renderEstoque};
-  if(renders[id])setTimeout(()=>{try{renders[id]();}catch(e){console.error('[OS] '+id+': '+e.message);}},50);
-}function syncFinTotal() {
-  const fp=document.getElementById('finalPrice');
-  const ft=document.getElementById('fin-total-display');
-  const fs=document.getElementById('fin-status-display');
-  if(fp&&ft)ft.textContent=fp.textContent;
-  if(fs){const f2=typeof orcFase!=='undefined'?orcFase:'orcamento';
-    const m={orcamento:'📋 Orçamento',em_servico:'⚙️ Em Serviço',entregue:'🏁 Entregue'};
-    fs.textContent=m[f2]||'📋 Orçamento';}
-}<!DOCTYPE html>
+<!DOCTYPE html>
 <!-- OficinaOS v2.1 - 2026-03-30 22:32 -->
 
 <html lang="pt-BR">
@@ -1480,6 +1442,17 @@ textarea.chat-input::placeholder{color:#555555;}
 }
 </style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style id="layout-base">
+html, body {
+  height: 100%;
+  max-height: 100vh;
+  overflow: hidden !important;
+  margin: 0;
+  padding: 0;
+}
+.panel { display: none !important; }
+.panel.active { display: flex !important; flex-direction: column; overflow: hidden; }
+</style>
 </head>
 <body>
 
@@ -1706,7 +1679,12 @@ textarea.chat-input::placeholder{color:#555555;}
         <div class="card">
           <div class="form-grid">
             <div class="field"><label>Cliente</label><input type="text" id="clientName" placeholder="Nome do cliente" oninput="updateCalc()"></div>
-            <div class="field"><label>Veículo / Modelo</label><input type="text" id="vehicle" placeholder="Ex: Chevette 1983" oninput="updateCalc()"></div>
+            <div class="field"><label>Telefone / WhatsApp</label><input type="tel" id="clientPhone" placeholder="(19) 99999-9999"></div>
+            <div class="field"><label>Veículo / Modelo</label><input type="text" id="vehicle" placeholder="Ex: VW Gol G5" oninput="updateCalc()"></div>
+            <div class="field"><label>Cor</label><input type="text" id="vehicleCor" placeholder="Ex: Prata metálico"></div>
+            <div class="field"><label>Placa</label><input type="text" id="vehiclePlaca" placeholder="ABC-1234" style="text-transform:uppercase"></div>
+            <div class="field"><label>Ano</label><input type="number" id="vehicleAno" placeholder="2015" min="1950" max="2030"></div>
+            <div class="field"><label>KM Entrada</label><input type="number" id="vehicleKm" placeholder="45.320" min="0"></div>
             <div class="field">
               <label>Tipo de Serviço</label>
               <input class="orc-select" id="serviceType" list="svcList"
@@ -1805,7 +1783,7 @@ textarea.chat-input::placeholder{color:#555555;}
 
       <!-- REFERÊNCIA MERCADO -->
       <div id="mktRefSec" style="display:none;">
-        <div class="sec-title"><div class="sec-icon ic-blue">📊</div><span class="sec-lbl">Referência — Sudeste 2025</span></div>
+        <div class="sec-title"><div class="sec-icon ic-blue">📊</div><span class="sec-lbl">Referência — SINDIREPA Sudeste 2026</span></div>
         <div class="ref-panel">
           <div class="ref-h"><span class="ref-title" id="refTitle">—</span><span class="ref-src">SINDIREPA / Escola do Autônomo</span></div>
           <div id="refRows"></div>
@@ -3196,32 +3174,66 @@ textarea.chat-input::placeholder{color:#555555;}
 </div>
 <div class="toast" id="toast"></div>
 
-<script>document.body.style.overflow="hidden";document.documentElement.style.overflow="hidden";
+<script>
+document.body.style.overflow="hidden";document.documentElement.style.overflow="hidden";
 
+function syncFinTotal() {
+  const fp=document.getElementById('finalPrice');
+  const ft=document.getElementById('fin-total-display');
+  const fs=document.getElementById('fin-status-display');
+  if(fp&&ft)ft.textContent=fp.textContent;
+  if(fs){const f2=typeof orcFase!=='undefined'?orcFase:'orcamento';
+    fs.textContent={orcamento:'📋 Orçamento',em_servico:'⚙️ Em Serviço',entregue:'🏁 Entregue'}[f2]||'📋 Orçamento';}
+}
 // ══════════════════════════
 // MODULE NAVIGATION
 // ══════════════════════════
 function showModule(id,btn){
-  document.querySelectorAll('.panel').forEach(p=>{p.classList.remove('active');p.style.display='none';});
+  document.querySelectorAll('.panel').forEach(p=>{p.classList.remove('active');p.style.cssText='';});
   document.querySelectorAll('.nav-tab').forEach(t=>t.classList.remove('active'));
   const mod=document.getElementById('mod-'+id);
   if(!mod){console.error('[OS] not found: mod-'+id);return;}
   mod.classList.add('active');if(btn)btn.classList.add('active');
-  const topH=document.querySelector('.topbar')?.offsetHeight||52;
-  const navH=document.querySelector('.nav-tabs')?.offsetHeight||52;
-  const H=window.innerHeight-topH-navH;const hpx=H+'px';
-  mod.style.cssText='display:flex;flex-direction:'+(id==='consultor'?'row':'column')+';width:100%;height:'+hpx+';overflow:hidden;box-sizing:border-box;';
-  const bm={metas:{c:'metas-body',t:'1fr 1fr 300px',g:1},agenda:{c:'agenda-body',t:'1fr 320px',g:1},clientes:{c:'cli-body',t:'280px 1fr 300px',g:1},contas:{c:'contas-body',t:'1fr 1fr 300px',g:1},das:{c:'das-body',t:'1fr 340px',g:1},relatorios:{c:'rel-body',t:null,g:0},consultor:{c:'cons-sidebar',t:null,g:0},financeiro:{c:'fin-body',t:null,g:0}};
+  // Usar clientHeight que não inclui conteúdo overflow
+  const topH=document.querySelector('.topbar')?.getBoundingClientRect().height||52;
+  const navH=document.querySelector('.nav-tabs')?.getBoundingClientRect().height||52;
+  const H=document.documentElement.clientHeight-topH-navH;
+  const hpx=Math.max(H,300)+'px';
+  mod.style.cssText='display:flex!important;flex-direction:'+(id==='consultor'?'row':'column')+';width:100%;height:'+hpx+';overflow:hidden;box-sizing:border-box;';
+  const bm={
+    metas:{c:'metas-body',t:'1fr 1fr 300px',g:1},
+    agenda:{c:'agenda-body',t:'1fr 320px',g:1},
+    clientes:{c:'cli-body',t:'280px 1fr 300px',g:1},
+    contas:{c:'contas-body',t:'1fr 1fr 300px',g:1},
+    das:{c:'das-body',t:'1fr 340px',g:1},
+    relatorios:{c:'rel-body',t:null,g:0},
+    consultor:{c:'cons-sidebar',t:null,g:0},
+    financeiro:{c:'fin-body',t:null,g:0},
+    orcamento:{c:'orc-layout',t:null,g:0},
+  };
   const cfg=bm[id];
-  if(cfg){const el=mod.querySelector('.'+cfg.c)||mod.firstElementChild;
-    if(el){el.style.width='100%';el.style.height=hpx;el.style.boxSizing='border-box';
-      if(cfg.g){el.style.display='grid';el.style.gridTemplateColumns=cfg.t;el.style.overflow='hidden';
-        Array.from(el.children).forEach(c=>{c.style.minHeight='0';c.style.height=hpx;c.style.overflowY='auto';});}
-      else{el.style.display='flex';el.style.flexDirection='column';el.style.overflowY='auto';}
+  if(cfg){
+    const el=mod.querySelector('.'+cfg.c)||mod.querySelector('.orc-layout')||mod.children[1]||mod.firstElementChild;
+    if(el){
+      el.style.width='100%';el.style.flex='1';el.style.minHeight='0';el.style.boxSizing='border-box';
+      if(cfg.g){
+        el.style.display='grid';el.style.gridTemplateColumns=cfg.t;
+        el.style.height=hpx;el.style.overflow='hidden';
+        Array.from(el.children).forEach(c=>{c.style.minHeight='0';c.style.height=hpx;c.style.overflowY='auto';});
+      } else {
+        el.style.display='flex';el.style.flexDirection='column';
+        el.style.height=hpx;el.style.overflowY='auto';
+      }
     }
     if(id==='consultor'){const cm=mod.querySelector('.cons-main');if(cm){cm.style.flex='1';cm.style.minWidth='0';cm.style.height=hpx;cm.style.overflowY='auto';}}
   }
-  requestAnimationFrame(()=>{const cs=window.getComputedStyle(mod);console.log('[OS] '+id+' h:'+Math.round(parseFloat(cs.height))+'px d:'+cs.display);const f=mod.firstElementChild;if(f){const cs2=window.getComputedStyle(f);console.log('[OS] child .'+f.className.split(' ')[0]+' d:'+cs2.display+' h:'+Math.round(parseFloat(cs2.height))+'px');}});
+  requestAnimationFrame(()=>{
+    const cs=window.getComputedStyle(mod);
+    const h=Math.round(parseFloat(cs.height));
+    console.log('[OS] '+id+' h:'+h+'px d:'+cs.display+(h>document.documentElement.clientHeight?' ⚠️OVERFLOW':''));
+    const f=mod.firstElementChild;
+    if(f){const cs2=window.getComputedStyle(f);console.log('[OS] child .'+f.className.split(' ')[0]+' d:'+cs2.display+' h:'+Math.round(parseFloat(cs2.height))+'px');}
+  });
   const renders={relatorios:renderRelatorios,os:renderOS,das:renderDAS,clientes:renderClientes,metas:renderMetas,financeiro:renderFinanceiro,agenda:renderCalendario,contas:renderContas,materiais:renderEstoque};
   if(renders[id])setTimeout(()=>{try{renders[id]();}catch(e){console.error('[OS] '+id+': '+e.message);}},50);
 }// ══════════════════════════
@@ -3643,7 +3655,18 @@ function imprimirOrcamento() {
     .ass{border-top:1px solid #333;padding-top:4px;font-size:11px;color:#666;text-align:center}
     .badge{display:inline-block;background:#f0fdf4;color:#15803d;padding:2px 10px;border-radius:10px;font-size:11px;font-weight:700;margin-top:4px}
     @media print{@page{margin:15mm} button{display:none}}
-  </style></head><body>
+  </style><style id="layout-base">
+html, body {
+  height: 100%;
+  max-height: 100vh;
+  overflow: hidden !important;
+  margin: 0;
+  padding: 0;
+}
+.panel { display: none !important; }
+.panel.active { display: flex !important; flex-direction: column; overflow: hidden; }
+</style>
+</head><body>
   <div class="header">
     <div>
       <h1>LIMAPRATA Reparações Automotivas</h1>
@@ -6912,7 +6935,18 @@ function imprimirOS(id) {
     .assinaturas{display:grid;grid-template-columns:1fr 1fr;gap:30px;margin-top:40px;}
     .ass-linha{border-top:1px solid #333;padding-top:4px;font-size:0.75rem;color:#666;text-align:center;}
     @media print{button{display:none!important;}}
-  </style></head><body>
+  </style><style id="layout-base">
+html, body {
+  height: 100%;
+  max-height: 100vh;
+  overflow: hidden !important;
+  margin: 0;
+  padding: 0;
+}
+.panel { display: none !important; }
+.panel.active { display: flex !important; flex-direction: column; overflow: hidden; }
+</style>
+</head><body>
   <div class="header">
     <div>
       <h1>LIMAPRATA Reparações Automotivas</h1>
@@ -7311,6 +7345,7 @@ renderMetas();
 renderCalendario();
 renderEstoque();
 initIaKey();
+
 </script>
 
 <!-- ══ ORÇAMENTO CLIENTE — IMPRESSÃO ══ -->
@@ -7866,6 +7901,17 @@ window.addEventListener('load', () => {
   .orc-left{overflow-y:visible!important;}
   #orc-view-os,#orc-view-mat{overflow-y:auto!important;}
 }
+</style>
+<style id="layout-base">
+html, body {
+  height: 100%;
+  max-height: 100vh;
+  overflow: hidden !important;
+  margin: 0;
+  padding: 0;
+}
+.panel { display: none !important; }
+.panel.active { display: flex !important; flex-direction: column; overflow: hidden; }
 </style>
 </head>
 <body>
