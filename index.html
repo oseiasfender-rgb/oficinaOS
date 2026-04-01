@@ -3300,16 +3300,27 @@ function showModule(id, btn) {
   document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
   document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
   const mod = document.getElementById('mod-' + id);
-  if (!mod) { console.warn('Module not found: mod-' + id); return; }
+  if (!mod) { console.error('[OS] Module not found: mod-' + id); return; }
   mod.classList.add('active');
   if (btn) btn.classList.add('active');
+  // Debug: log computed style
+  requestAnimationFrame(() => {
+    const cs = window.getComputedStyle(mod);
+    console.log('[OS] mod-'+id+' display:'+cs.display+' h:'+cs.height+' class:'+mod.className);
+    // Also log first child
+    const first = mod.firstElementChild;
+    if(first){
+      const cs2 = window.getComputedStyle(first);
+      console.log('[OS] first child .'+first.className+' display:'+cs2.display+' h:'+cs2.height);
+    }
+  });
   const renders = {
     relatorios: renderRelatorios, os: renderOS, das: renderDAS,
     clientes: renderClientes, metas: renderMetas, financeiro: renderFinanceiro,
     agenda: renderCalendario, contas: renderContas, materiais: renderEstoque
   };
   if (renders[id]) setTimeout(() => {
-    try { renders[id](); } catch(e) { console.warn('Render error:', id, e.message); }
+    try { renders[id](); } catch(e) { console.error('[OS] Render error '+id+': '+e.message); }
   }, 50);
 }
 // ══════════════════════════
@@ -3736,9 +3747,9 @@ function updateCalc() {
   const svc = g('serviceType')?.value || '';
   const veh = g('vehicle')?.value || 'veículo';
   const scMin = final * 0.85, scMid = final, scMax = final * 1.2;
-  if(g('scMin')) { g('scMin').querySelector?.('.scen-val')?.textContent !== undefined && (g('scMin').querySelector('.scen-val').textContent = fmt(scMin)); }
-  if(g('scMid')) { try { g('scMid').querySelector('.scen-val').textContent = fmt(scMid); } catch(e){} }
-  if(g('scMax')) { try { g('scMax').querySelector('.scen-val').textContent = fmt(scMax); } catch(e){} }
+  if(g('scMin')) g('scMin').textContent = fmt(scMin);
+  if(g('scMid')) g('scMid').textContent = fmt(scMid);
+  if(g('scMax')) g('scMax').textContent = fmt(scMax);
 
   // Margem líquida
   const margem = final > 0 ? ((final - base) / final * 100) : 0;
@@ -7197,7 +7208,7 @@ function aplicarMODoOrcamento() {
   const procs = ['desmontagem','funilaria','solda','preparacao','pintura','montagem','polimento'];
   let totalH = 0;
   procs.forEach(p => { totalH += parseFloat(document.getElementById('orc-h-'+p)?.value)||0; });
-  const rate = parseFloat(document.getElementById('hourRate')?.value)||120;
+  const rate = parseFloat(document.getElementById('hourRate')?.value)||0;
   const mo   = totalH * rate;
   const el   = id => document.getElementById(id);
   if(el('laborTotal')) el('laborTotal').value = mo.toFixed(2);
