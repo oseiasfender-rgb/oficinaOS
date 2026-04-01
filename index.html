@@ -441,7 +441,6 @@ textarea.chat-input::placeholder{color:#555555;}
 
   /* ── CONTAS A PAGAR ── */
   .contas-body{display:grid;grid-template-columns:1fr 1fr 300px;width:100%;height:100%;overflow:hidden;}
-  .cons-sidebar{display:none !important;}
   .contas-col{overflow:visible !important;border-right:none;border-bottom:1px solid rgba(0,0,0,0.07);}
   #mod-contas{overflow-y:auto !important;}
 
@@ -1180,7 +1179,6 @@ textarea.chat-input::placeholder{color:#555555;}
   .das-months{grid-template-columns:repeat(3,1fr)!important;}
   
   /* CONSULTOR IA */
-  .cons-sidebar{display:none!important;}
   .cons-main{width:100%!important;}
   
   /* AGENDA */
@@ -6977,14 +6975,37 @@ function imprimirOS(id) {
   
 <!-- FORCE GRID LAYOUTS -->
 <style>
+  /* Grid containers */
   .metas-body{display:grid!important;grid-template-columns:1fr 1fr 300px!important;width:100%!important;height:100%!important;overflow:hidden!important;}
   .cli-body{display:grid!important;grid-template-columns:280px 1fr 300px!important;width:100%!important;height:100%!important;overflow:hidden!important;}
   .contas-body{display:grid!important;grid-template-columns:1fr 1fr 300px!important;width:100%!important;height:100%!important;overflow:hidden!important;}
   .das-body{display:grid!important;grid-template-columns:1fr 340px!important;width:100%!important;height:100%!important;overflow-y:auto!important;}
   .agenda-body{display:grid!important;grid-template-columns:1fr 320px!important;width:100%!important;height:100%!important;overflow:hidden!important;}
-  .cons-sidebar{display:flex!important;flex-direction:column!important;width:280px!important;height:100%!important;}
+  /* Grid children DEVEM ter min-height:0 para overflow funcionar */
+  .metas-body > *, .cli-body > *, .contas-body > *, .agenda-body > *{min-height:0!important;overflow-y:auto!important;}
+  /* Consultor */
+  .cons-sidebar{display:flex!important;flex-direction:column!important;width:220px!important;min-width:220px!important;height:100%!important;overflow-y:auto!important;}
+  .cons-main{display:flex!important;flex-direction:column!important;flex:1!important;min-width:0!important;height:100%!important;overflow-y:auto!important;}
+  /* Agenda */
+  .agenda-main{overflow-y:auto!important;min-height:0!important;height:100%!important;}
+  .cal-side{overflow-y:auto!important;min-height:0!important;height:100%!important;}
+  /* Metas */
+  .meta-col{overflow-y:auto!important;min-height:0!important;height:100%!important;}
+  /* Clientes */
+  .cli-list{overflow-y:auto!important;min-height:0!important;height:100%!important;}
+  .cli-detail{overflow-y:auto!important;min-height:0!important;height:100%!important;}
+  /* Relatórios */
+  .rel-body{overflow-y:auto!important;min-height:0!important;height:100%!important;}
+  /* DAS */
+  .das-body > *{min-height:0!important;overflow-y:auto!important;}
+  /* Mobile */
   @media(max-width:900px){
-    .metas-body,.cli-body,.contas-body,.das-body,.agenda-body{grid-template-columns:1fr!important;height:auto!important;overflow-y:auto!important;}
+    .metas-body,.cli-body,.contas-body,.das-body,.agenda-body{
+      grid-template-columns:1fr!important;height:auto!important;overflow-y:auto!important;
+    }
+    .metas-body > *, .cli-body > *, .contas-body > *, .agenda-body > *{
+      height:auto!important;overflow-y:visible!important;
+    }
     .cons-sidebar{width:100%!important;height:auto!important;}
     .metas-side,.cli-side,.cal-side,.fin-summary{display:none!important;}
   }
@@ -8360,14 +8381,37 @@ window.addEventListener('load', () => {
 
 <!-- FORCE GRID LAYOUTS -->
 <style>
+  /* Grid containers */
   .metas-body{display:grid!important;grid-template-columns:1fr 1fr 300px!important;width:100%!important;height:100%!important;overflow:hidden!important;}
   .cli-body{display:grid!important;grid-template-columns:280px 1fr 300px!important;width:100%!important;height:100%!important;overflow:hidden!important;}
   .contas-body{display:grid!important;grid-template-columns:1fr 1fr 300px!important;width:100%!important;height:100%!important;overflow:hidden!important;}
   .das-body{display:grid!important;grid-template-columns:1fr 340px!important;width:100%!important;height:100%!important;overflow-y:auto!important;}
   .agenda-body{display:grid!important;grid-template-columns:1fr 320px!important;width:100%!important;height:100%!important;overflow:hidden!important;}
-  .cons-sidebar{display:flex!important;flex-direction:column!important;width:280px!important;height:100%!important;}
+  /* Grid children DEVEM ter min-height:0 para overflow funcionar */
+  .metas-body > *, .cli-body > *, .contas-body > *, .agenda-body > *{min-height:0!important;overflow-y:auto!important;}
+  /* Consultor */
+  .cons-sidebar{display:flex!important;flex-direction:column!important;width:220px!important;min-width:220px!important;height:100%!important;overflow-y:auto!important;}
+  .cons-main{display:flex!important;flex-direction:column!important;flex:1!important;min-width:0!important;height:100%!important;overflow-y:auto!important;}
+  /* Agenda */
+  .agenda-main{overflow-y:auto!important;min-height:0!important;height:100%!important;}
+  .cal-side{overflow-y:auto!important;min-height:0!important;height:100%!important;}
+  /* Metas */
+  .meta-col{overflow-y:auto!important;min-height:0!important;height:100%!important;}
+  /* Clientes */
+  .cli-list{overflow-y:auto!important;min-height:0!important;height:100%!important;}
+  .cli-detail{overflow-y:auto!important;min-height:0!important;height:100%!important;}
+  /* Relatórios */
+  .rel-body{overflow-y:auto!important;min-height:0!important;height:100%!important;}
+  /* DAS */
+  .das-body > *{min-height:0!important;overflow-y:auto!important;}
+  /* Mobile */
   @media(max-width:900px){
-    .metas-body,.cli-body,.contas-body,.das-body,.agenda-body{grid-template-columns:1fr!important;height:auto!important;overflow-y:auto!important;}
+    .metas-body,.cli-body,.contas-body,.das-body,.agenda-body{
+      grid-template-columns:1fr!important;height:auto!important;overflow-y:auto!important;
+    }
+    .metas-body > *, .cli-body > *, .contas-body > *, .agenda-body > *{
+      height:auto!important;overflow-y:visible!important;
+    }
     .cons-sidebar{width:100%!important;height:auto!important;}
     .metas-side,.cli-side,.cal-side,.fin-summary{display:none!important;}
   }
