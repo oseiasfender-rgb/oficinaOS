@@ -7211,7 +7211,7 @@ function calcOrcMOTotal() {
   const hEl  = document.getElementById('orc-h-total');
   const mEl  = document.getElementById('orc-mo-total');
   if (hEl) hEl.value = totalH.toFixed(1)+'h';
-  if (mEl) mEl.textContent = 'R$ '+mo.toFixed(2).replace('.',',').replace(/\B(?=(\d{3})+(?!\d))/g,'.');
+  if (mEl) mEl.textContent = 'R$ '+mo.toFixed(2).replace('.',',').replace(/\B(?=(\d{3})+(?!\d))/g,'.');
 }
 
 function aplicarMODoOrcamento() {
@@ -7225,7 +7225,7 @@ function aplicarMODoOrcamento() {
   if(el('hours'))      el('hours').value      = totalH.toFixed(1);
   if(el('hourRate'))   el('hourRate').value   = rate;
   if(typeof calcLaborFromHours === 'function') calcLaborFromHours();
-  showToast('✓ MO R$ '+mo.toFixed(2).replace('.',',') + ' aplicada');
+  showToast('✓ MO R$ '+mo.toFixed(2).replace('.',',') + ' aplicada');
 }
 
 // ══ Materiais: Editar ══
@@ -8067,4 +8067,3 @@ window.addEventListener('load', () => {
 
 
 </body>
-</html>
