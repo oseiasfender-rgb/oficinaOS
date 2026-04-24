@@ -1460,6 +1460,26 @@ table th, table td { color: #0d0702; }
   .das-kpis{grid-template-columns:1fr 1fr!important;gap:4px!important;}
   .das-kpi{padding:6px!important;}
 }
+
+/* ===== CORREÇÃO FINAL DE VISIBILIDADE - GITHUB READY ===== */
+html, body { color: #1a0e04 !important; }
+body, .panel, .card, .kpi, .conta-card, .job-card, .meta-card, .mat-item-row { color: #1a0e04 !important; }
+label,.sec-lbl,.fin-section-title,.bd-title,.meta-cat,.cat-name,.cat-pct,.cat-val,.jc-meta,.cc-meta,.tx-cat,.tx-date,.kpi-label,.result-label,.price-lbl,.price-ctx,.brow .nm,.marg-lbl,.scen-title,.scen-desc,.field label,.edit-field label { color: #3a220c !important; }
+input,select,textarea,.fin-input,.fin-select,.field input,.field select,.field textarea,.mat-row input,.edit-field input,.edit-field select { color: #1a0e04 !important; background: #fffdf9 !important; border-color: #c9a27a !important; }
+input::placeholder,textarea::placeholder,.mat-row input::placeholder,.field input::placeholder,textarea.chat-input::placeholder { color: #8a6848 !important; opacity: 1 !important; }
+h1,h2,h3,.brand-name,.tx-name,.cc-name,.jc-name,.meta-name,.mi-name,.bubble li,.bubble.user-b,.bubble.ai,.ps-table td,.ps-table th { color: #1a0e04 !important; }
+.kpi-val,.result-val,.price-big,.mvb-val,.brow .am,.mi-val,.cc-val,.jc-val { color: #1a0e04 !important; }
+.kpi.receita .kpi-val,.result-val.pos,.tx-val.rec,.cc-val.v-paid { color: #16a34a !important; }
+.kpi.despesa .kpi-val,.result-val.neg,.tx-val.dep,.cc-val.v-late { color: #dc2626 !important; }
+.card,.kpi,.meta-card,.job-card,.conta-card,.mat-item-row,.ref-panel,.scen-card,.add-tx-form,.add-conta-form,.bubble.ai { background: #ffffff !important; border-color: #e0c2a2 !important; }
+.nav-tab { color: #5a3a1a !important; }
+.nav-tab.active { color: #b8621a !important; font-weight: 700 !important; }
+.panel.active { visibility: visible !important; opacity: 1 !important; }
+.orc-right,.orc-left,.fin-body,.metas-body,.agenda-body,.mat-body,.contas-body,.fin-summary,.breakdown,.price-hero,.scen-sec,.orc-actions { opacity: 1 !important; visibility: visible !important; }
+button,.btn-secondary,.cc-btn,.jc-btn,.edit-meta-btn,.cal-btn { color: #1a0e04 !important; }
+.btn-primary,.btn-add-tx,.btn-primary *,.ps-btn-print,.send-btn { color: #ffffff !important; }
+.dim,.muted,.kpi-sub,.ps-client-sub,.brand-sub,.wc-sub,.mi-sub { color: #6b4b2a !important; }
+/* ===== FIM DA CORREÇÃO FINAL DE VISIBILIDADE ===== */
 </style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
@@ -8961,77 +8981,36 @@ input::placeholder,textarea::placeholder{color:#69451f!important;opacity:.8!impo
 
 
 
-
-
-<!-- PATCH ESTÁVEL 3 — aplicado sobre o index funcional enviado pelo usuário -->
-<style id="oficinaos-patch-estavel3-css">
-/* Contraste sem trocar o visual original */
-:root{
-  --chrome:#1a0e04!important;
-  --chrome-bright:#100802!important;
-  --text:#1a0e04!important;
-  --muted:#4a2a0f!important;
-  --dim:#65401b!important;
-}
-.field label,.fin-section-title,.sec-lbl,.kpi-label,.bd-title,.scen-title{color:#1a0e04!important;}
-.field input,.field select,.field textarea,.fin-input,.fin-select,.mat-row input,textarea.chat-input{
-  background:#fffdf8!important;
-  color:#1a0e04!important;
-  border-color:rgba(100,60,20,.28)!important;
-}
-input::placeholder,textarea::placeholder{color:#69451f!important;opacity:.85!important;}
-#caixaCompetenciaBox.finance-mode-row{display:grid;grid-template-columns:1fr 1fr;gap:.5rem;margin:.7rem 1rem .9rem;}
-.finance-mode-box{background:#fff;border:1px solid rgba(150,80,20,.16);border-radius:8px;padding:.7rem .75rem;box-shadow:0 1px 5px rgba(120,70,20,.06);}
-.finance-mode-box b{display:block;font-family:'DM Mono',monospace;font-size:.56rem;letter-spacing:.14em;text-transform:uppercase;color:#4a2a0f;margin-bottom:.2rem;}
-.finance-mode-box span{font-family:'Bebas Neue',sans-serif;font-size:1.25rem;color:#1a0e04;}
-@media(max-width:900px){
-  html,body{height:auto!important;min-height:100%!important;max-height:none!important;overflow:auto!important;}
-  body{display:block!important;}
-  .topbar{height:auto!important;min-height:58px!important;align-items:flex-start!important;gap:.6rem;padding:.6rem!important;flex-wrap:wrap!important;}
-  .nav-tabs{width:100%!important;overflow-x:auto!important;justify-content:flex-start!important;padding-bottom:.25rem;}
-  .nav-tab{flex:0 0 auto!important;}
-  .panel.active{height:auto!important;min-height:calc(100vh - 110px)!important;overflow:visible!important;display:block!important;}
-  .fin-body,.contas-body,.metas-body,.agenda-body,.mat-body{display:block!important;overflow:visible!important;}
-  .fin-col,.contas-col,.meta-col,.agenda-main,.agenda-side,.mat-main,.mat-side{overflow:visible!important;padding:1rem!important;}
-  .orc-layout{display:block!important;height:auto!important;overflow:visible!important;}
-  .orc-left{overflow:visible!important;padding:1rem!important;}
-  .orc-right{display:block!important;border-left:0!important;border-top:1px solid var(--border)!important;}
-  .form-grid,.form-grid.three{grid-template-columns:1fr!important;}
-  .print-sheet{width:96vw!important;max-height:92vh!important;}
-}
+<!-- PATCH ESTÁVEL 2 — Financeiro Caixa/Competência + Orçamento sem duplicidade -->
+<style>
+  /* Reforço de contraste e organização do fluxo novo */
+  #mod-financeiro .finance-mode-row{display:grid;grid-template-columns:1fr 1fr;gap:.55rem;margin:.75rem 0 1rem;}
+  #mod-financeiro .finance-mode-box{background:#fff;border:1px solid rgba(150,80,20,.22);border-left:3px solid #b8621a;border-radius:8px;padding:.7rem .75rem;box-shadow:0 1px 6px rgba(100,60,20,.07);}
+  #mod-financeiro .finance-mode-box b{display:block;font-family:'DM Mono',monospace;font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;color:#1a0e04;margin-bottom:.22rem;}
+  #mod-financeiro .finance-mode-box span{font-family:'Bebas Neue',sans-serif;font-size:1.35rem;color:#1a0e04;}
+  #orcPanelPecas .card, #orcPanelTerc, #orcPanelFrete{margin-bottom:1rem;}
+  .os-total-fix{display:flex;justify-content:space-between;align-items:center;padding:10px 12px;background:#1a0e04;border-radius:8px;color:#fff;margin-top:8px;}
+  .os-total-fix strong{font-size:.82rem;letter-spacing:.05em;}
+  .os-total-fix span{font-size:1.05rem;font-weight:900;color:#fbbf24;font-family:'DM Mono',monospace;}
 </style>
-
-<script id="oficinaos-patch-estavel3-js">
+<script>
 (function(){
   'use strict';
-
-  function num(v){
-    if(typeof v === 'number') return isFinite(v) ? v : 0;
-    return parseFloat(String(v||'0').replace(/[^0-9,.-]/g,'').replace(/\./g,'').replace(',','.')) || 0;
-  }
   function money(n){
     n = Number(n)||0;
-    return 'R$ ' + n.toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2});
+    return 'R$ ' + n.toLocaleString('pt-BR',{minimumFractionDigits:2, maximumFractionDigits:2});
   }
   function paid(t){ return t && (t.paid === 'Pago' || t.paid === true || t.status === 'Pago'); }
+  function num(v){ return parseFloat(v)||0; }
   function byText(sel, txt){
-    return Array.from(document.querySelectorAll(sel)).find(function(el){
-      return (el.textContent||'').replace(/\s+/g,' ').indexOf(txt) > -1;
-    });
-  }
-  function getSectionRootFromLabel(label){
-    if(!label) return null;
-    var title = label.closest('.sec-title');
-    if(!title) return null;
-    var root = title.parentElement;
-    // Quando o título está solto, o próprio parent é a seção correta.
-    return root || title;
+    return Array.from(document.querySelectorAll(sel)).find(function(el){ return (el.textContent||'').trim().includes(txt); });
   }
 
-  function removeOldServicoPecaTotal(){
+  function removeDuplicateServicoPecaTotal(){
+    // Remove a primeira tabela antiga “Serviços e Peças — TOTAL OS”, que duplicava IDs e quebrava a calculadora.
     Array.from(document.querySelectorAll('.sec-lbl')).forEach(function(lbl){
-      var t=(lbl.textContent||'').replace(/\s+/g,' ').trim();
-      if(t.indexOf('Serviços e Peças')>-1 && t.indexOf('TOTAL OS')>-1){
+      var text=(lbl.textContent||'').trim();
+      if(text.indexOf('Serviços e Peças')>-1 && text.indexOf('TOTAL OS')>-1){
         var title=lbl.closest('.sec-title');
         var card=title && title.nextElementSibling;
         if(card && card.classList && card.classList.contains('card')) card.remove();
@@ -9040,71 +9019,67 @@ input::placeholder,textarea::placeholder{color:#69451f!important;opacity:.85!imp
     });
   }
 
-  function organizeOrcamentoSectionsSafe(){
-    removeOldServicoPecaTotal();
+  function organizeOrcamentoSections(){
+    removeDuplicateServicoPecaTotal();
 
-    // Mantém Peças Usadas & Recuperadas uma única vez e antes dos Extras/Terceiros.
-    var pecasLbl = byText('.sec-lbl','Peças Usadas');
-    var extrasLbl = byText('.sec-lbl','Peças, Serviços') || byText('.sec-lbl','Extras');
-    var pecasRoot = getSectionRootFromLabel(pecasLbl);
-    var extrasRoot = getSectionRootFromLabel(extrasLbl);
+    // Ajusta o cabeçalho do bloco que continha abas duplicadas.
+    var oldTitle = byText('.sec-lbl','Peças, Serviços');
+    if(oldTitle) oldTitle.textContent = 'Peças Usadas & Recuperadas';
 
-    if(extrasLbl) extrasLbl.textContent = 'Extras & Ajustes / Serviços de Terceiros';
-    if(pecasRoot && extrasRoot && extrasRoot.parentElement && pecasRoot !== extrasRoot){
-      extrasRoot.parentElement.insertBefore(pecasRoot, extrasRoot);
-    }
+    // Esconde abas antigas e deixa o fluxo direto: Peças recuperadas -> Extras/Terceiros -> Frete.
+    var tab = document.getElementById('orcTabPecas');
+    if(tab && tab.parentElement) tab.parentElement.style.display='none';
 
-    // Esconde apenas a aba antiga "Peças/Serviço", sem copiar HTML e sem duplicar IDs.
-    var tabPecas = document.getElementById('orcTabPecas');
-    if(tabPecas) tabPecas.style.display='none';
     var panelPecas = document.getElementById('orcPanelPecas');
-    if(panelPecas) panelPecas.style.display='none';
-
-    // Exibe Terceiros e Frete de forma direta.
-    ['orcPanelTerc','orcPanelFrete'].forEach(function(id){
-      var el=document.getElementById(id);
-      if(el) el.style.display='block';
-    });
+    var pecasList = document.getElementById('pecasRecuperadasList');
+    if(panelPecas && pecasList){
+      var pecasCard = pecasList.closest('.card');
+      if(pecasCard){
+        panelPecas.innerHTML = pecasCard.outerHTML;
+        panelPecas.style.display = 'block';
+        // re-renderiza para religar eventos dos elementos recriados
+        if(typeof window.renderPecasRec === 'function') window.renderPecasRec();
+      }
+    }
 
     var terc = document.getElementById('orcPanelTerc');
     if(terc){
-      var h=terc.querySelector('div');
-      if(h) h.textContent='▸ Extras & Ajustes e Serviços de Terceiros';
-      var th=terc.querySelector('th');
-      if(th) th.textContent='SERVIÇO / TERCEIRO';
-      var btn=terc.querySelector('button[onclick*="addTercRow"]');
-      if(btn) btn.textContent='＋ Adicionar item';
-      Array.from(terc.querySelectorAll('span')).forEach(function(s){
-        if((s.textContent||'').indexOf('Total Terceiros')>-1) s.textContent='Subtotal serviços:';
-      });
+      terc.style.display='block';
+      var h = terc.querySelector('div');
+      if(h) h.textContent = '▸ Extras & Ajustes e Serviços de Terceiros';
+      var th1 = terc.querySelector('th');
+      if(th1) th1.textContent = 'SERVIÇO / TERCEIRO';
+      var btn = terc.querySelector('button[onclick*="addTercRow"]');
+      if(btn) btn.textContent = '＋ Adicionar item';
+      var totalLabel = Array.from(terc.querySelectorAll('span')).find(function(s){return (s.textContent||'').includes('Total Terceiros');});
+      if(totalLabel) totalLabel.textContent = 'Subtotal serviços:';
     }
 
-    var frete=document.getElementById('orcPanelFrete');
+    var frete = document.getElementById('orcPanelFrete');
     if(frete){
-      var fh=frete.querySelector('div');
-      if(fh) fh.textContent='▸ Deslocamento / Frete';
+      frete.style.display='block';
+      var fh = frete.querySelector('div');
+      if(fh) fh.textContent = '▸ Deslocamento / Frete';
     }
 
-    // Condições pedidas para peças recuperadas.
-    var cond=document.getElementById('pecRecCondicao');
-    if(cond){
-      var val=cond.value || 'Boa';
-      cond.innerHTML='<option value="Boa">✅ Boa</option><option value="Recuperada">⚠️ Recuperada</option><option value="Regular">❌ Regular</option>';
-      cond.value = ['Boa','Recuperada','Regular'].indexOf(val)>-1 ? val : 'Boa';
-    }
-
-    // Nomes do resumo para não confundir Peças com Serviços.
-    var bMat = document.getElementById('bMat');
-    if(bMat && bMat.previousElementSibling) bMat.previousElementSibling.textContent='Peças recuperadas';
-    var bExt = document.getElementById('bExt');
-    if(bExt && bExt.previousElementSibling) bExt.previousElementSibling.textContent='Extras / terceiros / frete';
+    // Condições pedidas: Boa, Recuperada, Regular.
+    ['pecRecCondicao'].forEach(function(id){
+      var s=document.getElementById(id);
+      if(s){
+        var val=s.value || 'Boa';
+        s.innerHTML='<option value="Boa">✅ Boa</option><option value="Recuperada">⚠️ Recuperada</option><option value="Regular">❌ Regular</option>';
+        s.value = ['Boa','Recuperada','Regular'].includes(val) ? val : 'Boa';
+      }
+    });
   }
 
   function getPecasTotal(){
     try{
-      var arr = (typeof pecasRec !== 'undefined' && Array.isArray(pecasRec)) ? pecasRec : (Array.isArray(window.pecasRec) ? window.pecasRec : []);
-      return arr.reduce(function(s,p){return s + num(p.valor);},0);
-    }catch(e){ return 0; }
+      if(Array.isArray(window.pecasRec)){
+        return window.pecasRec.reduce(function(s,p){return s + num(p.valor);},0);
+      }
+    }catch(e){}
+    return 0;
   }
   function getTercTotal(){
     var total=0;
@@ -9117,82 +9092,70 @@ input::placeholder,textarea::placeholder{color:#69451f!important;opacity:.85!imp
   function getFreteTotal(){
     return num(document.getElementById('freteDeslocamento')?.value) + num(document.getElementById('fretePecas')?.value) + num(document.getElementById('freteReboque')?.value);
   }
-  function getMatsTotal(){
-    try{
-      var arr = (typeof mats !== 'undefined' && Array.isArray(mats)) ? mats : (Array.isArray(window.mats) ? window.mats : []);
-      return arr.reduce(function(s,m){return s + num(m.qty)*num(m.unit);},0);
-    }catch(e){ return 0; }
-  }
 
-  // Calculadora oficial corrigida:
-  // mão de obra + materiais + peças recuperadas + serviços/terceiros + frete,
-  // margem embutida e desconto aplicado no final.
+  // Sobrescreve o cálculo para seguir o fluxo pedido:
+  // Mão de obra + Materiais + Peças recuperadas + Serviços/terceiros + Frete - Desconto.
   window.getOrcValues = function(){
     var hours = num(document.getElementById('hours')?.value);
     var rate  = num(document.getElementById('hourRate')?.value);
     var margin = Math.min(num(document.getElementById('marginSlider')?.value || 30)/100, .99);
     var disc   = num(document.getElementById('discSlider')?.value || 0)/100;
     var laborBruto = hours * rate;
-    var matsSum = getMatsTotal();
+    var matsSum = 0;
+    try{
+      if(Array.isArray(window.mats)){
+        matsSum = window.mats.reduce(function(s,m){return s + num(m.qty)*num(m.unit);},0);
+      }
+    }catch(e){}
     var pecasTotal = getPecasTotal();
     var tercTotal  = getTercTotal();
     var freteTotal = getFreteTotal();
-
     var tp=document.getElementById('thirdParty'); if(tp) tp.value=tercTotal;
     var tr=document.getElementById('transport'); if(tr) tr.value=freteTotal;
-
     var moComMat = laborBruto + matsSum;
     var extras = tercTotal + freteTotal;
     var base = (moComMat + pecasTotal + extras) * (window.cpxMult || 1);
     var withM = margin < 1 ? base/(1-margin) : base;
     var discAmt = withM * disc;
     var final = Math.max(0, withM - discAmt);
-
     return {hours:hours, rate:rate, tp:tercTotal, tr:freteTotal, margin:margin, disc:disc, laborBruto:laborBruto, matsSum:matsSum, moComMat:moComMat, svcsNet:pecasTotal, extras:extras, base:base, withM:withM, discAmt:discAmt, final:final};
   };
 
-  if(typeof window.calcPecasRecTotal === 'function'){
-    window.calcPecasRecTotal = function(){
-      var total=getPecasTotal();
-      var el=document.getElementById('pecasRecTotal');
-      if(el) el.textContent=money(total);
-      if(typeof window.updateCalc==='function') window.updateCalc();
-      return total;
-    };
-  }
+  var oldCalcPecas = window.calcPecasRecTotal;
+  window.calcPecasRecTotal = function(){
+    var total = getPecasTotal();
+    var el=document.getElementById('pecasRecTotal');
+    if(el) el.textContent = money(total);
+    if(typeof window.updateCalc==='function') window.updateCalc();
+    return total;
+  };
 
-  if(typeof window.calcTercTotal === 'function'){
-    window.calcTercTotal = function(){
-      var total=getTercTotal();
-      var el=document.getElementById('tercTotal');
-      if(el) el.textContent=money(total);
-      var tp=document.getElementById('thirdParty'); if(tp) tp.value=total;
-      if(typeof window.updateCalc==='function') window.updateCalc();
-      return total;
-    };
-  }
+  var oldCalcTerc = window.calcTercTotal;
+  window.calcTercTotal = function(){
+    var total = getTercTotal();
+    var el=document.getElementById('tercTotal');
+    if(el) el.textContent = money(total);
+    var tp=document.getElementById('thirdParty'); if(tp) tp.value=total;
+    if(typeof window.updateCalc==='function') window.updateCalc();
+    return total;
+  };
 
-  if(typeof window.calcFreteTotal === 'function'){
-    window.calcFreteTotal = function(){
-      var total=getFreteTotal();
-      var el=document.getElementById('freteTotal');
-      if(el) el.textContent=money(total);
-      var tr=document.getElementById('transport'); if(tr) tr.value=total;
-      if(typeof window.updateCalc==='function') window.updateCalc();
-      return total;
-    };
-  }
+  var oldCalcFrete = window.calcFreteTotal;
+  window.calcFreteTotal = function(){
+    var total = getFreteTotal();
+    var el=document.getElementById('freteTotal');
+    if(el) el.textContent = money(total);
+    var tr=document.getElementById('transport'); if(tr) tr.value=total;
+    if(typeof window.updateCalc==='function') window.updateCalc();
+    return total;
+  };
 
-  // Caixa x Competência no Financeiro.
+  // Caixa x Competência no Financeiro: caixa considera só lançamentos pagos; competência considera todos do mês.
   var previousRenderFinanceiro = window.renderFinanceiro;
   window.renderFinanceiro = function(){
     if(typeof previousRenderFinanceiro === 'function') previousRenderFinanceiro.apply(this, arguments);
     try{
-      var all = [];
-      if(typeof window.getMesData === 'function') all = window.getMesData().slice();
-      else if(Array.isArray(window.ALL_TX)) all = window.ALL_TX.slice();
-      else if(typeof ALL_TX !== 'undefined' && Array.isArray(ALL_TX)) all = ALL_TX.slice();
-
+      var all = (typeof window.getMesData === 'function' ? window.getMesData() : (window.ALL_TX||[])).slice();
       var recs = all.filter(function(t){return t.type==='rec';});
       var deps = all.filter(function(t){return t.type==='dep';});
       var totalRec = recs.reduce(function(s,t){return s+num(t.val);},0);
@@ -9201,14 +9164,13 @@ input::placeholder,textarea::placeholder{color:#69451f!important;opacity:.85!imp
       var caixaDep = deps.filter(paid).reduce(function(s,t){return s+num(t.val);},0);
       var caixa = caixaRec - caixaDep;
       var competencia = totalRec - totalDep;
-
       var host = document.querySelector('#mod-financeiro .fin-summary .result-hero') || document.querySelector('#mod-financeiro .fin-summary');
       var box = document.getElementById('caixaCompetenciaBox');
       if(host && !box){
         box=document.createElement('div');
         box.id='caixaCompetenciaBox';
         box.className='finance-mode-row';
-        box.innerHTML='<div class="finance-mode-box"><b>Caixa</b><span id="modoCaixaVal">R$ 0,00</span><small style="display:block;color:#65401b;font-size:.65rem;">somente pagos</small></div><div class="finance-mode-box"><b>Competência</b><span id="modoCompetenciaVal">R$ 0,00</span><small style="display:block;color:#65401b;font-size:.65rem;">todos lançamentos</small></div>';
+        box.innerHTML='<div class="finance-mode-box"><b>Caixa</b><span id="modoCaixaVal">R$ 0,00</span><small style="display:block;color:#7a5030;font-size:.65rem;">somente pagos</small></div><div class="finance-mode-box"><b>Competência</b><span id="modoCompetenciaVal">R$ 0,00</span><small style="display:block;color:#7a5030;font-size:.65rem;">todos lançamentos</small></div>';
         host.insertAdjacentElement(host.classList && host.classList.contains('result-hero') ? 'afterend' : 'afterbegin', box);
       }
       var c=document.getElementById('modoCaixaVal'); if(c){ c.textContent=money(caixa); c.style.color=caixa>=0?'#16a34a':'#dc2626'; }
@@ -9217,17 +9179,15 @@ input::placeholder,textarea::placeholder{color:#69451f!important;opacity:.85!imp
   };
 
   function bootFix(){
-    try{ organizeOrcamentoSectionsSafe(); }catch(e){ console.warn('Organização orçamento:', e.message); }
-    try{ if(typeof window.calcPecasRecTotal==='function') window.calcPecasRecTotal(); }catch(e){}
-    try{ if(typeof window.calcTercTotal==='function') window.calcTercTotal(); }catch(e){}
-    try{ if(typeof window.calcFreteTotal==='function') window.calcFreteTotal(); }catch(e){}
-    try{ if(typeof window.renderFinanceiro==='function') window.renderFinanceiro(); }catch(e){}
-    try{ if(typeof window.updateCalc==='function') window.updateCalc(); }catch(e){}
+    organizeOrcamentoSections();
+    if(typeof window.calcPecasRecTotal==='function') window.calcPecasRecTotal();
+    if(typeof window.calcTercTotal==='function') window.calcTercTotal();
+    if(typeof window.calcFreteTotal==='function') window.calcFreteTotal();
+    if(typeof window.renderFinanceiro==='function') window.renderFinanceiro();
+    if(typeof window.updateCalc==='function') window.updateCalc();
   }
-
   if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', bootFix); else bootFix();
   setTimeout(bootFix, 400);
-  setTimeout(bootFix, 1200);
 })();
 </script>
 
