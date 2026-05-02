@@ -1,4 +1,8 @@
-<script>
+window.onerror = function(msg){
+  console.error("Erro:", msg);
+};
+
+Render.all();<script>
 
 /* =========================
    STORE GLOBAL (ESSENCIAL)
