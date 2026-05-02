@@ -151,6 +151,13 @@ const Financeiro = {
 
     document.getElementById('calendario').innerHTML = html;
   }
+const Store = {
+  financeiro: [],
+  agenda: {
+    mes: new Date().getMonth(),
+    ano: new Date().getFullYear()
+  }
+};
 
 /* =========================
    AGENDA
