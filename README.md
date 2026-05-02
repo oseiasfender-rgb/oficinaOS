@@ -2,7 +2,14 @@
 
 Sistema completo de gestão para oficina de funilaria e pintura.
 
-## ✅ Versão Atual: Fase 3 Corrigida (v6)
+## Estrutura
+- Frontend puro (HTML, CSS, JS)
+- Arquitetura modular
+
+## Próximos passos
+- Backend Node.js
+- Banco PostgreSQL
+- Autenticação JWT                                                                                                                                                                                                                                                                                ## ✅ Versão Atual: Fase 3 Corrigida (v6)
 
 ### Principais Correções Aplicadas:
 - Abas totalmente funcionais (Financeiro, Orçamento, Contas, Metas, Agenda, etc.)
