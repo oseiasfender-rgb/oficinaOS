@@ -1,69 +1,13 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OficinaOS</title>
 
-<title>OficinaOS</title>
-
-<style>
-/* RESET */
-*{margin:0;padding:0;box-sizing:border-box;font-family:Arial}
-
-/* LAYOUT */
-body{
-  display:flex;
-  height:100vh;
-  overflow:auto;
-  background:#0f172a;
-  color:#fff;
-}
-
-/* SIDEBAR */
-.sidebar{
-  width:220px;
-  background:#020617;
-  padding:20px;
-}
-
-.sidebar button{
-  width:100%;
-  margin-bottom:10px;
-  padding:10px;
-  cursor:pointer;
-}
-
-/* MAIN */
-.main{
-  flex:1;
-  padding:20px;
-  overflow:auto;
-}
-
-/* PANELS */
-.panel{
-  display:none;
-}
-
-.panel.active{
-  display:block;
-}
-
-/* INPUT PADRÃO */
-.input{
-  padding:8px;
-  margin-bottom:10px;
-  width:100%;
-}
-
-.card{
-  background:#1e293b;
-  padding:15px;
-  border-radius:8px;
-  margin-bottom:10px;
-}
-</style>
+  <link rel="stylesheet" href="assets/css/style.css">
 </head>
+
 <body>
 
 <div class="sidebar">
@@ -76,7 +20,7 @@ body{
 
   <div id="dashboard" class="panel active">
     <h1>Dashboard</h1>
-    <div class="card" id="dashResumo"></div>
+    <div id="dashResumo" class="card"></div>
   </div>
 
   <div id="financeiro" class="panel">
@@ -92,6 +36,7 @@ body{
 
   <div id="agenda" class="panel">
     <h1>Agenda</h1>
+
     <button onclick="Agenda.prev()">←</button>
     <span id="mesAtual"></span>
     <button onclick="Agenda.next()">→</button>
@@ -100,3 +45,13 @@ body{
   </div>
 
 </div>
+
+<script src="assets/js/store.js"></script>
+<script src="assets/js/ui.js"></script>
+<script src="assets/js/financeiro.js"></script>
+<script src="assets/js/agenda.js"></script>
+<script src="assets/js/render.js"></script>
+<script src="assets/js/app.js"></script>
+
+</body>
+</html>
